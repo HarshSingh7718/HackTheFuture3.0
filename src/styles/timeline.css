@@ -342,3 +342,19 @@
   .tl-event { grid-template-columns: 24px 44px 1fr auto; gap: 10px; padding: 16px 16px 16px 24px; }
   .tl-cta { flex-direction: column; align-items: flex-start; gap: 18px; }
 }
+@media (max-width: 480px) {
+  .tl-hero { padding: 28px 16px 0; gap: 16px; }
+  .tl-hero h1 { font-size: clamp(28px, 9vw, 44px); letter-spacing: -2px; }
+  .tl-hero-mascot { height: 200px; }
+  .tl-breadcrumb { padding: 10px 16px; }
+  .tl-event { grid-template-columns: 20px 1fr auto; gap: 8px; padding: 14px 16px; }
+  .tl-event-time { display: none; }
+  .tl-event-title { font-size: 13px; }
+  .tl-date { padding: 16px 16px; }
+  .tl-day-num { font-size: 28px; }
+  .tl-cta { padding: 20px 16px; }
+}
+@media (max-width: 360px) {
+  .tl-hero h1 { font-size: 24px; }
+  .tl-event-tag { display: none; }
+}

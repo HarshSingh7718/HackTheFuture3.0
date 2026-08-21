@@ -5,6 +5,7 @@ import homeAboutImg from '../HomeAbout section.png'
 import navLogo from '../NavBar Logo.png'
 import prizesMascot from '../Mascots Variations/Prize2 (3).png'
 import trackMascot from '../Mascots Variations/trackhomepage.png'
+import emojiMascot from '../Mascots Variations/Emoji.png'
 import { useEffect, useState, useRef } from 'react'
 
 import {
@@ -166,7 +167,7 @@ export default function App() {
         <div className="hero-dots" aria-hidden="true"></div>
         <div className="hero-number" aria-hidden="true">03</div>
         <div className="hero-copy">
-          <p className="eyebrow">Tula's University presents</p>
+          <p className="eyebrow">Tulas University presents</p>
           <h1>HACK<br />THE<br /><span className="hero-h1-gradient">FUTURE</span></h1>
           <div className="hero-tagline-row">
             <p className="tagline">36 HOURS. ONE FUTURE. <b>BUILD IT.</b></p>
@@ -207,7 +208,7 @@ export default function App() {
           <p className="eyebrow">01 / About</p>
           <h2>WHAT IS<br /><span>HACK</span> THE FUTURE?</h2>
           <p>
-            Hack the Future 3.0 is a 36-hour national level hackathon organized by Tula's University, Dehradun.
+            Hack the Future 3.0 is a 36-hour national level hackathon organized by Tulas University, Dehradun.
             It brings together young innovators, developers, designers and problem solvers to build impactful
             solutions for real-world challenges.<br />Code. Collaborate. Create Impact.
           </p>
@@ -424,17 +425,63 @@ export default function App() {
         </div>
       </section>
 
-      {/* ═══════════ FINAL CTA ═══════════ */}
-      <section className="hp-cta" id="register">
-        <div className="hp-cta-left">
-          <p className="eyebrow">Are you ready to</p>
-          <h2>BUILD THE <span>FUTURE?</span></h2>
+      {/* ═══════════ PRE-FOOTER CTA ═══════════ */}
+      <section className="hp-prefooter-cta" id="register">
+        {/* Decorative dots */}
+        <span className="hp-pfc-dot hp-pfc-dot--tl" aria-hidden="true" />
+        <span className="hp-pfc-dot hp-pfc-dot--tr" aria-hidden="true" />
+        <span className="hp-pfc-dot hp-pfc-dot--br" aria-hidden="true" />
+        <span className="hp-pfc-diamond hp-pfc-diamond--1" aria-hidden="true" />
+        <span className="hp-pfc-diamond hp-pfc-diamond--2" aria-hidden="true" />
+
+        {/* Left — copy + buttons */}
+        <div className="hp-pfc-left">
+          <p className="hp-pfc-eyebrow">Ready to Build Impact?</p>
+          <h2 className="hp-pfc-heading">
+            Are you ready to<br />
+            <span>Build the Future?</span>
+          </h2>
+          <p className="hp-pfc-sub">Ideas are waiting. The future is yours to build.</p>
+          <div className="hp-pfc-actions">
+            <a className="hp-pfc-btn hp-pfc-btn--filled" href={event.registrationUrl}>
+              Register Now <strong>→</strong>
+            </a>
+            <a className="hp-pfc-btn hp-pfc-btn--outline" href="#about">
+              Explore Event
+            </a>
+          </div>
         </div>
-        <div className="hp-cta-right">
-          <p>Ideas are waiting.<br />The future is yours to build.</p>
-          <a className="button" href={event.registrationUrl}>Register now <strong>→</strong></a>
+
+        {/* Center — mascot with glow */}
+        <div className="hp-pfc-mascot-wrap">
+          <div className="hp-pfc-glow" />
+          <img src={emojiMascot} alt="HTF mascot" className="hp-pfc-mascot" />
         </div>
-        <div className="hp-cta-wm" aria-hidden="true">/03</div>
+
+        {/* Right — event info pills */}
+        <div className="hp-pfc-info">
+          <div className="hp-pfc-info-item">
+            <CalendarDays size={20} className="hp-pfc-info-icon" />
+            <div>
+              <b>{event.dates}</b>
+              <span>Hackathon Days</span>
+            </div>
+          </div>
+          <div className="hp-pfc-info-item">
+            <Landmark size={20} className="hp-pfc-info-icon" />
+            <div>
+              <b>Tulas University</b>
+              <span>Dehradun</span>
+            </div>
+          </div>
+          <div className="hp-pfc-info-item">
+            <Zap size={20} className="hp-pfc-info-icon" />
+            <div>
+              <b>36 Hours</b>
+              <span>Non-Stop Building</span>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ═══════════ FOOTER ═══════════ */}
@@ -444,7 +491,7 @@ export default function App() {
             <div className="hp-ft-logo">
               <img src={navLogo} alt="Hack the Future 3.0" />
             </div>
-            <p>A 36-hour national level hackathon by Tula's University, Dehradun. Build. Innovate. Collaborate. Create Impact.</p>
+            <p>A 36-hour national level hackathon by Tulas University, Dehradun. Build. Innovate. Collaborate. Create Impact.</p>
             <div className="hp-ft-social">
               <a href="#" aria-label="Instagram"><InstagramIcon /></a>
               <a href="#" aria-label="LinkedIn"><LinkedinIcon /></a>

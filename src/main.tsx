@@ -22,7 +22,9 @@ import './styles/timeline.css'
 import './styles/faq.css'
 import './styles/contact.css'
 
-createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><Routes>
+import { ScrollToTop } from './components/ScrollToTop'
+
+createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><ScrollToTop /><Routes>
   <Route path="/" element={<App />} />
   <Route path="/about" element={<AboutPage />} />
   <Route path="/rules" element={<RulesPage />} />

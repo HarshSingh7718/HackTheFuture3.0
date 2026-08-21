@@ -181,7 +181,6 @@
 .ct-quick-email:hover { text-decoration: underline; }
 .ct-quick-note { font-size: 12.5px; color: #9086a0; line-height: 1.65; margin: 0; }
 
-/* Responsive */
 @media (max-width: 1000px) {
   .ct-main { grid-template-columns: 1fr; }
   .ct-side { order: -1; }
@@ -190,12 +189,24 @@
   .ct-info-card:nth-child(1), .ct-info-card:nth-child(2) { border-bottom: 1px solid #ede8f2; }
 }
 @media (max-width: 720px) {
-  .ct-hero { grid-template-columns: 1fr; }
-  .ct-hero-mascot { height: 220px; }
+  .ct-hero { grid-template-columns: 1fr; padding: 40px 20px 28px; }
+  .ct-hero-mascot { height: 200px; margin: 0 auto; }
   .ct-watermark { display: none; }
   .ct-info-row { grid-template-columns: 1fr; }
   .ct-info-card { border-right: none; border-bottom: 1px solid #ede8f2; }
   .ct-info-card:last-child { border-bottom: none; }
   .ct-form-wrap { padding: 24px; }
   .ct-form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .ct-hero { padding: 32px 16px 24px; }
+  .ct-hero-copy h1 { font-size: clamp(30px, 9vw, 44px); letter-spacing: -2px; }
+  .ct-form-wrap { padding: 20px 16px; }
+  .ct-main { padding: 32px 16px; }
+  .ct-breadcrumb { padding: 10px 16px; }
+  .ct-quick-block { padding: 20px 16px; }
+}
+@media (max-width: 360px) {
+  .ct-hero-copy h1 { font-size: 26px; }
+  .ct-info-card { padding: 16px 14px; }
 }

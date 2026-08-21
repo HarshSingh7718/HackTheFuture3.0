@@ -319,3 +319,18 @@
   .tr-card-num { font-size: 34px; }
   .tr-cta-bar { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
+@media (max-width: 480px) {
+  .tr-hero { padding: 28px 16px 20px; gap: 16px; }
+  .tr-hero-copy h1 { font-size: clamp(28px, 9vw, 44px); letter-spacing: -2px; }
+  .tr-hero-mascot { height: 200px; }
+  .tr-breadcrumb { padding: 10px 16px; }
+  .tr-card-inner { grid-template-columns: 40px 1fr 32px; gap: 10px; padding: 16px 12px; }
+  .tr-card-num { display: none; }
+  .tr-card-icon { width: 44px; height: 44px; }
+  .tr-card-title { font-size: 13px; }
+  .tr-cta-bar { padding: 20px 16px; }
+}
+@media (max-width: 360px) {
+  .tr-hero-copy h1 { font-size: 24px; }
+  .tr-grid { gap: 10px; }
+}

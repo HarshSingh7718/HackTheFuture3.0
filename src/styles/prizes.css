@@ -537,9 +537,25 @@
   .pr-pool-label { writing-mode: horizontal-tb; transform: none; border-right: none; padding-right: 0; }
 }
 @media (max-width: 640px) {
-  .pr-hero { padding: 36px 24px 0; }
+  .pr-hero { padding: 36px 20px 0; }
   .pr-perks { grid-template-columns: 1fr; }
   .pr-perk { border-right: none; border-bottom: 1px solid #ede8f2; }
   .pr-perk:last-child { border-bottom: none; }
   .pr-cons-inner { flex-wrap: wrap; }
 }
+@media (max-width: 480px) {
+  .pr-hero { padding: 28px 16px 0; gap: 16px; }
+  .pr-hero h1 { font-size: clamp(28px, 9vw, 44px); letter-spacing: -2px; }
+  .pr-hero-mascot { height: 220px; }
+  .pr-breadcrumb { padding: 10px 16px; }
+  .pr-pod-card { padding: 28px 20px; }
+  .pr-pod-amount { font-size: clamp(36px, 10vw, 52px); }
+  .pr-pool-banner { padding: 20px 16px; }
+  .pr-pool-total { font-size: 36px; }
+  .pr-section { padding: 40px 16px; }
+}
+@media (max-width: 360px) {
+  .pr-hero h1 { font-size: 26px; }
+  .pr-pod-amount { font-size: 32px; }
+}
+

@@ -290,20 +290,34 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
-  .ab-hero { grid-template-columns: 1fr; }
-  .ab-hero-visual { min-height: 320px; }
-  .ab-hero-mascot { height: 100%; right: 50%; transform: translateX(50%); }
-  .ab-features { grid-template-columns: repeat(2, 1fr); gap: 20px 0; }
+  .ab-hero { grid-template-columns: 1fr; min-height: auto; }
+  .ab-hero-visual { min-height: 300px; }
+  .ab-hero-mascot { height: 85%; right: 50%; transform: translateX(50%); }
+  .ab-hero-copy { padding: 48px clamp(20px,5vw,60px); }
+  .ab-hero-copy h1 { font-size: clamp(36px,7vw,60px); }
+  .ab-features { grid-template-columns: repeat(2, 1fr); gap: 20px 0; padding: 28px clamp(20px,5vw,60px); }
   .ab-feat { border-right: none; border-bottom: 1px solid #ddd5e3; padding: 0 0 20px; }
   .ab-feat:nth-child(odd) { padding-right: 16px; }
   .ab-feat:nth-child(even) { padding-left: 16px; border-left: 1px solid #ddd5e3; }
   .ab-feat:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
   .ab-val-grid { grid-template-columns: repeat(3, 1fr); }
-  .ab-values-inner { grid-template-columns: 1fr; }
+  .ab-values-inner { grid-template-columns: 1fr; gap: 32px; }
+  .ab-glance { padding: 20px; }
+  .ab-breadcrumb { padding: 12px 20px; }
 }
 @media (max-width: 600px) {
-  .ab-hero-copy { padding: 40px 24px; }
-  .ab-features { grid-template-columns: 1fr; padding: 28px 24px; }
-  .ab-feat { border-right: none; border-left: none !important; padding: 0 0 18px !important; }
+  .ab-hero-copy { padding: 36px 20px; }
+  .ab-hero-copy h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -2px; }
+  .ab-hero-visual { min-height: 240px; }
+  .ab-features { grid-template-columns: 1fr; padding: 24px 20px; gap: 0; }
+  .ab-feat { border-right: none; border-left: none !important; padding: 0 0 18px !important; border-bottom: 1px solid #ddd5e3 !important; }
+  .ab-feat:last-child { border-bottom: none !important; padding-bottom: 0 !important; }
   .ab-val-grid { grid-template-columns: repeat(2, 1fr); }
+  .ab-glance-grid { grid-template-columns: 1fr; }
+  .ab-glance-stat { border-right: none !important; }
+  .ab-glance-stat:nth-last-child(-n+1) { border-bottom: none !important; }
+}
+@media (max-width: 360px) {
+  .ab-hero-copy h1 { font-size: 28px; letter-spacing: -1.5px; }
+  .ab-val-grid { grid-template-columns: 1fr; }
 }

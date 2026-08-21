@@ -414,9 +414,24 @@
   .rl-watermark { display: none; }
 }
 @media (max-width: 640px) {
-  .rl-hero { padding: 36px 24px; }
-  .rl-body { padding: 20px 24px 40px; }
-  .rl-warning { flex-direction: column; gap: 20px; align-items: flex-start; padding: 28px 24px; }
+  .rl-hero { padding: 36px 20px; }
+  .rl-body { padding: 20px 20px 40px; }
+  .rl-warning { flex-direction: column; gap: 20px; align-items: flex-start; padding: 28px 20px; }
   .rl-warn-shield { display: none; }
-  .rl-tabs { padding: 0 24px; }
+  .rl-tabs { padding: 0 20px; }
+}
+@media (max-width: 480px) {
+  .rl-hero { padding: 28px 16px; gap: 16px; }
+  .rl-hero h1 { font-size: clamp(28px, 9vw, 44px); letter-spacing: -2px; }
+  .rl-hero-mascot { height: 180px; }
+  .rl-breadcrumb { padding: 10px 16px; }
+  .rl-body { padding: 20px 16px 48px; }
+  .rl-warning { padding: 20px 16px; }
+  .rl-tabs { padding: 0 16px; }
+  .rl-tab { padding: 10px 14px; font-size: 10px; }
+  .rl-sidebar { flex-direction: column; }
+  .rl-quicknav, .rl-doubt-box { min-width: auto; width: 100%; }
+}
+@media (max-width: 360px) {
+  .rl-hero h1 { font-size: 24px; }
 }
