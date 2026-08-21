@@ -69,12 +69,12 @@ const stats = [
 
 
 const trackData = [
-  { n: '01', t: 'AI / ML',           d: 'Build intelligent systems that learn, predict and automate the future.',                     icon: Brain },
-  { n: '02', t: 'WEB & APP',         d: 'Create powerful web and mobile experiences that solve real problems.',                      icon: Code2 },
-  { n: '03', t: 'IOT & ROBOTICS',    d: 'Connect devices. Automate tasks. Build the smart world of tomorrow.',                      icon: Cpu },
-  { n: '04', t: 'CYBERSECURITY',     d: 'Protect systems. Hack ethically. Build a safer digital world.',                            icon: Shield },
-  { n: '05', t: 'FINTECH',           d: 'Redefine finance with innovation, security and inclusive solutions.',                       icon: Zap },
-  { n: '06', t: 'OPEN INNOVATION',   d: 'Think beyond boundaries. Explore interdisciplinary and unconventional ideas.',              icon: Lightbulb },
+  { n: '01', t: 'AI / ML', d: 'Build intelligent systems that learn, predict and automate the future.', icon: Brain },
+  { n: '02', t: 'WEB & APP', d: 'Create powerful web and mobile experiences that solve real problems.', icon: Code2 },
+  { n: '03', t: 'IOT & ROBOTICS', d: 'Connect devices. Automate tasks. Build the smart world of tomorrow.', icon: Cpu },
+  { n: '04', t: 'CYBERSECURITY', d: 'Protect systems. Hack ethically. Build a safer digital world.', icon: Shield },
+  { n: '05', t: 'FINTECH', d: 'Redefine finance with innovation, security and inclusive solutions.', icon: Zap },
+  { n: '06', t: 'OPEN INNOVATION', d: 'Think beyond boundaries. Explore interdisciplinary and unconventional ideas.', icon: Lightbulb },
 ]
 
 const whyJoin = [
@@ -100,10 +100,10 @@ function CountdownBand() {
       const diff = target - Date.now()
       if (diff <= 0) { setTime({ days: 0, hours: 0, mins: 0, secs: 0 }); return }
       setTime({
-        days:  Math.floor(diff / 86400000),
+        days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
-        mins:  Math.floor((diff % 3600000) / 60000),
-        secs:  Math.floor((diff % 60000) / 1000),
+        mins: Math.floor((diff % 3600000) / 60000),
+        secs: Math.floor((diff % 60000) / 1000),
       })
     }
     tick()
@@ -112,10 +112,10 @@ function CountdownBand() {
   }, [])
 
   const units = [
-    { v: time.days,  l: 'DAYS' },
+    { v: time.days, l: 'DAYS' },
     { v: time.hours, l: 'HRS' },
-    { v: time.mins,  l: 'MIN' },
-    { v: time.secs,  l: 'SEC' },
+    { v: time.mins, l: 'MIN' },
+    { v: time.secs, l: 'SEC' },
   ]
 
   return (
@@ -182,7 +182,15 @@ export default function App() {
           </div>
         </div>
         <img className="hero-mascot hero-mascot-image" src={mascot} alt="Hack the Future mascot holding a laptop and giving a thumbs-up" />
-        <aside className="status"><small>REGISTRATION</small><b>OPEN</b><i></i><span>BE PART OF<br />THE FUTURE</span></aside>
+        <aside className="status">
+          <div className="status-live-row">
+            <span className="status-dot" />
+            <small>REGISTRATION</small>
+          </div>
+          <b className="status-open">OPEN</b>
+          <hr className="status-rule" />
+          <span className="status-sub">Be part of<br />the future</span>
+        </aside>
         {/* scroll-cue removed */}
       </section>
 
@@ -341,21 +349,11 @@ export default function App() {
               JUDGES REVEALING SOON
             </div>
           </div>
-          <div className="hp-judges-grid">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="hp-judge-card">
-                <div className="hp-judge-avatar">
-                  <div className="hp-judge-silhouette" />
-                  <div className="hp-judge-lock">?</div>
-                </div>
-                <div className="hp-judge-info">
-                  <div className="hp-judge-name-blur" />
-                  <div className="hp-judge-role-blur" />
-                </div>
-              </div>
-            ))}
+          <div className="hp-judges-soon">
+            <div className="hp-judges-soon-icon">?</div>
+            <p className="hp-judges-soon-title">Judges Revealing Soon</p>
+            <p className="hp-judges-soon-sub">Our panel of industry experts will be announced soon. Stay tuned!</p>
           </div>
-          <p className="hp-judges-hint">Our panel of industry experts will be announced soon. Stay tuned!</p>
         </div>
 
         {/* — Divider — */}
