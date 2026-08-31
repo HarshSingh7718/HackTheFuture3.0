@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { ReactLenis } from '@studio-freight/react-lenis'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App'
 import { EventPage } from './pages/EventPage'
@@ -24,7 +25,7 @@ import './styles/contact.css'
 
 import { ScrollToTop } from './components/ScrollToTop'
 
-createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><ScrollToTop /><Routes>
+createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><ScrollToTop /><ReactLenis root><Routes>
   <Route path="/" element={<App />} />
   <Route path="/about" element={<AboutPage />} />
   <Route path="/rules" element={<RulesPage />} />
@@ -36,4 +37,4 @@ createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><
   <Route path="/contact" element={<ContactPage />} />
 
   {['judges', 'mentors', 'sponsors'].map(page => <Route key={page} path={`/${page}`} element={<EventPage page={page} />} />)}
-</Routes></BrowserRouter></StrictMode>)
+</Routes></ReactLenis></BrowserRouter></StrictMode>)

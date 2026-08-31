@@ -128,31 +128,30 @@
 
 /* Glassmorphism header */
 .header {
-  background: rgba(8, 6, 18, 0.88) !important;
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border-bottom: 1px solid rgba(124, 58, 237, 0.18) !important;
+  background: rgba(15, 15, 20, 0.6) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 100px !important;
   height: 76px !important;
-  padding: 0 clamp(24px, 5vw, 80px) !important;
+  padding: 0 clamp(24px, 5vw, 40px) !important;
   gap: 40px !important;
   transition: background .3s, box-shadow .3s;
+  width: calc(100% - 40px) !important;
+  max-width: 1200px !important;
+  margin: 20px auto !important;
+  top: 0px !important;
+  position: fixed !important;
+  left: 0;
+  right: 0;
+  z-index: 100 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 /* Subtle bottom glow line */
 .header::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(124, 58, 237, 0.5) 35%,
-      rgba(167, 139, 250, 0.8) 50%,
-      rgba(124, 58, 237, 0.5) 65%,
-      transparent 100%);
-  pointer-events: none;
+  display: none;
 }
 
 /* Nav links — animated underline */
@@ -357,11 +356,11 @@
 .hero {
   grid-template-columns: minmax(420px, 1fr) minmax(360px, 1fr);
   column-gap: 10px;
-  height: calc(100vh - 82px);
+  height: 100vh;
   min-height: 480px;
   max-height: 800px;
   padding-left: clamp(70px, 6.5vw, 110px);
-  padding-top: 16px;
+  padding-top: 112px;
   padding-bottom: 18px;
 }
 
@@ -1346,7 +1345,6 @@
 .hp-tr {
   background: linear-gradient(135deg, #1a0533 0%, #2d0a5e 30%, #3d1278 55%, #2d0a5e 80%, #1a0533 100%);
   padding: clamp(60px, 8vw, 100px) clamp(24px, 6vw, 80px) 0 !important;
-  overflow: hidden;
   position: relative;
 }
 
@@ -1413,49 +1411,66 @@
   font-weight: 600;
 }
 
-/* ── 3-column grid ── */
-.hp-tr-grid {
+/* ── 2-column stacked layout ── */
+.hp-tr-content {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 24px;
-  align-items: center;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: flex-start;
   position: relative;
   z-index: 1;
 }
 
-/* ── Track column ── */
-.hp-tr-col {
+.hp-tr-left {
+  position: sticky;
+  top: 140px;
+  padding-bottom: 60px;
+}
+
+.hp-tr-right {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  padding-bottom: 15vh;
 }
 
 /* ── Track card ── */
 .hp-tr-card {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 24px;
   background: #ffffff;
   border: 1px solid rgba(124, 58, 237, 0.15);
-  padding: 16px 18px;
-  border-radius: 2px;
+  padding: 40px 32px;
+  border-radius: 12px;
   cursor: pointer;
   text-decoration: none;
   transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+}
+
+.hp-tr-stacked-card {
+  position: sticky;
+  top: calc(140px + (var(--card-index) * 25px));
+  margin-bottom: 5vh;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+  transform-origin: top center;
+}
+
+.hp-tr-stacked-card:last-child {
+  margin-bottom: 0;
 }
 
 .hp-tr-card:hover {
   background: #f5f0ff;
   border-color: #7c3aed;
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.18);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.18);
 }
 
 /* Hex icon badge */
 .hp-tr-card-icon {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 72px;
+  height: 72px;
   background: linear-gradient(135deg, #5b21b6, #7c3aed);
   clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
   display: flex;
@@ -1473,28 +1488,28 @@
 }
 
 .hp-tr-card-num {
-  font: 700 11px 'DM Mono', monospace;
+  font: 700 16px 'DM Mono', monospace;
   color: #7c3aed;
   letter-spacing: 1px;
 }
 
 .hp-tr-card-title {
-  font: 700 clamp(12px, 1.2vw, 15px)/1.2 'Space Grotesk', sans-serif;
+  font: 700 clamp(20px, 2vw, 26px)/1.2 'Space Grotesk', sans-serif;
   color: #0e0a1c;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .hp-tr-card-desc {
-  font: 400 clamp(11px, 1vw, 13px)/1.5 Manrope;
+  font: 400 clamp(16px, 1.5vw, 18px)/1.5 Manrope;
   color: #6b6480;
-  margin: 2px 0 0;
+  margin: 6px 0 0;
 }
 
 .hp-tr-card-arrow {
-  font-size: 14px;
+  font-size: 18px;
   color: #7c3aed;
-  margin-top: 4px;
+  margin-top: 10px;
   display: block;
   transition: transform .2s;
 }
@@ -1974,9 +1989,9 @@
 }
 
 .hp-jn-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--card-accent, rgba(139, 54, 247, 0.6));
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 30px rgba(139, 54, 247, 0.2);
+  transform: translateY(-10px) scale(1.03);
+  border-color: var(--card-accent, rgba(139, 54, 247, 0.8));
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 40px var(--card-accent, rgba(139, 54, 247, 0.3)), inset 0 2px 20px rgba(255, 255, 255, 0.05);
 }
 
 .hp-jn-card-top {
@@ -2924,106 +2939,92 @@
   text-align: center;
 }
 
-/* Tier rows — minimal */
-.hp-spon-tiers-new {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.hp-spon-tier-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 16px 20px;
+/* Infinite Marquee */
+.hp-spon-marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
   background: #ffffff;
   border: 1px solid #ede8f2;
-  border-left: 3px solid var(--tier-color);
-  transition: box-shadow .2s;
-}
-
-.hp-spon-tier-row:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-}
-
-.hp-stc-badge {
-  font: 800 10px Manrope;
-  letter-spacing: 1.8px;
-  text-transform: uppercase;
-  color: var(--tier-color);
-  min-width: 72px;
-}
-
-.hp-spon-slots-row {
+  padding: 24px 0;
   display: flex;
-  gap: 10px;
-  flex: 1;
-  flex-wrap: wrap;
 }
 
-.hp-spon-logo-box {
-  border: 1.5px dashed #ddd5e8;
-  background: #faf7ff;
+/* Gradient fade on edges for smooth entry/exit */
+.hp-spon-marquee-container::before,
+.hp-spon-marquee-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+.hp-spon-marquee-container::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+.hp-spon-marquee-container::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+.hp-spon-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+/* Pause animation on hover */
+.hp-spon-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.hp-spon-marquee-content {
+  display: flex;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.hp-spon-marquee-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color .2s, background .2s;
+  gap: 12px;
+  padding: 16px 24px;
+  border: 1.5px dashed #ddd5e8;
+  background: #faf7ff;
+  border-radius: 8px;
+  transition: border-color .2s, background .2s, transform .2s;
+  cursor: pointer;
 }
 
-.hp-spon-logo-box:hover {
-  border-color: var(--tier-color);
+.hp-spon-marquee-logo:hover {
+  border-color: #7c3aed;
   background: #f5f0ff;
+  transform: translateY(-2px);
 }
 
-.hp-spon-logo-box span {
-  font: 700 8px 'DM Mono', monospace;
-  letter-spacing: 1.2px;
-  color: #c8bedc;
+.hp-spon-marquee-logo span {
+  font: 700 14px 'Space Grotesk', sans-serif;
+  color: #3b0764;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Sizes */
-.hp-spon-logo-box--lg {
-  width: 160px;
-  height: 72px;
+.hp-spon-marquee-logo svg {
+  color: #7c3aed;
 }
 
-.hp-spon-logo-box--md {
-  width: 130px;
-  height: 62px;
-}
-
-.hp-spon-logo-box--sm {
-  width: 108px;
-  height: 54px;
-}
-
-.hp-stc-slots {
-  font: 700 9px 'DM Mono', monospace;
-  letter-spacing: 1.5px;
-  color: #b8aece;
-  white-space: nowrap;
-  margin-left: auto;
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @media (max-width: 900px) {
-  .hp-spon-tiers-new {
-    gap: 10px;
-  }
-
-  .hp-spon-logo-box--lg {
-    width: 120px;
-    height: 60px;
-  }
-
-  .hp-spon-logo-box--md {
-    width: 100px;
-    height: 54px;
-  }
-
-  .hp-spon-logo-box--sm {
-    width: 88px;
-    height: 48px;
+  .hp-spon-marquee-content {
+    gap: 20px;
   }
 }
 
@@ -3215,6 +3216,7 @@
   color: #ffffff;
   padding-bottom: 12px;
   position: relative;
+  width: fit-content;
 }
 
 .hp-ft h4::after {
@@ -3222,7 +3224,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 28px;
+  width: 100%;
   height: 2px;
   background: var(--purple);
 }
