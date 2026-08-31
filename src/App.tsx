@@ -566,12 +566,12 @@ export default function App() {
               {[0, 1].map((blockIdx) => (
                 <div key={blockIdx} className="hp-spon-marquee-content">
                   {[
-                    { name: 'Acme Corp', icon: Globe },
-                    { name: 'Quantum', icon: Zap },
-                    { name: 'NovaTech', icon: Rocket },
-                    { name: 'Apex Bank', icon: Landmark },
-                    { name: 'ShieldSec', icon: Shield },
-                    { name: 'Starlight', icon: Sparkles },
+                    { name: 'Lorem Ipsum', icon: Globe },
+                    { name: 'Dolor Sit', icon: Zap },
+                    { name: 'Amet Consectetur', icon: Rocket },
+                    { name: 'Adipiscing Elit', icon: Landmark },
+                    { name: 'Sed Do', icon: Shield },
+                    { name: 'Eiusmod', icon: Sparkles },
                   ].map(({ name, icon: Icon }, i) => (
                     <div key={i} className="hp-spon-marquee-logo">
                       <Icon size={32} />
