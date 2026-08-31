@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import {
-  Brain, Code2, Shield, Cpu, Zap, Lightbulb,
+  Brain, Shield, Cpu, Lightbulb, Heart,
   ArrowRight, Home, Flag,
 } from 'lucide-react'
 import mascot from '../../Mascots Variations/Tracks.png'
@@ -10,33 +10,28 @@ import mascot from '../../Mascots Variations/Tracks.png'
 /* ── Track data ── */
 const tracks = [
   {
-    num: '01', title: 'AI / MACHINE LEARNING',
-    desc: 'Build intelligent solutions using machine learning, deep learning, computer vision, and AI technologies.',
+    num: '01', title: 'AI & MACHINE LEARNING',
+    desc: 'Build intelligent solutions using machine learning, deep learning, generative AI, intelligent automation and data-driven technologies to solve real-world problems.',
     icon: Brain,
   },
   {
-    num: '02', title: 'WEB & APP DEVELOPMENT',
-    desc: 'Create next-gen web or mobile applications that solve real-world problems with elegant UX.',
-    icon: Code2,
-  },
-  {
-    num: '03', title: 'CYBERSECURITY',
-    desc: 'Secure the digital world. Build solutions for threat detection, data protection, and cyber resilience.',
+    num: '02', title: 'CYBERSECURITY',
+    desc: 'Innovative solutions focused on digital security, privacy, identity management, secure systems design and cyber resilience.',
     icon: Shield,
   },
   {
-    num: '04', title: 'IOT & ROBOTICS',
-    desc: 'Connect devices, build smart systems and automate the future with IoT and robotics innovations.',
+    num: '03', title: 'ROBOTICS & AUTOMATION',
+    desc: 'Solutions involving robotics, intelligent systems, automation, IoT integration and smart technologies that connect the physical and digital world.',
     icon: Cpu,
   },
   {
-    num: '05', title: 'FINTECH',
-    desc: 'Innovate in finance. Build secure, inclusive and intelligent solutions for the future of money.',
-    icon: Zap,
+    num: '04', title: 'SOCIAL IMPACT & PUBLIC GOOD',
+    desc: 'Technology solutions addressing challenges in society, education, healthcare, sustainability, accessibility and public welfare for meaningful community impact.',
+    icon: Heart,
   },
   {
-    num: '06', title: 'OPEN INNOVATION',
-    desc: 'No boundaries. Surprise us with bold, creative and unconventional ideas that stand out.',
+    num: '05', title: 'OPEN INNOVATION',
+    desc: 'An open category — identify real-world problems and build innovative solutions with strong product potential, entrepreneurship mindset and scalable impact.',
     icon: Lightbulb,
   },
 ]
@@ -66,9 +61,9 @@ export function TracksPage() {
           </h1>
           <div className="tr-h1-line" />
           <p className="tr-hero-sub">
-            Different domains. Infinite possibilities.<br />
-            Pick a track that matches your passion<br />
-            and build something extraordinary.
+            5 specialized tracks. Real-world problems.<br />
+            Build with a product mindset and<br />
+            pitch your solution to expert judges.
           </p>
         </div>
 
@@ -87,7 +82,7 @@ export function TracksPage() {
       <div className="tr-grid-wrap">
         <div className="tr-grid">
           {tracks.map(({ num, title, desc, icon: Icon }) => (
-            <Link to="/problems" key={num} className="tr-card">
+            <a href="#tracks" key={num} className="tr-card">
               {/* Purple left accent line */}
               <div className="tr-card-accent" />
 
@@ -111,7 +106,7 @@ export function TracksPage() {
                   <ArrowRight size={18} strokeWidth={2} />
                 </div>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
@@ -125,9 +120,9 @@ export function TracksPage() {
             <p className="tr-cta-hint">You can switch your track until the hacking begins.</p>
           </div>
         </div>
-        <Link to="/problems" className="tr-cta-btn">
-          SEE PROBLEM STATEMENTS <ArrowRight size={15} />
-        </Link>
+        <a href="/contact" className="tr-cta-btn">
+          REGISTER NOW <ArrowRight size={15} />
+        </a>
         <div className="tr-cta-dots" aria-hidden="true" />
       </div>
 

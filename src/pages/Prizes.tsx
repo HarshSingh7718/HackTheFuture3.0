@@ -7,7 +7,7 @@ import mascot2 from '../../Mascots Variations/Prize2 (1).png'
 /* ── Rank cards ── */
 const podium = [
   {
-    num: '02', label: 'RUNNER UP', amount: '₹50,000', sub: 'Second Place',
+    num: '02', label: 'RUNNER UP', amount: '₹45,000', sub: 'Second Place',
     color: '#C0C0C0', glow: 'rgba(192,192,192,0.3)',
     grad: 'linear-gradient(160deg,#1c1c22,#252530)',
     topGrad: 'linear-gradient(90deg,#9e9e9e,#e0e0e0,#9e9e9e)',
@@ -21,7 +21,7 @@ const podium = [
     featured: true, colorClass: 'pr-pod-gold',
   },
   {
-    num: '03', label: '2ND RUNNER UP', amount: '₹30,000', sub: 'Third Place',
+    num: '03', label: '2ND RUNNER UP', amount: '₹35,000', sub: 'Third Place',
     color: '#CD7F32', glow: 'rgba(205,127,50,0.3)',
     grad: 'linear-gradient(160deg,#1a1000,#241500)',
     topGrad: 'linear-gradient(90deg,#CD7F32,#e8a060,#CD7F32)',
@@ -30,14 +30,14 @@ const podium = [
 ]
 
 const consolation = [
-  { num: '04', label: 'CONSOLATION PRIZE', amount: '₹5,000', sub: '4th Place' },
-  { num: '05', label: 'CONSOLATION PRIZE', amount: '₹5,000', sub: '5th Place' },
+  { num: '04', label: 'CONSOLATION PRIZE', amount: '₹10,000', sub: '4th Place' },
+  { num: '05', label: 'CONSOLATION PRIZE', amount: '₹10,000', sub: '5th Place' },
 ]
 
 const perks = [
-  { icon: Gift,   title: 'MORE THAN MONEY',      desc: 'Winner teams get opportunities, mentorship and exposure to industry leaders.' },
-  { icon: Star,   title: 'SPECIAL RECOGNITION',  desc: 'Exciting goodie bags, certificates and exclusive partner rewards.' },
-  { icon: Rocket, title: 'LAUNCHPAD',             desc: 'Top teams may get incubation support and a chance to turn ideas into startups.' },
+  { icon: Gift,   title: 'MORE THAN MONEY',      desc: 'Winner teams get incubation support, mentorship and exposure to IIT, NIT and industry leaders.' },
+  { icon: Star,   title: 'SPECIAL RECOGNITION',  desc: 'Exciting goodie bags, certificates, sponsor rewards and special partner awards.' },
+  { icon: Rocket, title: 'INCUBATION SUPPORT',   desc: 'Top 3 teams get ₹1,20,000 in incubation support — ON TOP of cash prizes — to build their product into a real startup.' },
   { icon: Users,  title: 'EVERY PARTICIPANT',     desc: 'Every participant receives a participation certificate and amazing swag.' },
 ]
 
@@ -85,7 +85,7 @@ export function PrizesPage() {
       <div className="pr-pool-banner">
         <p className="pr-pool-label">TOTAL PRIZE POOL</p>
         <div className="pr-pool-big">₹5 Lakh+</div>
-        <p className="pr-pool-sub">WORTH EXCITING REWARDS</p>
+        <p className="pr-pool-sub">WORTH OF EXCITING REWARDS</p>
       </div>
 
       {/* ── Podium ── */}
@@ -94,7 +94,7 @@ export function PrizesPage() {
         <div className="pr-prize2-banner">
           <img src={mascot2} alt="HTF prize board" className="pr-prize2-img" />
         </div>
-        <div className="pr-podium">
+         <div className="pr-podium">
           {podium.map(({ num, label, amount, sub, color, glow, grad, topGrad, featured, colorClass }) => (
             <div
               key={num}
@@ -112,6 +112,10 @@ export function PrizesPage() {
                 <p className="pr-pod-sub">{sub}</p>
                 <div className="pr-pod-divider" />
                 <div className="pr-pod-amount">{amount}</div>
+                <div className="pr-pod-incubation">
+                  <span className="pr-pod-inc-label">+ ₹1,20,000</span>
+                  <span className="pr-pod-inc-sub">Incubation Support</span>
+                </div>
               </div>
               {featured && <div className="pr-pod-featured-ring" />}
             </div>

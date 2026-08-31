@@ -409,6 +409,45 @@
   background-clip: text;
   animation: shimmerText 7s linear infinite;
 }
+
+/* Incubation support badge — shown below cash prize on top 3 cards */
+.pr-pod-incubation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-top: 10px;
+  padding: 7px 14px;
+  background: linear-gradient(135deg, #2d1a56, #1e0d3a);
+  border: 1px solid rgba(139, 54, 247, 0.4);
+  border-radius: 8px;
+  position: relative;
+  width: 100%;
+}
+
+.pr-pod-incubation::before {
+  content: '🚀';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.pr-pod-inc-label {
+  font: 700 clamp(13px, 1.4vw, 16px) / 1 'Space Grotesk', sans-serif;
+  letter-spacing: -0.5px;
+  color: #c4b5fd;
+}
+
+.pr-pod-inc-sub {
+  font: 500 9px 'DM Mono', monospace;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #9d86c7;
+}
+
 .pr-pod-featured-ring { display: none; }
 
 /* Consolation cards — no ghost mascot */

@@ -12,7 +12,9 @@ import {
   CalendarDays, Code2, MapPin, Trophy, Users,
   Brain, Shield, Lightbulb, Cpu, Globe,
   GraduationCap, Gift, Heart, ArrowUpRight,
-  Zap, Landmark
+  Zap, Landmark, Sparkles, Compass, Rocket,
+  CheckCircle2, Mic, Target, Award, Briefcase,
+  Layers, ArrowRight, Star, TrendingUp, Check, ShieldCheck, Flame, ChevronRight
 } from 'lucide-react'
 
 /* ── social SVG icons (not in lucide-react) ── */
@@ -62,33 +64,175 @@ function fmtRs(n: number) {
 }
 
 const stats = [
-  { value: '36', label: 'HOURS', detail: 'NON-STOP BUILDING', icon: Users },
+  { value: '30', label: 'HOURS', detail: 'NON-STOP BUILDING', icon: Users },
   { value: '₹5L+', label: 'PRIZE POOL', detail: 'EXCITING REWARDS', icon: Trophy },
-  { value: 'MULTIPLE', label: 'TRACKS', detail: 'SOLVE REAL-WORLD PROBLEMS', icon: Code2 },
+  { value: '5', label: 'TRACKS', detail: 'SOLVE REAL-WORLD PROBLEMS', icon: Code2 },
   { value: 'DEHRADUN', label: 'UTTARAKHAND', detail: 'INDIA', icon: MapPin },
 ]
 
-
 const trackData = [
-  { n: '01', t: 'AI / ML', d: 'Build intelligent systems that learn, predict and automate the future.', icon: Brain },
-  { n: '02', t: 'WEB & APP', d: 'Create powerful web and mobile experiences that solve real problems.', icon: Code2 },
-  { n: '03', t: 'IOT & ROBOTICS', d: 'Connect devices. Automate tasks. Build the smart world of tomorrow.', icon: Cpu },
-  { n: '04', t: 'CYBERSECURITY', d: 'Protect systems. Hack ethically. Build a safer digital world.', icon: Shield },
-  { n: '05', t: 'FINTECH', d: 'Redefine finance with innovation, security and inclusive solutions.', icon: Zap },
-  { n: '06', t: 'OPEN INNOVATION', d: 'Think beyond boundaries. Explore interdisciplinary and unconventional ideas.', icon: Lightbulb },
+  { n: '01', t: 'AI / ML', d: 'Build intelligent solutions using machine learning, generative AI and data-driven technologies to solve real-world problems.', icon: Brain },
+  { n: '02', t: 'CYBERSECURITY', d: 'Innovative solutions focused on digital security, privacy, identity, secure systems and cyber resilience.', icon: Shield },
+  { n: '03', t: 'ROBOTICS & AUTOMATION', d: 'Solutions involving robotics, intelligent systems, automation, IoT and smart technologies.', icon: Cpu },
+  { n: '04', t: 'SOCIAL IMPACT', d: 'Technology solutions addressing education, healthcare, sustainability, accessibility and public welfare.', icon: Globe },
+  { n: '05', t: 'OPEN INNOVATION', d: 'Identify real-world problems and build innovative solutions with strong product and entrepreneurship potential.', icon: Lightbulb },
+]
+
+const journeySteps = [
+  {
+    step: '01',
+    phase: 'PHASE 01 // DISCOVERY',
+    label: 'DISCOVER & DIAGNOSE',
+    tag: 'PROBLEM VALIDATION',
+    desc: 'Identify acute, high-impact pain points across healthcare, cybersecurity, public good, or intelligent automation.',
+    artifact: 'Problem Thesis',
+    icon: Compass,
+    accent: '#8b36f7',
+    tagBg: 'rgba(139, 54, 247, 0.15)'
+  },
+  {
+    step: '02',
+    phase: 'PHASE 02 // ARCHITECTURE',
+    label: 'ARCHITECT & IDEATE',
+    tag: 'SOLUTION BLUEPRINT',
+    desc: 'Formulate end-to-end system architectures, workflow wireframes, and technology choices engineered for real-world adoption.',
+    artifact: 'Solution Architecture',
+    icon: Lightbulb,
+    accent: '#38bdf8',
+    tagBg: 'rgba(56, 189, 248, 0.15)'
+  },
+  {
+    step: '03',
+    phase: 'PHASE 03 // 30-HR SPRINT',
+    label: 'CODE & PROTOTYPE',
+    tag: 'FULL-STACK SPRINT',
+    desc: '30 hours of continuous building, API orchestration, deep learning pipelines, hardware integration, and test harness execution.',
+    artifact: 'Functional MVP',
+    icon: Code2,
+    accent: '#a855f7',
+    tagBg: 'rgba(168, 85, 247, 0.15)'
+  },
+  {
+    step: '04',
+    phase: 'PHASE 04 // VALIDATION',
+    label: 'VALIDATE & STRESS-TEST',
+    tag: 'BENCHMARKING',
+    desc: 'Stress-test performance metrics with domain mentors, simulated real-user traffic, and rigorous feasibility checkpoints.',
+    artifact: 'Validation Metrics',
+    icon: CheckCircle2,
+    accent: '#10b981',
+    tagBg: 'rgba(16, 185, 129, 0.15)'
+  },
+  {
+    step: '05',
+    phase: 'PHASE 05 // PACKAGING',
+    label: 'PRODUCTIZE & REFINE',
+    tag: 'MARKET READINESS',
+    desc: 'Refine UI/UX polish, security compliance, unit economics, and cloud deployment pipelines with an authentic founder perspective.',
+    artifact: 'Production Release',
+    icon: Layers,
+    accent: '#f59e0b',
+    tagBg: 'rgba(245, 158, 11, 0.15)'
+  },
+  {
+    step: '06',
+    phase: 'PHASE 06 // FINALE',
+    label: 'PITCH & INCUBATE',
+    tag: 'INVESTOR DEMO',
+    desc: 'Pitch live before IIT/NIT directors, founders, and venture scouts to unlock ₹1,65,000+ cash and ₹1,20,000 incubation support.',
+    artifact: 'Venture Incubation',
+    icon: Trophy,
+    accent: '#ec4899',
+    tagBg: 'rgba(236, 72, 153, 0.15)'
+  },
+]
+
+const mentorPillars = [
+  {
+    title: 'IIT, NIT & Academic Pioneers',
+    role: 'Deep Tech & Computational Rigor',
+    desc: 'Guidance on robust algorithmic complexity, systems architecture, hardware/IoT, and research depth.',
+    icon: GraduationCap,
+    tag: 'TECHNICAL RIGOR'
+  },
+  {
+    title: 'Startup Founders & Angels',
+    role: 'Product-Market Fit & Viability',
+    desc: 'Actionable mentorship on unit economics, user acquisition loops, and pitching to investors.',
+    icon: Briefcase,
+    tag: 'VENTURE STRATEGY'
+  },
+  {
+    title: 'Senior Product & UX Architects',
+    role: 'Design Systems & Usability',
+    desc: 'Refining developer experiences, interface polish, and converting raw code into intuitive products.',
+    icon: Layers,
+    tag: 'PRODUCT EXCELLENCE'
+  },
+  {
+    title: 'AI & Cloud Infrastructure Leads',
+    role: 'GenAI & Cloud Scalability',
+    desc: 'Production-ready LLM pipelines, low-latency APIs, database schema tuning, and cyber resilience.',
+    icon: Cpu,
+    tag: 'CLOUD ARCHITECTURE'
+  },
 ]
 
 const whyJoin = [
-  { t: 'LEARN & GROW', d: 'Work, learn and grow with like-minded innovators.', icon: GraduationCap },
-  { t: 'MENTOR CONNECT', d: 'Get guidance from industry experts and mentors.', icon: Users },
-  { t: 'AMAZING SWAG', d: 'Exciting goodies and certificates for all participants.', icon: Gift },
-  { t: 'BUILD YOUR NETWORK', d: 'Connect with top talent, recruiters and tech communities.', icon: Globe },
+  {
+    n: '01',
+    t: 'NATIONAL ARENA',
+    d: 'Compete directly with 500+ top engineering minds and design thinkers from 100+ premier institutions across India.',
+    badge: '100+ COLLEGES',
+    icon: Trophy,
+    highlight: '₹5L+ Ecosystem Value'
+  },
+  {
+    n: '02',
+    t: '₹1,65,000+ CASH POOL',
+    d: 'Direct, transparent cash rewards for the top 5 winning teams alongside specialized category awards and goodies.',
+    badge: 'DIRECT REWARDS',
+    icon: Zap,
+    highlight: '₹65K Champion Prize'
+  },
+  {
+    n: '03',
+    t: '₹1,20,000 INCUBATION',
+    d: 'Top 3 winners gain fast-tracked incubation support to transform their hackathon MVP into an incorporated enterprise.',
+    badge: 'FOUNDER LAUNCHPAD',
+    icon: Rocket,
+    highlight: 'Top 3 Teams Funded'
+  },
+  {
+    n: '04',
+    t: '1-ON-1 FOUNDER ADVISORY',
+    d: 'Direct round-the-clock mentorship from IIT/NIT researchers, enterprise leaders, and seasoned startup founders.',
+    badge: 'ELITE MENTORS',
+    icon: Users,
+    highlight: 'Round-the-Clock Mentors'
+  },
+  {
+    n: '05',
+    t: 'PROJECT TO PRODUCT MVP',
+    d: 'Graduate beyond throwaway code. Walk away with a deployable, verified full-stack product for your career portfolio.',
+    badge: 'CAREER ACCELERATION',
+    icon: Target,
+    highlight: 'Production-Grade Build'
+  },
+  {
+    n: '06',
+    t: 'NETWORKING & ECOSYSTEM',
+    d: 'Connect with venture scouts, potential co-founders, recruiters, and passionate peers building the next decade of tech.',
+    badge: 'ANGEL & TECH NETWORK',
+    icon: Sparkles,
+    highlight: 'Venture & Peer Network'
+  },
 ]
 
 const prizes = [
   { rank: '01', title: 'WINNER', amount: '₹65,000', color: '#FFD700' },
-  { rank: '02', title: 'RUNNER UP', amount: '₹50,000', color: '#C0C0C0' },
-  { rank: '03', title: '2ND RUNNER UP', amount: '₹30,000', color: '#CD7F32' },
+  { rank: '02', title: 'RUNNER UP', amount: '₹45,000', color: '#C0C0C0' },
+  { rank: '03', title: '2ND RUNNER UP', amount: '₹35,000', color: '#CD7F32' },
 ]
 
 /* ── CountdownBand component ── */
@@ -128,13 +272,13 @@ function CountdownBand() {
         </div>
         <div className="hp-cd-units">
           {units.map(({ v, l }, i) => (
-            <>
-              <div key={l} className="hp-cd-unit">
+            <div key={l} style={{ display: 'contents' }}>
+              <div className="hp-cd-unit">
                 <span className="hp-cd-num">{String(v).padStart(2, '0')}</span>
                 <span className="hp-cd-label">{l}</span>
               </div>
               {i < 3 && <span className="hp-cd-colon">:</span>}
-            </>
+            </div>
           ))}
         </div>
       </div>
@@ -155,7 +299,7 @@ export default function App() {
           <span>HTF<br />/ 03</span><i></i>
           <div className="rail-event">
             <small>25—26</small><small>SEP 2026</small>
-            <small>DEHRADUN<br />INDIA</small><small>36<br />HOURS</small>
+            <small>DEHRADUN<br />INDIA</small><small>30<br />HOURS</small>
           </div>
           <div className="rail-social">
             <a href="#contact" aria-label="GitHub"><GithubIcon /></a>
@@ -167,10 +311,10 @@ export default function App() {
         <div className="hero-dots" aria-hidden="true"></div>
         <div className="hero-number" aria-hidden="true">03</div>
         <div className="hero-copy">
-          <p className="eyebrow">Tulas University presents</p>
+          <p className="eyebrow">Tulas ACM Student Chapter presents</p>
           <h1>HACK<br />THE<br /><span className="hero-h1-gradient">FUTURE</span></h1>
           <div className="hero-tagline-row">
-            <p className="tagline">36 HOURS. ONE FUTURE. <b>BUILD IT.</b></p>
+            <p className="tagline">PROJECT TO PRODUCT. <b>BUILD IT.</b></p>
             <em className="hero-30">3.0</em>
           </div>
           <div className="event-meta">
@@ -190,9 +334,8 @@ export default function App() {
           </div>
           <b className="status-open">OPEN</b>
           <hr className="status-rule" />
-          <span className="status-sub">Be part of<br />the future</span>
+          <span className="status-sub">Round 1 Free<br />Be the Future</span>
         </aside>
-        {/* scroll-cue removed */}
       </section>
 
       {/* ═══════════ STATS BAR ═══════════ */}
@@ -208,17 +351,17 @@ export default function App() {
           <p className="eyebrow">01 / About</p>
           <h2>WHAT IS<br /><span>HACK</span> THE FUTURE?</h2>
           <p>
-            Hack the Future 3.0 is a 36-hour national level hackathon organized by Tulas University, Dehradun.
-            It brings together young innovators, developers, designers and problem solvers to build impactful
-            solutions for real-world challenges.<br />Code. Collaborate. Create Impact.
+            Hack the Future 3.0 is a national-level hackathon organized by Tulas ACM Student Chapter, Tulas University, Dehradun.
+            This edition's theme is <strong>"Project to Product"</strong> — challenging students to move beyond academic projects
+            and build solutions with real product potential, entrepreneurship mindset and scalable impact.
           </p>
-          <p>This is your time.<br />This is <span className="purple-text">your future.</span></p>
+          <p>PROBLEM → IDEA → PROJECT → PROTOTYPE → <span className="purple-text">PRODUCT → PITCH</span></p>
           <a className="button button-outline about-know-more" href="/about">Know more about <strong>→</strong></a>
         </div>
         <img
           className="about-image-full"
           src={homeAboutImg}
-          alt="Tula's University campus and students hacking at Hack The Future 3.0"
+          alt="Tulas University campus and students hacking at Hack The Future 3.0"
         />
       </section>
 
@@ -242,35 +385,43 @@ export default function App() {
           <div className="hp-pz-chip hp-pz-chip--gold">
             <span className="hp-pz-chip-rank">01</span>
             <div className="hp-pz-chip-info"><b>CHAMPION</b><small>Winner</small></div>
-            <strong>₹65,000</strong>
+            <div className="hp-pz-chip-prize">
+              <strong>₹65,000</strong>
+              <span className="hp-pz-chip-inc">+ ₹1,20,000 Incubation</span>
+            </div>
           </div>
           <div className="hp-pz-chip hp-pz-chip--silver">
             <span className="hp-pz-chip-rank">02</span>
             <div className="hp-pz-chip-info"><b>RUNNER UP</b><small>2nd Place</small></div>
-            <strong>₹50,000</strong>
+            <div className="hp-pz-chip-prize">
+              <strong>₹45,000</strong>
+              <span className="hp-pz-chip-inc">+ ₹1,20,000 Incubation</span>
+            </div>
           </div>
           <div className="hp-pz-chip hp-pz-chip--bronze">
             <span className="hp-pz-chip-rank">03</span>
             <div className="hp-pz-chip-info"><b>2ND RUNNER UP</b><small>3rd Place</small></div>
-            <strong>₹30,000</strong>
+            <div className="hp-pz-chip-prize">
+              <strong>₹35,000</strong>
+              <span className="hp-pz-chip-inc">+ ₹1,20,000 Incubation</span>
+            </div>
           </div>
           <div className="hp-pz-chip-sep"><span>CONSOLATION</span></div>
           <div className="hp-pz-chip hp-pz-chip--con">
             <span className="hp-pz-chip-rank">04</span>
             <div className="hp-pz-chip-info"><b>4TH PLACE</b></div>
-            <strong>₹5,000</strong>
+            <strong>₹10,000</strong>
           </div>
           <div className="hp-pz-chip hp-pz-chip--con">
             <span className="hp-pz-chip-rank">05</span>
             <div className="hp-pz-chip-info"><b>5TH PLACE</b></div>
-            <strong>₹5,000</strong>
+            <strong>₹10,000</strong>
           </div>
         </div>
       </section>
 
       {/* ═══════════ TRACKS ═══════════ */}
       <section className="section hp-tr" id="tracks">
-
         {/* Header */}
         <div className="hp-tr-header">
           <div className="hp-tr-eyebrow-row">
@@ -279,15 +430,14 @@ export default function App() {
             <span className="hp-tr-line" />
           </div>
           <h2 className="hp-tr-heading">CHOOSE YOUR <span>PATH.</span></h2>
-          <p className="hp-tr-sub">Explore diverse tracks. Solve real-world challenges.<br />Build solutions that <span>create impact</span>.</p>
+          <p className="hp-tr-sub">5 specialized tracks. Real-world challenges.<br />Build solutions that <span>go from project to product</span>.</p>
         </div>
 
         {/* 3-column grid */}
         <div className="hp-tr-grid">
-
           {/* Left tracks */}
           <div className="hp-tr-col">
-            {trackData.slice(0, 3).map(({ n, t, d, icon: Icon }) => (
+            {trackData.slice(0, 2).map(({ n, t, d, icon: Icon }) => (
               <a key={n} className="hp-tr-card" href="/tracks">
                 <div className="hp-tr-card-icon"><Icon size={20} /></div>
                 <div className="hp-tr-card-body">
@@ -308,7 +458,7 @@ export default function App() {
 
           {/* Right tracks */}
           <div className="hp-tr-col">
-            {trackData.slice(3, 6).map(({ n, t, d, icon: Icon }) => (
+            {trackData.slice(2, 5).map(({ n, t, d, icon: Icon }) => (
               <a key={n} className="hp-tr-card" href="/tracks">
                 <div className="hp-tr-card-icon"><Icon size={20} /></div>
                 <div className="hp-tr-card-body">
@@ -320,7 +470,6 @@ export default function App() {
               </a>
             ))}
           </div>
-
         </div>
 
         {/* Bottom CTA bar */}
@@ -332,12 +481,10 @@ export default function App() {
           </div>
           <a className="hp-tr-cta-btn" href={'/tracks'}>LET'S BUILD →</a>
         </div>
-
       </section>
 
       {/* ═══════════ JUDGES + SPONSORS ═══════════ */}
       <section className="section hp-js-combined" id="judges">
-
         {/* — Judges half — */}
         <div className="hp-js-block">
           <div className="hp-js-block-header">
@@ -352,8 +499,12 @@ export default function App() {
           </div>
           <div className="hp-judges-soon">
             <div className="hp-judges-soon-icon">?</div>
-            <p className="hp-judges-soon-title">Judges Revealing Soon</p>
-            <p className="hp-judges-soon-sub">Our panel of industry experts will be announced soon. Stay tuned!</p>
+            <p className="hp-judges-soon-title">Expert Jury Revealing Soon</p>
+            <p className="hp-judges-soon-sub">
+              Our panel includes experts from <strong>IITs</strong>, <strong>NIT Jalandhar</strong>,
+              <strong> Jawaharlal Nehru University, New Delhi</strong>, <strong>IHFC, IIT Delhi</strong>,
+              industry, the technology ecosystem and the startup &amp; entrepreneurship ecosystem.
+            </p>
           </div>
         </div>
 
@@ -366,7 +517,7 @@ export default function App() {
             <div>
               <p className="eyebrow">Sponsorship Opportunity</p>
               <h2 className="hp-spon-heading">BACK THE<br /><span>BUILDERS.</span></h2>
-              <p className="hp-spon-tagline">500+ innovators. 36 hours. Your brand front and center.</p>
+              <p className="hp-spon-tagline">500+ innovators. National reach. Your brand at India's next big hackathon.</p>
             </div>
             <a className="hp-spon-cta" href="/contact">
               Become a Sponsor <strong>→</strong>
@@ -377,8 +528,8 @@ export default function App() {
           <div className="hp-spon-stats">
             {[
               { v: '500+', l: 'Student Innovators' },
-              { v: '36', l: 'Hours of Visibility' },
-              { v: '6', l: 'Tech Tracks' },
+              { v: '30',   l: 'Hours of Hackathon' },
+              { v: '5',    l: 'Tech Tracks' },
               { v: '100%', l: 'Future Builders' },
             ].map(({ v, l }) => (
               <div key={l} className="hp-spon-stat">
@@ -408,77 +559,312 @@ export default function App() {
             ))}
           </div>
         </div>
-
       </section>
 
+      {/* ═══════════ NEXT-GEN JOURNEY PIPELINE ═══════════ */}
+      <section className="section hp-journey-next" id="journey">
+        <div className="hp-jn-bg-glow" aria-hidden="true" />
+        <div className="hp-jn-grid-pattern" aria-hidden="true" />
 
-      {/* ═══════════ WHY PARTICIPATE ═══════════ */}
-      <section className="section hp-why">
-        <p className="eyebrow">06 / Why Participate?</p>
-        <div className="hp-why-grid">
-          {whyJoin.map(({ t, d, icon: I }) => (
-            <article key={t} className="hp-why-card">
-              <I size={24} /><b>{t}</b><small>{d}</small>
-            </article>
-          ))}
-          <div className="hp-why-mascot"><img src={mascot} alt="HTF Mascot" /></div>
-        </div>
-      </section>
-
-      {/* ═══════════ PRE-FOOTER CTA ═══════════ */}
-      <section className="hp-prefooter-cta" id="register">
-        {/* Decorative dots */}
-        <span className="hp-pfc-dot hp-pfc-dot--tl" aria-hidden="true" />
-        <span className="hp-pfc-dot hp-pfc-dot--tr" aria-hidden="true" />
-        <span className="hp-pfc-dot hp-pfc-dot--br" aria-hidden="true" />
-        <span className="hp-pfc-diamond hp-pfc-diamond--1" aria-hidden="true" />
-        <span className="hp-pfc-diamond hp-pfc-diamond--2" aria-hidden="true" />
-
-        {/* Left — copy + buttons */}
-        <div className="hp-pfc-left">
-          <p className="hp-pfc-eyebrow">Ready to Build Impact?</p>
-          <h2 className="hp-pfc-heading">
-            Are you ready to<br />
-            <span>Build the Future?</span>
+        {/* Section Header */}
+        <div className="hp-jn-header">
+          <div className="hp-jn-pill">
+            <Compass size={14} className="hp-jn-pill-icon" />
+            <span>04 / THE METAMORPHOSIS PIPELINE</span>
+          </div>
+          <h2 className="hp-jn-heading">
+            FROM PROBLEM STATEMENT<br />
+            TO <span>MARKET-READY PRODUCT.</span>
           </h2>
-          <p className="hp-pfc-sub">Ideas are waiting. The future is yours to build.</p>
-          <div className="hp-pfc-actions">
-            <a className="hp-pfc-btn hp-pfc-btn--filled" href={event.registrationUrl}>
-              Register Now <strong>→</strong>
-            </a>
-            <a className="hp-pfc-btn hp-pfc-btn--outline" href="#about">
-              Explore Event
-            </a>
+          <p className="hp-jn-sub">
+            Hack The Future 3.0 isn't just about hacking syntax — it's a structured 6-stage product metamorphosis.
+            Turn raw ideas into deployable, venture-scalable solutions.
+          </p>
+
+          {/* Interactive Flow Ribbon */}
+          <div className="hp-jn-flow-ribbon">
+            <span className="hp-jn-ribbon-item">PROBLEM</span>
+            <span className="hp-jn-ribbon-arrow">→</span>
+            <span className="hp-jn-ribbon-item">IDEA</span>
+            <span className="hp-jn-ribbon-arrow">→</span>
+            <span className="hp-jn-ribbon-item">PROTOTYPE</span>
+            <span className="hp-jn-ribbon-arrow">→</span>
+            <span className="hp-jn-ribbon-item">VALIDATE</span>
+            <span className="hp-jn-ribbon-arrow">→</span>
+            <span className="hp-jn-ribbon-item hp-jn-ribbon-highlight">PRODUCT</span>
+            <span className="hp-jn-ribbon-arrow">→</span>
+            <span className="hp-jn-ribbon-item hp-jn-ribbon-highlight">PITCH &amp; LAUNCH</span>
           </div>
         </div>
 
-        {/* Center — mascot with glow */}
-        <div className="hp-pfc-mascot-wrap">
-          <div className="hp-pfc-glow" />
-          <img src={emojiMascot} alt="HTF mascot" className="hp-pfc-mascot" />
+        {/* 6-Stage Cards Matrix */}
+        <div className="hp-jn-cards-grid">
+          {journeySteps.map(({ step, phase, label, tag, desc, artifact, icon: StepIcon, accent, tagBg }) => (
+            <div key={step} className="hp-jn-card" style={{ '--card-accent': accent } as React.CSSProperties}>
+              <div className="hp-jn-card-top">
+                <div className="hp-jn-icon-wrap" style={{ background: tagBg, borderColor: accent }}>
+                  <StepIcon size={22} style={{ color: accent }} />
+                </div>
+                <div className="hp-jn-phase-wrap">
+                  <span className="hp-jn-phase">{phase}</span>
+                  <span className="hp-jn-tag">{tag}</span>
+                </div>
+                <span className="hp-jn-step-badge">{step}</span>
+              </div>
+
+              <h3 className="hp-jn-card-title">{label}</h3>
+              <p className="hp-jn-card-desc">{desc}</p>
+
+              <div className="hp-jn-card-footer">
+                <span className="hp-jn-artifact-label">OUTCOME:</span>
+                <span className="hp-jn-artifact-val">
+                  <Check size={12} /> {artifact}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Right — event info pills */}
-        <div className="hp-pfc-info">
-          <div className="hp-pfc-info-item">
-            <CalendarDays size={20} className="hp-pfc-info-icon" />
+        {/* Bottom Journey Summary Banner */}
+        <div className="hp-jn-bottom-banner">
+          <div className="hp-jn-bb-left">
+            <Rocket size={26} className="hp-jn-bb-icon" />
             <div>
-              <b>{event.dates}</b>
-              <span>Hackathon Days</span>
+              <b>Are you ready to transform your project into a viable enterprise?</b>
+              <span>Round 1 submission is 100% free. Pitch your blueprint before 13 September 2026.</span>
             </div>
           </div>
-          <div className="hp-pfc-info-item">
-            <Landmark size={20} className="hp-pfc-info-icon" />
-            <div>
-              <b>Tulas University</b>
-              <span>Dehradun</span>
+          <a href={event.registrationUrl} className="hp-jn-bb-btn">
+            SUBMIT YOUR PPT NOW <ArrowRight size={16} />
+          </a>
+        </div>
+      </section>
+
+      {/* ═══════════ NEXT-GEN CHIEF GUEST & MENTORSHIP ═══════════ */}
+      <section className="section hp-cg-next" id="chief-guest">
+        <div className="hp-cg-ambient-1" aria-hidden="true" />
+        <div className="hp-cg-ambient-2" aria-hidden="true" />
+
+        <div className="hp-cg-header">
+          <div className="hp-cg-pill">
+            <Sparkles size={14} className="hp-cg-pill-icon" />
+            <span>05 / KEYNOTE &amp; MENTORSHIP ECOSYSTEM</span>
+          </div>
+          <h2 className="hp-cg-heading">
+            LEARN FROM <span>VISIONARY LEADERS.</span>
+          </h2>
+          <p className="hp-cg-sub">
+            Interact with founders, startup executives, and IIT/NIT researchers dedicated to taking your build from prototype to product.
+          </p>
+        </div>
+
+        <div className="hp-cg-split">
+          {/* Left: VIP Chief Guest Card */}
+          <div className="hp-cg-spotlight-card">
+            <div className="hp-cg-spotlight-badge">
+              <Star size={13} />
+              <span>VIP KEYNOTE ADDRESS</span>
+            </div>
+
+            <div className="hp-cg-profile-header">
+              <div className="hp-cg-avatar-ring">
+                <div className="hp-cg-avatar-inner">
+                  <Briefcase size={36} />
+                </div>
+                <span className="hp-cg-verified-badge" title="Confirmed Keynote"><Check size={12} /></span>
+              </div>
+              <div className="hp-cg-profile-meta">
+                <span className="hp-cg-role-tag">CHIEF GUEST — HTF 3.0</span>
+                <h3 className="hp-cg-name">Founder, Kiwi Kishan Window</h3>
+                <span className="hp-cg-org">Startup &amp; Agri-Tech Innovation Leader</span>
+              </div>
+            </div>
+
+            <div className="hp-cg-keynote-box">
+              <div className="hp-cg-keynote-label">KEYNOTE THEME</div>
+              <p className="hp-cg-keynote-quote">
+                "From Campus Dorm to Scalable Venture: Building Real-World Value with the Project-to-Product Mindset."
+              </p>
+            </div>
+
+            <div className="hp-cg-pillars-title">KEYNOTE FOCUS AREAS</div>
+            <div className="hp-cg-pillars-grid">
+              <div className="hp-cg-pillar-item">
+                <Rocket size={15} />
+                <span>Zero-to-One Venture Building</span>
+              </div>
+              <div className="hp-cg-pillar-item">
+                <Target size={15} />
+                <span>Product-Market Fit &amp; Economics</span>
+              </div>
+              <div className="hp-cg-pillar-item">
+                <TrendingUp size={15} />
+                <span>Navigating Real-World Impact</span>
+              </div>
+              <div className="hp-cg-pillar-item">
+                <Flame size={15} />
+                <span>Pitching to Angels &amp; VCs</span>
+              </div>
+            </div>
+
+            <div className="hp-cg-note-bar">
+              <ShieldCheck size={16} />
+              <span>Full dignitary profile &amp; schedule to be published with Round 1 results.</span>
             </div>
           </div>
-          <div className="hp-pfc-info-item">
-            <Zap size={20} className="hp-pfc-info-icon" />
-            <div>
-              <b>36 Hours</b>
-              <span>Non-Stop Building</span>
+
+          {/* Right: Mentorship & Ecosystem Hub */}
+          <div className="hp-cg-mentors-wrap">
+            <div className="hp-cg-mentors-top">
+              <div>
+                <span className="hp-cg-hub-eyebrow">30 HOURS OF 1-ON-1 ADVISORY</span>
+                <h3 className="hp-cg-hub-title">THE MENTORSHIP MATRIX</h3>
+              </div>
+              <div className="hp-cg-stat-pills">
+                <span className="hp-cg-spill"><b>15+</b> MENTORS</span>
+                <span className="hp-cg-spill"><b>1:1</b> CLINICS</span>
+              </div>
+            </div>
+
+            <div className="hp-cg-mentors-grid">
+              {mentorPillars.map(({ title, role, desc, icon: PIcon, tag }) => (
+                <div key={title} className="hp-cg-mentor-box">
+                  <div className="hp-cg-mbox-head">
+                    <div className="hp-cg-mbox-icon">
+                      <PIcon size={20} />
+                    </div>
+                    <div>
+                      <span className="hp-cg-mbox-tag">{tag}</span>
+                      <h4 className="hp-cg-mbox-title">{title}</h4>
+                      <small className="hp-cg-mbox-role">{role}</small>
+                    </div>
+                  </div>
+                  <p className="hp-cg-mbox-desc">{desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="hp-cg-mentors-footer">
+              <GraduationCap size={20} className="hp-cg-mf-icon" />
+              <div>
+                <b>Direct Exposure to Top Institutions:</b>
+                <span>Panel representation from IITs, NIT Jalandhar, JNU New Delhi, and IHFC IIT Delhi.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════ NEXT-GEN WHY PARTICIPATE ═══════════ */}
+      <section className="section hp-why-next">
+        <div className="hp-wn-glow" aria-hidden="true" />
+        <div className="hp-wn-header">
+          <div className="hp-wn-pill">
+            <Award size={14} className="hp-wn-pill-icon" />
+            <span>07 / VALUE PROPOSITION</span>
+          </div>
+          <h2 className="hp-wn-heading">
+            EVERY REASON <span>TO BUILD HERE.</span>
+          </h2>
+          <p className="hp-wn-sub">
+            Engineered for high-ambition developers, designers, and aspiring founders seeking meaningful national recognition.
+          </p>
+        </div>
+
+        <div className="hp-why-cards-matrix">
+          {whyJoin.map(({ n, t, d, badge, icon: I, highlight }) => (
+            <div key={t} className="hp-why-elite-card">
+              <div className="hp-wec-top">
+                <div className="hp-wec-icon-badge">
+                  <I size={22} />
+                </div>
+                <span className="hp-wec-num">{n}</span>
+              </div>
+              <span className="hp-wec-badge">{badge}</span>
+              <h3 className="hp-wec-title">{t}</h3>
+              <p className="hp-wec-desc">{d}</p>
+              <div className="hp-wec-highlight">
+                <Sparkles size={13} />
+                <span>{highlight}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════ NEXT-GEN PRE-FOOTER LAUNCHPAD CTA ═══════════ */}
+      <section className="hp-pfc-launchpad" id="register">
+        <div className="hp-pfc-l-glow-center" aria-hidden="true" />
+        <div className="hp-pfc-l-stars" aria-hidden="true" />
+
+        <div className="hp-pfc-l-container">
+          {/* Top dynamic status badge */}
+          <div className="hp-pfc-l-topbar">
+            <span className="hp-pfc-l-live-indicator">
+              <span className="hp-pfc-l-dot" />
+              ROUND 1 SUBMISSION IS 100% FREE
+            </span>
+            <span className="hp-pfc-l-meta">DEADLINE: 13 SEPT 2026 · 11:59 PM IST</span>
+          </div>
+
+          <div className="hp-pfc-l-body">
+            {/* Left copy & CTA actions */}
+            <div className="hp-pfc-l-left">
+              <span className="hp-pfc-l-eyebrow">YOUR JOURNEY STARTS HERE</span>
+              <h2 className="hp-pfc-l-heading">
+                Ready to Turn Your Code<br />
+                Into a <span>Scalable Product?</span>
+              </h2>
+              <p className="hp-pfc-l-sub">
+                Form your team of 3–5 innovators, choose your track, and claim your place at India's premier product hackathon.
+              </p>
+
+              <div className="hp-pfc-l-actions">
+                <a className="hp-pfc-l-btn-primary" href={event.registrationUrl}>
+                  REGISTER ON UNSTOP <ArrowUpRight size={18} />
+                </a>
+                <a className="hp-pfc-l-btn-secondary" href="/rules">
+                  VIEW GUIDELINES <ChevronRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Center Mascot */}
+            <div className="hp-pfc-l-mascot-wrap">
+              <div className="hp-pfc-l-mascot-aura" />
+              <img src={emojiMascot} alt="HTF 3.0 Mascot" className="hp-pfc-l-mascot" />
+            </div>
+
+            {/* Right quick facts cards */}
+            <div className="hp-pfc-l-pills">
+              <div className="hp-pfc-l-pill-item">
+                <CalendarDays size={22} className="hp-pfc-l-picon" />
+                <div>
+                  <strong>25–26 SEP 2026</strong>
+                  <span>Offline Grand Finale</span>
+                </div>
+              </div>
+              <div className="hp-pfc-l-pill-item">
+                <Landmark size={22} className="hp-pfc-l-picon" />
+                <div>
+                  <strong>Tula's University</strong>
+                  <span>Dehradun, Uttarakhand</span>
+                </div>
+              </div>
+              <div className="hp-pfc-l-pill-item">
+                <Trophy size={22} className="hp-pfc-l-picon" />
+                <div>
+                  <strong>₹5,00,000+</strong>
+                  <span>Prizes &amp; Incubation Grant</span>
+                </div>
+              </div>
+              <div className="hp-pfc-l-pill-item">
+                <Zap size={22} className="hp-pfc-l-picon" />
+                <div>
+                  <strong>30 Hours Non-Stop</strong>
+                  <span>Hacking &amp; Pitching</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -491,7 +877,7 @@ export default function App() {
             <div className="hp-ft-logo">
               <img src={navLogo} alt="Hack the Future 3.0" />
             </div>
-            <p>A 36-hour national level hackathon by Tulas University, Dehradun. Build. Innovate. Collaborate. Create Impact.</p>
+            <p>A national-level hackathon by Tulas ACM Student Chapter, Tulas University, Dehradun. Theme: Project to Product. Build. Validate. Pitch.</p>
             <div className="hp-ft-social">
               <a href="#" aria-label="Instagram"><InstagramIcon /></a>
               <a href="#" aria-label="LinkedIn"><LinkedinIcon /></a>
@@ -502,7 +888,6 @@ export default function App() {
           <div className="hp-ft-col">
             <h4>Quick Links</h4>
             <a href="/about">About</a>
-            <a href="/problems">Problem Statements</a>
             <a href="/tracks">Tracks</a>
             <a href="/prizes">Prizes</a>
             <a href="/timeline">Timeline</a>
@@ -513,18 +898,18 @@ export default function App() {
           <div className="hp-ft-col">
             <h4>Participate</h4>
             <a href={event.registrationUrl}>Register Now</a>
-            <a href="#">Team Login</a>
-            <a href="#">Updates</a>
-            <a href="#">Resources</a>
+            <a href="/rules">Team Guidelines</a>
+            <a href="/tracks">Challenge Tracks</a>
+            <a href="/prizes">Prize Breakdown</a>
             <a href="/rules">Code of Conduct</a>
           </div>
           <div className="hp-ft-col">
             <h4>Support</h4>
             <a href="/faq">FAQs</a>
             <a href="/contact">Contact Us</a>
-            <a href="#">Report an Issue</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms &amp; Conditions</a>
+            <a href="mailto:hackthefuture@tulas.edu.in">Email Organizers</a>
+            <a href="/rules">Terms &amp; Policies</a>
+            <a href="/rules">Privacy Policy</a>
           </div>
           <div className="hp-ft-news">
             <h4>Stay Updated</h4>
@@ -536,10 +921,12 @@ export default function App() {
           </div>
         </div>
         <div className="hp-ft-bottom">
-          <span>© 2026 Hack The Future 3.0 &nbsp;|&nbsp; Tula's University, Dehradun. All rights reserved.</span>
+          <span>&copy; 2026 Hack The Future 3.0 &nbsp;|&nbsp; Tulas ACM Student Chapter &middot; Tulas University, Dehradun. All rights reserved.</span>
           <span className="hp-ft-heart">Built with passion for innovators <Heart size={14} /></span>
         </div>
       </footer>
     </main>
   )
 }
+
+

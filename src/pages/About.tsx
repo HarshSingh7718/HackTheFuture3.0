@@ -1,5 +1,6 @@
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
+import { event } from '../data/event'
 import {
   Lightbulb, Code2, Target, Rocket, Heart,
   Users, Trophy, Clock, Star,
@@ -8,10 +9,10 @@ import mascotAbout from '../../Mascots Variations/About.png'
 
 /* ── data ── */
 const features = [
-  { icon: Clock,   title: '36 HOURS NON-STOP',    desc: 'Think. Code. Collaborate. Build without limits.' },
-  { icon: Users,   title: 'MULTIPLE DOMAINS',      desc: 'From AI to Sustainability, choose your arena.' },
-  { icon: Trophy,  title: 'REAL-WORLD IMPACT',     desc: 'Build solutions that create meaningful change.' },
-  { icon: Star,    title: 'LEARN. GROW. NETWORK.', desc: 'Mentorship, peer learning and endless opportunities.' },
+  { icon: Clock,   title: '30 HOURS NON-STOP',    desc: 'Think. Code. Collaborate. Build without limits.' },
+  { icon: Users,   title: '5 SPECIALIZED TRACKS',  desc: 'AI/ML, Cybersecurity, Robotics, Social Impact and Open Innovation.' },
+  { icon: Trophy,  title: 'REAL-WORLD IMPACT',     desc: 'Build solutions that create meaningful change and product potential.' },
+  { icon: Star,    title: 'LEARN. GROW. NETWORK.', desc: 'Mentorship from IITs, NIT, industry leaders and startup founders.' },
 ]
 
 const values = [
@@ -23,8 +24,8 @@ const values = [
 ]
 
 const glance = [
-  { icon: Users,  value: '36',   label: 'HOURS' },
-  { icon: Code2,  value: '10+',  label: 'TRACKS' },
+  { icon: Clock,  value: '30',   label: 'HOURS' },
+  { icon: Code2,  value: '5',    label: 'TRACKS' },
   { icon: Users,  value: '500+', label: 'PARTICIPANTS' },
   { icon: Trophy, value: '₹5L+', label: 'PRIZE POOL' },
 ]
@@ -36,12 +37,12 @@ export function AboutPage() {
       <Header />
 
       {/* Breadcrumb */}
-      <div className="ab-breadcrumb">
+      <nav className="ab-breadcrumb">
         <span className="ab-bc-dot" />
         <span>THE EVENT</span>
         <span className="ab-bc-sep">/</span>
         <span>ABOUT HACK THE FUTURE</span>
-      </div>
+      </nav>
 
       {/* ── Hero ── */}
       <section className="ab-hero">
@@ -54,16 +55,18 @@ export function AboutPage() {
           </h1>
           <div className="ab-h1-line" />
           <p>
-            Hack the Future 3.0 is our commitment to the next generation of creators,
-            innovators and problem solvers. A 36-hour national hackathon where ideas meet
-            execution and imagination turns into real impact.
+            Hack the Future 3.0 is a national-level hackathon organized by
+            <strong> Tulas ACM Student Chapter</strong>, Tulas University, Dehradun.
+            This edition's theme is <em>Project to Product</em> — encouraging students to
+            move beyond academic projects and develop solutions with the potential to become
+            meaningful, scalable and user-focused products.
           </p>
           <p className="ab-hero-closing">
-            Here, you don't just write code.<br />
-            You <em>build</em> what matters.
+            PROBLEM → IDEA → PROJECT → PROTOTYPE →<br />
+            <em>PRODUCT → PITCH</em>
           </p>
-          <a href={'/about'} className="button button-outline ab-cta">
-            Know more about HTF <strong>→</strong>
+          <a href={event.registrationUrl} className="button button-outline ab-cta">
+            Register Now <strong>→</strong>
           </a>
         </div>
 

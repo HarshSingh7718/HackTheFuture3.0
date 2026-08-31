@@ -27,9 +27,10 @@ const sections = [
     subtitle: 'Team size, composition and collaboration rules.',
     icon: Users,
     points: [
-      'Team size: 2–4 members per team.',
-      'Solo participation is not permitted — minimum 2 members required.',
+      'Team size: 3–5 members per team.',
+      'Solo participation is not permitted — minimum 3 members required.',
       'Cross-college teams are fully permitted and encouraged.',
+      'Teams are encouraged to bring diverse skills: development, design, AI, product, business.',
       'Each team must designate one team leader for official communication.',
       'A participant cannot be a member of more than one team.',
       'All team members must be individually registered on the portal.',
@@ -67,11 +68,17 @@ const sections = [
     subtitle: 'Fair play, respect and expected behaviour.',
     icon: Shield,
     points: [
-      'Respect all participants, mentors, organizers, judges, and venue staff.',
+      'Respect all participants, mentors, organizers, judges, volunteers and venue staff.',
+      'Carry your valid college ID card and official participant badge at all times.',
       'Zero tolerance for plagiarism — all work must be original, built during the hackathon.',
-      'Usage of pre-built commercial templates as the core solution is strictly prohibited.',
+      'Do not use unfair means (pre-built code without disclosure, copying) during the hackathon.',
       'Harassment, discrimination or inappropriate behaviour of any kind will not be tolerated.',
+      'Non-vegetarian food and alcohol are strictly NOT allowed inside the venue.',
+      'Do not consume alcohol, drugs, cigarettes or any prohibited substances at or near the venue.',
+      'Do not leave the campus or venue without prior permission from organizers.',
       'Maintain cleanliness and professional discipline at the venue at all times.',
+      'Do not sleep in restricted areas (labs, corridors) — use designated rest areas only.',
+      'Do not miss submission timelines; late entries will not be entertained.',
       'Any violation of this code may result in immediate disqualification without prior notice.',
     ],
   },
@@ -97,10 +104,10 @@ export function RulesPage() {
       {/* ── Hero ── */}
       <section className="rl-hero">
         {/* Watermark */}
-        <span className="rl-watermark" aria-hidden="true">08</span>
+        <span className="rl-watermark" aria-hidden="true">07</span>
 
         <div className="rl-hero-copy">
-          <p className="rl-label">08 /</p>
+          <p className="rl-label">07 /</p>
           <h1>
             KNOW THE GAME.<br />
             <span className="rl-purple">BUILD WITHIN IT.</span>

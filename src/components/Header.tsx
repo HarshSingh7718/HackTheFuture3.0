@@ -4,7 +4,7 @@ import logo from '../../NavBar Logo.png'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 
-const links = ['Home', 'About', 'Problems', 'Tracks', 'Prizes', 'Timeline', 'Rules', 'FAQ', 'Contact']
+const links = ['Home', 'About', 'Tracks', 'Prizes', 'Timeline', 'Rules', 'FAQ', 'Contact']
 
 export function Header() {
   const [open, setOpen] = useState(false)

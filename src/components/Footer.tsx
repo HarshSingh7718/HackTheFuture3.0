@@ -17,7 +17,7 @@ export function Footer() {
           <div className="hp-ft-logo">
             <img src={navLogo} alt="Hack the Future 3.0" />
           </div>
-          <p>A 36-hour national level hackathon by Tula's University, Dehradun. Build. Innovate. Collaborate. Create Impact.</p>
+          <p>A national-level hackathon by Tulas ACM Student Chapter, Tulas University, Dehradun. Theme: Project to Product. Build. Validate. Pitch.</p>
           <div className="hp-ft-social">
             <a href="#" aria-label="Instagram"><InstagramIcon /></a>
             <a href="#" aria-label="LinkedIn"><LinkedinIcon /></a>
@@ -29,7 +29,7 @@ export function Footer() {
         <div className="hp-ft-col">
           <h4>Quick Links</h4>
           <a href="/about">About</a>
-          <a href="/problems">Problem Statements</a>
+
           <a href="/tracks">Tracks</a>
           <a href="/prizes">Prizes</a>
           <a href="/timeline">Timeline</a>
@@ -67,7 +67,7 @@ export function Footer() {
       </div>
 
       <div className="hp-ft-bottom">
-        <span>© 2026 Hack The Future 3.0 &nbsp;|&nbsp; Tula's University, Dehradun. All rights reserved.</span>
+        <span>&copy; 2026 Hack The Future 3.0 &nbsp;|&nbsp; Tulas ACM Student Chapter &middot; Tulas University, Dehradun. All rights reserved.</span>
         <span className="hp-ft-heart">Built with passion for innovators <Heart size={14} /></span>
       </div>
     </footer>

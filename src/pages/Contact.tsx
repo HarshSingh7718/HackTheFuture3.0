@@ -5,9 +5,9 @@ import { Home, Mail, Phone, MapPin, Send, Camera, Briefcase, MessageSquare } fro
 import mascot from '../../Mascots Variations/Contact Us.png'
 
 const contactInfo = [
-  { icon: Mail,     label: 'EMAIL US',        value: 'hackthefuture@gmail.com', link: 'mailto:hackthefuture@gmail.com' },
+  { icon: Mail,     label: 'EMAIL US',        value: 'hackthefuture@tulas.edu.in', link: 'mailto:hackthefuture@tulas.edu.in' },
   { icon: Phone,    label: 'CALL US',          value: '+91 98765 43210',          link: 'tel:+919876543210' },
-  { icon: MapPin,   label: 'LOCATION',         value: 'Dehradun, Uttarakhand, India', link: 'https://maps.google.com/?q=Dehradun' },
+  { icon: MapPin,   label: 'LOCATION',         value: 'Tulas University, Dehradun, Uttarakhand', link: 'https://maps.google.com/?q=Tulas+University+Dehradun' },
   { icon: MessageSquare, label: 'DISCORD',     value: 'discord.gg/htf03',         link: 'https://discord.gg/htf03' },
 ]
 
@@ -144,13 +144,13 @@ export function ContactPage() {
           <div className="ct-location-card">
             <div className="ct-location-map">
               <MapPin size={32} strokeWidth={1.3} />
-              <span>Dehradun, Uttarakhand</span>
+              <span>Tulas University, Dehradun</span>
             </div>
             <div className="ct-location-info">
               <p className="ct-section-tag">VENUE</p>
               <p className="ct-location-name">Hack The Future 3.0</p>
-              <p className="ct-location-addr">Dehradun, Uttarakhand, India<br />25–26 September 2026</p>
-              <a href="https://maps.google.com/?q=Dehradun" target="_blank" rel="noreferrer" className="ct-directions">
+              <p className="ct-location-addr">Tulas University, Dehradun<br />Uttarakhand, India<br />25–26 September 2026</p>
+              <a href="https://maps.google.com/?q=Tulas+University+Dehradun" target="_blank" rel="noreferrer" className="ct-directions">
                 Get Directions →
               </a>
             </div>
@@ -159,9 +159,9 @@ export function ContactPage() {
           {/* Quick contact */}
           <div className="ct-quick">
             <p className="ct-section-tag">QUICK CONTACT</p>
-            <a href="mailto:hackthefuture@gmail.com" className="ct-quick-email">
+            <a href="mailto:hackthefuture@tulas.edu.in" className="ct-quick-email">
               <Mail size={16} />
-              hackthefuture@gmail.com
+              hackthefuture@tulas.edu.in
             </a>
             <p className="ct-quick-note">For urgent queries, reach out on Discord — we're most active there!</p>
           </div>

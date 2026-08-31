@@ -13,20 +13,22 @@ const days = [
   {
     day: '25', month: 'SEP', weekday: 'FRIDAY',
     events: [
-      { icon: UserPlus, title: 'REGISTRATION OPENS',    desc: 'Check-in, collect your kit and get ready.',              time: '08:00 AM', featured: false },
-      { icon: Flag,     title: 'INAUGURATION',           desc: 'Opening ceremony and overview of the hackathon.',         time: '10:30 AM', featured: false },
-      { icon: Code2,    title: 'HACKING BEGINS',         desc: 'The clock starts. Ideate, plan and build.',               time: '11:00 AM', featured: true  },
-      { icon: Users,    title: 'MENTORING & WORKSHOPS',  desc: 'Expert sessions and mentor support throughout.',          time: '02:00 PM', featured: false },
-      { icon: Coffee,   title: 'SNACKS & NETWORKING',    desc: 'Recharge, connect and collaborate.',                      time: '07:30 PM', featured: false },
-      { icon: Moon,     title: 'NIGHT HACKING',          desc: 'The best ideas come at night.',                           time: '09:00 PM', featured: false },
+      { icon: UserPlus, title: 'PARTICIPANT REGISTRATION', desc: 'Check-in, collect your kit and report to the venue.',              time: '08:00 AM', featured: false },
+      { icon: Flag,     title: 'INAUGURAL CEREMONY',       desc: 'Welcome address, introductions and Chief Guest session.',          time: '10:30 AM', featured: false },
+      { icon: Code2,    title: 'HACKATHON BEGINS',         desc: 'The clock starts — choose your track, ideate and build.', time: '11:00 AM', featured: true  },
+      { icon: Users,    title: 'MENTORING SESSIONS',       desc: 'Expert mentors and product validation sessions throughout the day.',time: '02:00 PM', featured: false },
+      { icon: Coffee,   title: 'SNACKS & NETWORKING',      desc: 'Recharge, connect and collaborate with fellow builders.',          time: '07:30 PM', featured: false },
+      { icon: Moon,     title: 'NIGHT HACKING',            desc: 'Development phase continues. The best ideas come at night.',       time: '09:00 PM', featured: false },
     ],
   },
   {
     day: '26', month: 'SEP', weekday: 'SATURDAY',
     events: [
-      { icon: Upload,  title: 'SUBMISSION DEADLINE', desc: 'Submit your project and presentation.',         time: '11:00 AM', featured: false },
-      { icon: Search,  title: 'EVALUATION',           desc: 'Projects are evaluated by our expert jury.',    time: '12:00 PM', featured: false },
-      { icon: Trophy,  title: 'GRAND FINALE',         desc: 'Results, awards and celebration.',              time: '04:00 PM', featured: true  },
+      { icon: Users,   title: 'MENTOR CHECKPOINTS',    desc: 'Mentor reviews, product feedback and final preparation guidance.',  time: '08:00 AM', featured: false },
+      { icon: Upload,  title: 'SUBMISSION DEADLINE',   desc: 'Final project submission — no late entries accepted.',              time: '11:00 AM', featured: false },
+      { icon: Search,  title: 'JURY EVALUATION',       desc: 'Projects evaluated by our expert panel from IITs, NITs and industry.',time: '12:00 PM', featured: false },
+      { icon: Trophy,  title: 'FINAL PRESENTATIONS',   desc: 'Teams present before the jury — pitch your product and its impact.', time: '02:00 PM', featured: false },
+      { icon: Trophy,  title: 'RESULTS & AWARDS',      desc: 'Winners announced, prizes distributed and closing ceremony.',        time: '04:00 PM', featured: true  },
     ],
   },
 ]
@@ -51,7 +53,7 @@ export function TimelinePage() {
         <div className="tl-hero-copy">
           <p className="tl-label">07 /</p>
           <h1>
-            36 HOURS.<br />
+            30 HOURS.<br />
             ONE CONTINUOUS<br />
             <span className="tl-purple">BUILD.</span>
           </h1>
@@ -120,7 +122,7 @@ export function TimelinePage() {
           <Clock size={28} strokeWidth={1.4} />
         </div>
         <div className="tl-cta-copy">
-          <p className="tl-cta-head">36 HOURS TO <span>BUILD THE FUTURE.</span></p>
+          <p className="tl-cta-head">30 HOURS TO <span>BUILD THE FUTURE.</span></p>
           <p className="tl-cta-sub">No pause. No limits.<br />Just you, your team and endless possibilities.</p>
         </div>
         <Link to="/contact" className="tl-cta-btn">
