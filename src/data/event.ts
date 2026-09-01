@@ -13,7 +13,7 @@ export const event = {
   round1Fee: 'Free',
   finalRoundFee: '₹500 per participant',
   registrationUrl: 'https://unstop.com', // Replace with official Unstop / registration URL
-  contactEmail: 'hackthefuture@tulas.edu.in',
+  contactEmail: 'Hackathon@tulas.edu.in',
   format: 'Online Shortlisting + Offline Grand Finale',
 }
 

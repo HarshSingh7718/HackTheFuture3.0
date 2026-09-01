@@ -8,6 +8,7 @@ import navLogo from '../NavBar Logo.png'
 import prizesMascot from '../Mascots Variations/Prize2 (3).png'
 import trackMascot from '../Mascots Variations/trackhomepage.png'
 import emojiMascot from '../Mascots Variations/Emoji.png'
+import chiefGuestImg from '../Chief Guest.png'
 import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -660,9 +661,14 @@ export default function App() {
             perspective={1000}
             effect="evade"
           >
-            <div className="hp-cg-photo-placeholder">
-              <Users size={60} className="hp-cg-photo-icon" />
-              <span className="hp-cg-photo-tag">DIGNITARY PHOTO</span>
+            <div className="hp-cg-photo-wrap">
+              <div className="hp-cg-photo-backlight" aria-hidden="true" />
+              <img
+                src={chiefGuestImg}
+                alt="Chief Guest - Founder, Kiwi Kisan Window"
+                className="hp-cg-photo-img"
+              />
+              <div className="hp-cg-photo-bottom-fade" aria-hidden="true" />
             </div>
             <div className="hp-cg-photo-overlay">
               <span className="hp-cg-verified-pill"><Check size={13} /> KEYNOTE SPEAKER</span>

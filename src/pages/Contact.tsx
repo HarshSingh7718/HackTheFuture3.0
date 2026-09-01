@@ -5,8 +5,8 @@ import { Home, Mail, Phone, MapPin, Send, Camera, Briefcase, MessageSquare } fro
 import mascot from '../../Mascots Variations/Contact Us.png'
 
 const contactInfo = [
-  { icon: Mail,     label: 'EMAIL US',        value: 'hackthefuture@tulas.edu.in', link: 'mailto:hackthefuture@tulas.edu.in' },
-  { icon: Phone,    label: 'CALL US',          value: '+91 98765 43210',          link: 'tel:+919876543210' },
+  { icon: Mail,     label: 'EMAIL US',        value: 'Hackathon@tulas.edu.in', link: 'mailto:hackthefuture@tulas.edu.in' },
+  { icon: Phone,    label: 'CALL US',          value: '+91 7983536078',          link: 'tel:+917983536078' },
   { icon: MapPin,   label: 'LOCATION',         value: 'Tulas University, Dehradun, Uttarakhand', link: 'https://maps.google.com/?q=Tulas+University+Dehradun' },
   { icon: MessageSquare, label: 'DISCORD',     value: 'discord.gg/htf03',         link: 'https://discord.gg/htf03' },
 ]
