@@ -36,6 +36,28 @@ a {
   top: 0;
   z-index: 10;
 }
+/* Themed purple glow along the lower edge of the navbar */
+.header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(139, 54, 247, 0.15) 12%,
+    rgba(139, 54, 247, 0.95) 50%,
+    rgba(139, 54, 247, 0.15) 88%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 12px 1px rgba(139, 54, 247, 0.55),
+    0 6px 26px 0 rgba(139, 54, 247, 0.35);
+  pointer-events: none;
+  z-index: 1;
+}
 .brand {
   display: flex;
   flex-direction: column;
@@ -84,10 +106,52 @@ h2 span,
   gap: 17px;
   align-items: center;
   border: 1px solid var(--purple);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.28s ease, background 0.28s ease, color 0.28s ease,
+    border-color 0.28s ease;
+  will-change: transform;
+}
+/* Sheen sweep on hover */
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 80%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.button:hover {
+  transform: translateY(-2px);
+  background: #9b4cff;
+  border-color: #9b4cff;
+  box-shadow: 0 10px 26px -6px rgba(139, 54, 247, 0.6),
+    0 0 0 1px rgba(139, 54, 247, 0.4);
+}
+.button:hover::before {
+  transform: translateX(120%);
+}
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px -6px rgba(139, 54, 247, 0.5);
 }
 .button-outline {
   background: transparent;
   border-color: var(--purple);
+}
+.button-outline:hover {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+  box-shadow: 0 10px 26px -6px rgba(139, 54, 247, 0.55),
+    0 0 22px -4px rgba(139, 54, 247, 0.5);
 }
 .button strong {
   font-size: 18px;

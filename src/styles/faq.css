@@ -6,8 +6,10 @@
 
 /* Breadcrumb */
 .fq-breadcrumb {
+  padding-top:110px;
+  padding-bottom: 20px;
+  padding-left:10px;
   display: flex; align-items: center; gap: 8px;
-  padding: 12px clamp(24px, 8vw, 130px);
   font: 700 9.5px 'DM Mono', monospace; letter-spacing: 1.4px; text-transform: uppercase;
   color: #9086a0; background: #fff; border-bottom: 1px solid #ede8f2;
 }
@@ -124,7 +126,7 @@
   .fq-body { padding: 32px 16px 48px; }
   .fq-accordion-btn { padding: 16px 14px; font-size: 12px; }
   .fq-accordion-panel { padding: 0 14px 16px; }
-  .fq-breadcrumb { padding: 10px 16px; }
+  .fq-breadcrumb { padding: 85px 10px 15px;  }
 }
 @media (max-width: 360px) {
   .fq-hero-copy h1 { font-size: 24px; }

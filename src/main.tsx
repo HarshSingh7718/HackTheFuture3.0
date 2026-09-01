@@ -14,6 +14,7 @@ import { FaqPage } from './pages/Faq'
 import { ContactPage } from './pages/Contact'
 import './styles/global.css'
 import './styles/homepage-sections.css'
+import './styles/journey-map.css'
 import './styles/about.css'
 import './styles/rules.css'
 
@@ -25,7 +26,7 @@ import './styles/contact.css'
 
 import { ScrollToTop } from './components/ScrollToTop'
 
-createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><ScrollToTop /><ReactLenis root><Routes>
+createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><ScrollToTop /><ReactLenis root options={{ lerp: 0.09, duration: 1.25, smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.6, syncTouch: true }}><Routes>
   <Route path="/" element={<App />} />
   <Route path="/about" element={<AboutPage />} />
   <Route path="/rules" element={<RulesPage />} />
