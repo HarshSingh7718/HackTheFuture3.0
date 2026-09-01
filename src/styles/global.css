@@ -336,7 +336,8 @@ h2 {
 .about {
   display: grid;
   grid-template-columns: 0.82fr 1.18fr;
-  gap: 90px;
+  column-gap: 90px;
+  row-gap: 10px;
   align-items: center;
   background: var(--paper);
 }
