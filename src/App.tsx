@@ -429,7 +429,6 @@ export default function App() {
         />
         <div className="about-bottom-row">
           <a className="button button-outline about-know-more" href="/about">Know more about <strong>→</strong></a>
-          <p className="about-pipeline">PROBLEM → IDEA → PROJECT → PROTOTYPE → <span className="purple-text">PRODUCT → PITCH</span></p>
         </div>
       </section>
 
@@ -897,24 +896,13 @@ export default function App() {
             <a href="/tracks">Tracks</a>
             <a href="/prizes">Prizes</a>
             <a href="/timeline">Timeline</a>
-            <a href="/rules">Rules &amp; Guidelines</a>
-            <a href="/faq">FAQ</a>
-            <a href="/contact">Contact</a>
           </div>
           <div className="hp-ft-col">
             <h4>Participate</h4>
-            <a href={event.registrationUrl}>Register Now</a>
-            <a href="/rules">Team Guidelines</a>
-            <a href="/tracks">Challenge Tracks</a>
-            <a href="/prizes">Prize Breakdown</a>
             <a href="/rules">Code of Conduct</a>
-          </div>
-          <div className="hp-ft-col">
-            <h4>Support</h4>
-            <a href="/faq">FAQs</a>
-            <a href="/contact">Contact Us</a>
-            <a href="/rules">Terms &amp; Policies</a>
-            <a href="/rules">Privacy Policy</a>
+            <a href="/rules">Rules &amp; Guidelines</a>
+            <a href="/faq">FAQ</a>
+            <a href="/contact">Contact</a>
           </div>
           <div className="hp-ft-news">
             <h4>Stay Updated</h4>
