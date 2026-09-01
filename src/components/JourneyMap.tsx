@@ -3,17 +3,17 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLenis } from '@studio-freight/react-lenis'
-import { Compass, Network, Code2, Activity, Layers, Trophy, Check, ArrowRight, Rocket } from 'lucide-react'
+import { Compass, UserPlus, ShieldCheck, ListChecks, Code2, Gavel, Trophy, Check, ArrowRight, Rocket } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { event } from '../data/event'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 /* ─────────────────────────────────────────────────────────
-   HACK THE FUTURE 3.0 — MISSION JOURNEY MAP
+   HACK THE FUTURE 3.0 — PARTICIPATION JOURNEY MAP
    A scroll-driven, camera-panned route across an abstract
-   innovation map. Content/wording preserved from the
-   original "Problem → Product" pipeline section.
+   innovation map. Narrative follows the actual event flow:
+   registration → selection → hackathon → judging → result.
    ───────────────────────────────────────────────────────── */
 
 type Phase = {
@@ -26,7 +26,7 @@ const WORLD_W = 1300
 const WORLD_H = 1560
 
 /* Pull-back fits the *content* bounding box (nodes + labels), not the whole
-   world — so the overview fills the viewport height (FINALE at the bottom,
+   world — so the overview fills the viewport height (RESULT at the bottom,
    earlier phases stacked up above) instead of floating with dead space. */
 const CONTENT_MIN_X = 150
 const CONTENT_MAX_X = 1120
@@ -41,39 +41,39 @@ const PULLBACK_NODE = 0.78   // label/marker screen-scale at full pull-back (kee
 
 const PHASES: Phase[] = [
   {
-    code: '01', name: 'DISCOVERY', title: 'Discover & Diagnose',
-    desc: 'Identify acute, high-impact pain points across healthcare, cybersecurity, public good, or intelligent automation.',
-    outcome: 'Problem Thesis', Icon: Compass, color: '#8b5cf6', glow: '139,92,246',
-    x: 230, y: 200, side: 'right', motif: 'radar',
+    code: '01', name: 'REGISTRATION', title: 'Register & Enter',
+    desc: 'Participants submit their team details, problem interests, and required registration information to enter the hackathon.',
+    outcome: 'Registration Confirmed', Icon: UserPlus, color: '#8b5cf6', glow: '139,92,246',
+    x: 230, y: 200, side: 'right', motif: 'intake',
   },
   {
-    code: '02', name: 'ARCHITECTURE', title: 'Architect & Ideate',
-    desc: 'Formulate end-to-end system architectures, workflow wireframes, and technology choices engineered for real-world adoption.',
-    outcome: 'Solution Architecture', Icon: Network, color: '#22d3ee', glow: '34,211,238',
-    x: 560, y: 430, side: 'left', motif: 'blueprint',
+    code: '02', name: 'SCREENING', title: 'Screen & Verify',
+    desc: 'Submitted registrations are reviewed for eligibility, completeness, relevance, and basic participation requirements.',
+    outcome: 'Eligible Teams Identified', Icon: ShieldCheck, color: '#22d3ee', glow: '34,211,238',
+    x: 560, y: 430, side: 'left', motif: 'radar',
   },
   {
-    code: '03', name: '30-HR SPRINT', title: 'Code & Prototype',
-    desc: '30 hours of continuous building, API orchestration, deep learning pipelines, hardware integration, and test harness execution.',
-    outcome: 'Functional MVP', Icon: Code2, color: '#6366f1', glow: '99,102,241',
-    x: 410, y: 690, side: 'right', motif: 'sprint',
+    code: '03', name: 'SHORTLISTING', title: 'Shortlist Teams',
+    desc: 'Qualified teams are evaluated and shortlisted based on the selection criteria defined for the hackathon.',
+    outcome: 'Final Participants Selected', Icon: ListChecks, color: '#6366f1', glow: '99,102,241',
+    x: 410, y: 690, side: 'right', motif: 'shortlist',
   },
   {
-    code: '04', name: 'VALIDATION', title: 'Validate & Stress-Test',
-    desc: 'Stress-test performance metrics with domain mentors, simulated real-user traffic, and rigorous feasibility checkpoints.',
-    outcome: 'Validation Metrics', Icon: Activity, color: '#10b981', glow: '16,185,129',
-    x: 770, y: 910, side: 'left', motif: 'validate',
+    code: '04', name: '30-HR SPRINT', title: 'Build & Execute',
+    desc: 'Shortlisted teams enter the 30-hour hackathon sprint to ideate, design, build, test, and prepare their working solution.',
+    outcome: 'Functional Prototype', Icon: Code2, color: '#10b981', glow: '16,185,129',
+    x: 770, y: 910, side: 'left', motif: 'sprint',
   },
   {
-    code: '05', name: 'PACKAGING', title: 'Productize & Refine',
-    desc: 'Refine UI/UX polish, security compliance, unit economics, and cloud deployment pipelines with an authentic founder perspective.',
-    outcome: 'Production Release', Icon: Layers, color: '#f59e0b', glow: '245,158,11',
-    x: 600, y: 1140, side: 'right', motif: 'package',
+    code: '05', name: 'JUDGING', title: 'Present & Evaluate',
+    desc: 'Teams present their solution to the judging panel and are evaluated on innovation, technical execution, feasibility, impact, and presentation.',
+    outcome: 'Final Evaluation', Icon: Gavel, color: '#f59e0b', glow: '245,158,11',
+    x: 600, y: 1140, side: 'right', motif: 'judge',
   },
   {
-    code: '06', name: 'FINALE', title: 'Pitch & Incubate',
-    desc: 'Pitch live before IIT/NIT directors, founders, and venture scouts to unlock ₹1,65,000+ cash and ₹1,20,000 incubation support.',
-    outcome: 'Venture Incubation', Icon: Trophy, color: '#d946ef', glow: '217,70,239',
+    code: '06', name: 'RESULT', title: 'Results & Recognition',
+    desc: 'Final scores are consolidated, winning teams are announced, and the hackathon journey concludes with results and recognition.',
+    outcome: 'Winners Announced', Icon: Trophy, color: '#d946ef', glow: '217,70,239',
     x: 1010, y: 1360, side: 'left', motif: 'finale',
   },
 ]
@@ -139,21 +139,21 @@ export function JourneyMap() {
       <div className="jm-intro">
         <div className="hp-jn-pill">
           <Compass size={14} className="hp-jn-pill-icon" />
-          <span>04 / THE METAMORPHOSIS PIPELINE</span>
+          <span>04 / THE PARTICIPATION JOURNEY</span>
         </div>
-        <h2 className="jm-title">FROM PROBLEM STATEMENT<br />TO <span>MARKET-READY PRODUCT.</span></h2>
+        <h2 className="jm-title">FROM REGISTRATION<br />TO <span>FINAL RESULT.</span></h2>
         <div className="hp-jn-flow-ribbon">
-          <span className="hp-jn-ribbon-item">PROBLEM</span>
+          <span className="hp-jn-ribbon-item">REGISTER</span>
           <span className="hp-jn-ribbon-arrow">→</span>
-          <span className="hp-jn-ribbon-item">IDEA</span>
+          <span className="hp-jn-ribbon-item">SCREENING</span>
           <span className="hp-jn-ribbon-arrow">→</span>
-          <span className="hp-jn-ribbon-item">PROTOTYPE</span>
+          <span className="hp-jn-ribbon-item">SHORTLIST</span>
           <span className="hp-jn-ribbon-arrow">→</span>
-          <span className="hp-jn-ribbon-item">VALIDATE</span>
+          <span className="hp-jn-ribbon-item">30-HR SPRINT</span>
           <span className="hp-jn-ribbon-arrow">→</span>
-          <span className="hp-jn-ribbon-item hp-jn-ribbon-highlight">PRODUCT</span>
+          <span className="hp-jn-ribbon-item hp-jn-ribbon-highlight">JUDGING</span>
           <span className="hp-jn-ribbon-arrow">→</span>
-          <span className="hp-jn-ribbon-item hp-jn-ribbon-highlight">PITCH &amp; LAUNCH</span>
+          <span className="hp-jn-ribbon-item hp-jn-ribbon-highlight">RESULT</span>
         </div>
       </div>
 
@@ -164,8 +164,8 @@ export function JourneyMap() {
           <div className="jm-cta-l">
             <Rocket size={26} className="jm-cta-ic" />
             <div className="jm-cta-text">
-              <h3 className="jm-cta-title">Are you ready to transform your project into a viable enterprise?</h3>
-              <p className="jm-cta-desc">Round 1 submission is 100% free. Pitch your blueprint before 13 September 2026.</p>
+              <h3 className="jm-cta-title">Are you ready to take your team through the full hackathon journey?</h3>
+              <p className="jm-cta-desc">Round 1 submission is 100% free. Register and submit your PPT before 13 September 2026.</p>
             </div>
           </div>
           <a
@@ -188,19 +188,20 @@ function vars(color: string, glow: string, extra?: Record<string, string | numbe
   return { ['--c']: color, ['--g']: glow, ...(extra || {}) } as CSSProperties
 }
 
-/* Per-phase ambient environment — pure decorative DOM, animated via CSS */
+/* Per-phase ambient environment — pure decorative DOM, animated via CSS.
+   One motif per stage of the participation journey. */
 function Motif({ kind }: { kind: string }) {
   switch (kind) {
+    case 'intake':
+      return (<><i className="jm-in i1" /><i className="jm-in i2" /><i className="jm-in i3" /><i className="jm-gate" /><i className="jm-in-glow" /></>)
     case 'radar':
       return (<><i className="jm-radar-sweep" /><i className="jm-rr r3" /></>)
-    case 'blueprint':
-      return (<><i className="jm-bp-grid" /><i className="jm-bp-node n1" /><i className="jm-bp-node n2" /><i className="jm-bp-node n3" /><i className="jm-bp-link" /></>)
+    case 'shortlist':
+      return (<><i className="jm-sl q1" /><i className="jm-sl q2" /><i className="jm-sl q3" /><i className="jm-sl q4" /><i className="jm-sl q5" /><i className="jm-sl-scan" /></>)
     case 'sprint':
       return (<><i className="jm-code c1" /><i className="jm-code c2" /><i className="jm-code c3" /><i className="jm-code c4" /><i className="jm-code c5" /><i className="jm-spark" /></>)
-    case 'validate':
-      return (<><i className="jm-sig s1" /><i className="jm-sig s2" /><i className="jm-sig s3" /><i className="jm-sig s4" /><i className="jm-sig s5" /><i className="jm-sig s6" /><i className="jm-sig s7" /></>)
-    case 'package':
-      return (<><i className="jm-layer y1" /><i className="jm-layer y2" /><i className="jm-layer y3" /></>)
+    case 'judge':
+      return (<><i className="jm-sig s1" /><i className="jm-sig s2" /><i className="jm-sig s3" /><i className="jm-sig s4" /><i className="jm-sig s5" /><i className="jm-sig s6" /><i className="jm-sig s7" /><i className="jm-jbase" /></>)
     case 'finale':
       return (<><i className="jm-beacon b1" /><i className="jm-beacon b2" /><i className="jm-beacon b3" /><i className="jm-halo" /></>)
     default:
@@ -366,13 +367,13 @@ function CinematicStage() {
       <div className="jm-vignette" aria-hidden="true" />
 
       <div className="jm-hud" aria-hidden="true">
-        <div className="jm-hud-head"><i className="jm-hud-live" />BUILD PROGRESS</div>
+        <div className="jm-hud-head"><i className="jm-hud-live" />JOURNEY PROGRESS</div>
         <div className="jm-hud-count"><span ref={countRef}>01 / 06</span></div>
         <div className="jm-hud-bars" ref={barsRef}>
           {PHASES.map((ph) => <b key={`bar-${ph.code}`} style={vars(ph.color, ph.glow)} />)}
         </div>
         <div className="jm-hud-cur">CURRENT PHASE</div>
-        <div className="jm-hud-name"><span ref={nameRef}>DISCOVERY</span></div>
+        <div className="jm-hud-name"><span ref={nameRef}>REGISTRATION</span></div>
       </div>
     </div>
   )
@@ -473,7 +474,7 @@ function FlatJourney() {
         )
       })}
       <div className="jm-flat-end" aria-hidden="true">
-        <Trophy size={15} /> MISSION COMPLETE
+        <Trophy size={15} /> JOURNEY COMPLETE — WINNERS ANNOUNCED
       </div>
     </div>
   )

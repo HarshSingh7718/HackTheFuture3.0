@@ -2304,7 +2304,7 @@
 ══════════════════════════════════════════════ */
 .hp-cg-next {
   position: relative;
-  background: linear-gradient(180deg, #090614 0%, #110b24 50%, #0b0717 100%);
+  background: linear-gradient(135deg, #1a0533 0%, #2d0a5e 30%, #3d1278 55%, #2d0a5e 80%, #1a0533 100%);
   color: white;
   overflow: hidden;
   border-bottom: 1px solid rgba(139, 54, 247, 0.18);
@@ -2378,358 +2378,140 @@
   margin: 0 auto;
 }
 
-/* Chief Guest Showcase — 2 Separate Cards */
-.hp-cg-showcase {
-  max-width: 1160px;
+/* Visionary Leaders Grid */
+.hp-cg-grid {
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 28px;
-  align-items: stretch;
-  position: relative;
-  z-index: 1;
-}
-
-/* Card 1: Standalone Photo Card */
-.hp-cg-photo-card {
-  position: relative;
-  background: linear-gradient(155deg, rgba(32, 19, 64, 0.96) 0%, rgba(14, 9, 28, 0.98) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.38);
-  border-radius: 24px;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  min-height: 480px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(245, 158, 11, 0.12);
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hp-cg-photo-card:hover {
-  border-color: rgba(245, 158, 11, 0.7);
-  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.6), 0 0 55px rgba(245, 158, 11, 0.22);
-}
-
-.hp-cg-photo-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.16) 0%, rgba(139, 54, 247, 0.12) 50%, transparent 75%);
-  pointer-events: none;
-}
-
-/* Slow ambient glow pulse that keeps the card feeling alive */
-.hp-cg-photo-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 0 60px rgba(245, 158, 11, 0.14);
-  pointer-events: none;
-  animation: hp-cg-pulse 4.5s ease-in-out infinite;
-}
-
-@keyframes hp-cg-pulse {
-
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hp-cg-photo-card::after {
-    animation: none;
-  }
-}
-
-.hp-cg-photo-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 480px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* Warm amber and purple backlight halo behind dignitary */
-.hp-cg-photo-backlight {
-  position: absolute;
-  top: 22%;
-  left: 50%;
-  transform: translate(-50%, -20%);
-  width: 280px;
-  height: 280px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, rgba(139, 54, 247, 0.22) 50%, transparent 70%);
-  filter: blur(44px);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.hp-cg-photo-img {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 0 16px;
   position: relative;
   z-index: 2;
+}
+
+.hp-cg-speaker-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 380px;
+  background: #0d061c;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hp-cg-speaker-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 20px rgba(139, 54, 247, 0.3);
+  border-color: rgba(139, 54, 247, 0.4);
+}
+
+.hp-cg-sc-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 60px;
+  background: radial-gradient(circle at 50% 35%, rgba(139, 92, 246, 0.2) 0%, rgba(13, 6, 28, 0.95) 75%);
+  z-index: 1;
+}
+
+.hp-cg-sc-rs-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(88, 28, 135, 0.45) 100%);
+  border: 2px solid rgba(167, 139, 250, 0.45);
+  box-shadow: 0 0 28px rgba(139, 92, 246, 0.3), inset 0 0 15px rgba(167, 139, 250, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hp-cg-speaker-card:hover .hp-cg-sc-rs-circle {
+  transform: scale(1.08);
+  border-color: rgba(167, 139, 250, 0.85);
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.55), inset 0 0 22px rgba(167, 139, 250, 0.35);
+}
+
+.hp-cg-sc-rs-text {
+  font: 800 28px/1 'Space Grotesk', sans-serif;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+.hp-cg-sc-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 370px;
-  height: auto;
-  max-height: 450px;
-  object-fit: contain;
-  object-position: bottom center;
-  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.7));
-  transition: transform 0.4s ease;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.3s;
 }
 
-.hp-cg-photo-card:hover .hp-cg-photo-img {
-  transform: scale(1.03);
+.hp-cg-speaker-card:hover .hp-cg-sc-img {
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
-/* Subtle gradient grounding at the bottom of the photo behind the pill */
-.hp-cg-photo-bottom-fade {
+.hp-cg-sc-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 120px;
-  background: linear-gradient(to top, rgba(14, 9, 28, 0.96) 0%, rgba(14, 9, 28, 0.6) 50%, transparent 100%);
-  pointer-events: none;
+  height: 65%;
+  background: linear-gradient(to top, #7c3aed 0%, rgba(124, 58, 237, 0.6) 35%, transparent 80%);
+  z-index: 2;
+  opacity: 0.95;
+}
+
+.hp-cg-sc-content {
+  position: relative;
   z-index: 3;
-}
-
-.hp-cg-photo-placeholder {
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  color: #fcd34d;
-  z-index: 1;
-  padding: 40px 24px;
 }
 
-.hp-cg-photo-icon {
-  width: 80px;
-  height: 80px;
-  color: #f59e0b;
-  padding: 18px;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1.5px solid rgba(245, 158, 11, 0.35);
-  border-radius: 50%;
-  box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
-}
-
-.hp-cg-photo-tag {
-  font: 700 11px 'DM Mono', monospace;
-  letter-spacing: 2px;
-  color: #fcd34d;
-  text-transform: uppercase;
-  background: rgba(18, 11, 36, 0.8);
-  padding: 6px 16px;
-  border-radius: 100px;
-  border: 1px solid rgba(245, 158, 11, 0.25);
-}
-
-.hp-cg-photo-overlay {
-  position: absolute;
-  bottom: 22px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  justify-content: center;
-  z-index: 4;
-}
-
-.hp-cg-verified-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(16, 185, 129, 0.18);
-  border: 1px solid rgba(52, 211, 153, 0.55);
-  color: #34d399;
-  font: 700 10.5px 'DM Mono', monospace;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  padding: 7px 18px;
-  border-radius: 100px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), 0 0 16px rgba(52, 211, 153, 0.22);
-}
-
-/* Right: Editorial Detail Column */
-.hp-cg-details-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 8px 0;
-  gap: 26px;
-}
-
-/* 1. Header Hierarchy */
-.hp-cg-profile-header {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.hp-cg-eyebrow {
-  font: 700 11px/1.2 'DM Mono', monospace;
-  letter-spacing: 2px;
-  color: #f59e0b;
-  text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.hp-cg-speaker-title {
-  font: 800 clamp(22px, 3vw, 30px)/1.15 'Space Grotesk', sans-serif;
+.hp-cg-sc-content h4 {
+  font: 700 22px/1.1 'Space Grotesk', sans-serif;
+  color: #fff;
+  margin: 0 0 6px;
   letter-spacing: -0.5px;
-  color: #ffffff;
-  margin: 0;
 }
 
-.hp-cg-speaker-subtitle {
-  font: 500 14.5px/1.5 Manrope, sans-serif;
-  color: #a89cb8;
-  margin: 0;
+.hp-cg-sc-content p {
+  font: 500 13px/1.4 Manrope, sans-serif;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 16px;
 }
 
-/* 2. Keynote Theme (Editorial) */
-.hp-cg-keynote-block {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 16px 18px 16px 20px;
-  border-left: 2px solid #f59e0b;
-  border-radius: 0 12px 12px 0;
-  background: linear-gradient(90deg, rgba(245, 158, 11, 0.07) 0%, rgba(139, 54, 247, 0.04) 60%, transparent 100%);
-  overflow: hidden;
-}
-
-/* Decorative editorial quote glyph */
-.hp-cg-keynote-block::before {
-  content: '\201C';
-  position: absolute;
-  top: -18px;
-  right: 10px;
-  font: 800 90px/1 'Space Grotesk', serif;
-  color: rgba(245, 158, 11, 0.14);
-  pointer-events: none;
-  user-select: none;
-}
-
-.hp-cg-section-label {
-  position: relative;
-  z-index: 1;
+.hp-cg-sc-details {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font: 700 10.5px 'DM Mono', monospace;
-  letter-spacing: 2px;
-  color: #f59e0b;
-  text-transform: uppercase;
+  gap: 4px;
+  font: 600 12px 'Space Grotesk', sans-serif;
+  color: #fff;
+  opacity: 0.9;
 }
 
-/* Leading accent dot for section labels */
-.hp-cg-section-label::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #f59e0b;
-  box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);
-  flex-shrink: 0;
+@media (max-width: 900px) {
+  .hp-cg-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.hp-cg-keynote-quote {
-  position: relative;
-  z-index: 1;
-  font: 500 clamp(14px, 1.8vw, 15.5px)/1.65 Manrope, sans-serif;
-  color: #f1edfa;
-  margin: 0;
-  font-style: italic;
-  letter-spacing: 0.1px;
-}
-
-/* 3. Keynote Focus (Editorial Numbered List) */
-.hp-cg-focus-block {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.hp-cg-focus-header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.hp-cg-focus-rule {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(245, 158, 11, 0.4) 0%, rgba(139, 54, 247, 0.25) 50%, transparent 100%);
-}
-
-.hp-cg-focus-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px 14px;
-}
-
-.hp-cg-focus-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
-    background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.hp-cg-focus-row:hover {
-  transform: translateY(-2px);
-  background: rgba(245, 158, 11, 0.07);
-  border-color: rgba(245, 158, 11, 0.3);
-  box-shadow: 0 8px 22px -10px rgba(245, 158, 11, 0.45);
-}
-
-.hp-cg-focus-num {
-  font: 700 12px 'DM Mono', monospace;
-  color: #f59e0b;
-  letter-spacing: 1px;
-  flex-shrink: 0;
-  transition: text-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.hp-cg-focus-row:hover .hp-cg-focus-num {
-  text-shadow: 0 0 12px rgba(245, 158, 11, 0.7);
-}
-
-.hp-cg-focus-text {
-  font: 500 13.5px/1.5 Manrope, sans-serif;
-  color: #ded7eb;
-}
-
-/* 4. Subtle Quiet Footer Note */
-.hp-cg-footer-note {
-  font: 400 12px/1.5 'DM Mono', monospace;
-  color: #7d728f;
-  margin: 0;
-  letter-spacing: 0.5px;
+@media (max-width: 500px) {
+  .hp-cg-grid { grid-template-columns: 1fr; }
 }
 
 /* ══════════════════════════════════════════════
@@ -3389,7 +3171,7 @@
   display: block;
   background: linear-gradient(180deg, #1a1035 0%, #140e2a 60%, #110c22 100%);
   color: #d4cee0;
-  padding: 58px clamp(24px, 8vw, 130px) 0;
+  padding: 58px 0 0;
   border-top: 2px solid rgba(139, 54, 247, 0.25);
 }
 
@@ -3397,7 +3179,7 @@
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
   gap: 38px;
-  padding-bottom: 42px;
+  padding: 0 clamp(24px, 8vw, 130px) 42px;
 }
 
 /* Footer logo */
@@ -3529,11 +3311,13 @@
 
 .hp-ft-bottom {
   border-top: 1px solid rgba(139, 54, 247, 0.15);
-  padding: 20px 0;
+  padding: 20px clamp(24px, 8vw, 130px);
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .hp-ft-bottom span {

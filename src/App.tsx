@@ -8,7 +8,6 @@ import navLogo from '../NavBar Logo.png'
 import prizesMascot from '../Mascots Variations/Prize2 (3).png'
 import trackMascot from '../Mascots Variations/trackhomepage.png'
 import emojiMascot from '../Mascots Variations/Emoji.png'
-import chiefGuestImg from '../Chief Guest.png'
 import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -513,9 +512,9 @@ export default function App() {
           {/* Right side: Stacked cards */}
           <div className="hp-tr-right">
             {trackData.map(({ n, t, d, icon: Icon }, index) => (
-              <a 
-                key={n} 
-                className="hp-tr-card hp-tr-stacked-card" 
+              <a
+                key={n}
+                className="hp-tr-card hp-tr-stacked-card"
                 href="/tracks"
                 style={{ '--card-index': index } as React.CSSProperties}
               >
@@ -587,8 +586,8 @@ export default function App() {
           <div className="hp-spon-stats">
             {[
               { to: 500, suffix: '+', l: 'Student Innovators' },
-              { to: 30,  suffix: '',  l: 'Hours of Hackathon' },
-              { to: 5,   suffix: '',  l: 'Tech Tracks' },
+              { to: 30, suffix: '', l: 'Hours of Hackathon' },
+              { to: 5, suffix: '', l: 'Tech Tracks' },
               { to: 100, suffix: '%', l: 'Future Builders' },
             ].map(({ to, suffix, l }) => (
               <div key={l} className="hp-spon-stat">
@@ -607,12 +606,12 @@ export default function App() {
               {[0, 1].map((blockIdx) => (
                 <div key={blockIdx} className="hp-spon-marquee-content">
                   {[
-                    { name: ' Revel Soon', icon: Globe },
-                    { name: 'Revel Soon', icon: Zap },
-                    { name: 'Revel Soon', icon: Rocket },
-                    { name: 'Revel Soon', icon: Landmark },
-                    { name: 'Revel Soon', icon: Shield },
-                    { name: 'Revel Soon', icon: Sparkles },
+                    { name: ' Coming Soon', icon: Globe },
+                    { name: 'Coming Soon', icon: Zap },
+                    { name: 'Coming Soon', icon: Rocket },
+                    { name: 'Coming Soon', icon: Landmark },
+                    { name: 'Coming Soon', icon: Shield },
+                    { name: 'Coming Soon', icon: Sparkles },
                   ].map(({ name, icon: Icon }, i) => (
                     <div key={i} className="hp-spon-marquee-logo">
                       <Icon size={32} />
@@ -648,73 +647,31 @@ export default function App() {
           </p>
         </div>
 
-        <div className="hp-cg-showcase">
-          {/* Card 1: Standalone Photo Card with 3D Tilt Effect */}
-          <TiltCard
-            className="hp-cg-photo-card"
-            tiltLimit={18}
-            scale={1.04}
-            perspective={1000}
-            effect="evade"
-          >
-            <div className="hp-cg-photo-wrap">
-              <div className="hp-cg-photo-backlight" aria-hidden="true" />
-              <img
-                src={chiefGuestImg}
-                alt="Chief Guest - Founder, Kiwi Kisan Window"
-                className="hp-cg-photo-img"
-              />
-              <div className="hp-cg-photo-bottom-fade" aria-hidden="true" />
-            </div>
-            <div className="hp-cg-photo-overlay">
-              <span className="hp-cg-verified-pill"><Check size={13} /> KEYNOTE SPEAKER</span>
-            </div>
-          </TiltCard>
-
-          {/* Right: Editorial Detail Column */}
-          <div className="hp-cg-details-col">
-            <div className="hp-cg-profile-header">
-              <span className="hp-cg-eyebrow">CHIEF GUEST · HTF 3.0</span>
-              <h3 className="hp-cg-speaker-title">Founder, Kiwi Kishan Window</h3>
-              <p className="hp-cg-speaker-subtitle">Startup &amp; Agri-Tech Innovation Leader</p>
-            </div>
-
-            <div className="hp-cg-keynote-block">
-              <span className="hp-cg-section-label">KEYNOTE</span>
-              <blockquote className="hp-cg-keynote-quote">
-                “From Campus Dorm to Scalable Venture: Building Real-World Value with the Project-to-Product Mindset.”
-              </blockquote>
-            </div>
-
-            <div className="hp-cg-focus-block">
-              <div className="hp-cg-focus-header">
-                <span className="hp-cg-section-label">KEYNOTE FOCUS</span>
-                <div className="hp-cg-focus-rule" />
+        <div className="hp-cg-grid">
+          {[
+            { id: 1, name: 'Abhinav Ahluwalia', title: 'Founder & CEO, Kiwi Kisan Window', img: "/chief-guest.png" },
+            { id: 2, name: 'Revealing Soon', title: 'Revealing Soon', img: "" },
+            { id: 3, name: 'Revealing Soon', title: 'Revealing Soon', img: "" },
+            { id: 4, name: 'Revealing Soon', title: 'Revealing Soon', img: "" }
+          ].map((speaker) => (
+            <a href="#speakers" key={speaker.id} className="hp-cg-speaker-card">
+              {speaker.img ? (
+                <img src={speaker.img} alt={speaker.name} className="hp-cg-sc-img" />
+              ) : (
+                <div className="hp-cg-sc-placeholder">
+                  <div className="hp-cg-sc-rs-circle">
+                    <span className="hp-cg-sc-rs-text">RS</span>
+                  </div>
+                </div>
+              )}
+              <div className="hp-cg-sc-overlay" />
+              <div className="hp-cg-sc-content">
+                <h4>{speaker.name}</h4>
+                <p>{speaker.title}</p>
+                <span className="hp-cg-sc-details">Details <ArrowUpRight size={14} /></span>
               </div>
-              <ul className="hp-cg-focus-list">
-                <li className="hp-cg-focus-row">
-                  <span className="hp-cg-focus-num">01</span>
-                  <span className="hp-cg-focus-text">Zero-to-One Venture Building</span>
-                </li>
-                <li className="hp-cg-focus-row">
-                  <span className="hp-cg-focus-num">02</span>
-                  <span className="hp-cg-focus-text">Product-Market Fit &amp; Economics</span>
-                </li>
-                <li className="hp-cg-focus-row">
-                  <span className="hp-cg-focus-num">03</span>
-                  <span className="hp-cg-focus-text">Navigating Real-World Impact</span>
-                </li>
-                <li className="hp-cg-focus-row">
-                  <span className="hp-cg-focus-num">04</span>
-                  <span className="hp-cg-focus-text">Pitching to Angels &amp; VCs</span>
-                </li>
-              </ul>
-            </div>
-
-            <p className="hp-cg-footer-note">
-              Profile &amp; schedule announced with Round 1 results.
-            </p>
-          </div>
+            </a>
+          ))}
         </div>
       </section>
 
@@ -819,7 +776,7 @@ export default function App() {
               <div className="hp-pfc-l-pill-item">
                 <Landmark size={22} className="hp-pfc-l-picon" />
                 <div>
-                  <strong>Tula's University</strong>
+                  <strong>Tulas University</strong>
                   <span>Dehradun, Uttarakhand</span>
                 </div>
               </div>
