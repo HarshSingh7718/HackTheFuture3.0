@@ -14,6 +14,7 @@
   box-sizing: border-box;
 }
 html {
+  overflow-x: clip;
 }
 body {
   margin: 0;
@@ -35,6 +36,8 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
 }
 /* Themed purple glow along the lower edge of the navbar */
 .header::after {
