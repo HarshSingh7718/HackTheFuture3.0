@@ -1,19 +1,18 @@
 import { useState } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
-import { Home, Mail, Phone, MapPin, Send, Camera, Briefcase, MessageSquare } from 'lucide-react'
+import { Home, Mail, Phone, MapPin, Send, Camera, MessageSquare } from 'lucide-react'
 import mascot from '../../Mascots Variations/Contact Us.png'
 
 const contactInfo = [
-  { icon: Mail,     label: 'EMAIL US',        value: 'Hackathon@tulas.edu.in', link: 'mailto:hackthefuture@tulas.edu.in' },
+  { icon: Mail,     label: 'EMAIL US',        value: 'Hackathon@tulas.edu.in', link: 'mailto:Hackathon@tulas.edu.in' },
   { icon: Phone,    label: 'CALL US',          value: '+91 7983536078',          link: 'tel:+917983536078' },
   { icon: MapPin,   label: 'LOCATION',         value: 'Tulas University, Dehradun, Uttarakhand', link: 'https://maps.google.com/?q=Tulas+University+Dehradun' },
-  { icon: MessageSquare, label: 'DISCORD',     value: 'discord.gg/htf03',         link: 'https://discord.gg/htf03' },
+  
 ]
 
 const socials = [
-  { icon: Camera,   label: 'Instagram', handle: '@hackthefuture03', link: 'https://instagram.com' },
-  { icon: Briefcase, label: 'LinkedIn', handle: 'Hack The Future',  link: 'https://linkedin.com' },
+  { icon: Camera,   label: 'Instagram', handle: '@tulashackathon-3.0', link: 'https://www.instagram.com/tulashackathon?igsi=MXQ2Y2Q5eXdwYmp6cw==' },
 ]
 
 export function ContactPage() {
@@ -161,9 +160,9 @@ export function ContactPage() {
             <p className="ct-section-tag">QUICK CONTACT</p>
             <a href="mailto:hackthefuture@tulas.edu.in" className="ct-quick-email">
               <Mail size={16} />
-              hackthefuture@tulas.edu.in
+              Hackathon@tulas.edu.in
             </a>
-            <p className="ct-quick-note">For urgent queries, reach out on Discord — we're most active there!</p>
+            <p className="ct-quick-note">For urgent queries, reach out on WhatsApp — we're most active there!</p>
           </div>
         </div>
       </div>
