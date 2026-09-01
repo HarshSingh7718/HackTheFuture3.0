@@ -25,31 +25,17 @@ export function Footer() {
         <div className="hp-ft-col">
           <h4>Quick Links</h4>
           <a href="/about">About</a>
-
           <a href="/tracks">Tracks</a>
           <a href="/prizes">Prizes</a>
           <a href="/timeline">Timeline</a>
-          <a href="/rules">Rules &amp; Guidelines</a>
-          <a href="/faq">FAQ</a>
-          <a href="/contact">Contact</a>
         </div>
 
         <div className="hp-ft-col">
           <h4>Participate</h4>
-          <a href={event.registrationUrl}>Register Now</a>
-          <a href="#">Team Login</a>
-          <a href="#">Updates</a>
-          <a href="#">Resources</a>
           <a href="/rules">Code of Conduct</a>
-        </div>
-
-        <div className="hp-ft-col">
-          <h4>Support</h4>
-          <a href="/faq">FAQs</a>
-          <a href="/contact">Contact Us</a>
-          <a href="#">Report an Issue</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms &amp; Conditions</a>
+          <a href="/rules">Rules &amp; Guidelines</a>
+          <a href="/faq">FAQ</a>
+          <a href="/contact">Contact</a>
         </div>
 
         <div className="hp-ft-news">

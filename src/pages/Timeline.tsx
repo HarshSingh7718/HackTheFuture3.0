@@ -11,7 +11,7 @@ import mascot from '../../Mascots Variations/Timeline.png'
 /* ── Schedule data ── */
 const days = [
   {
-    day: '25', month: 'SEP', weekday: 'FRIDAY',
+    day: '01', month: 'SEP', weekday: 'TUESDAY',
     events: [
       { icon: UserPlus, title: 'PARTICIPANT REGISTRATION', desc: 'Check-in, collect your kit and report to the venue.',              time: '08:00 AM', featured: false },
       { icon: Flag,     title: 'INAUGURAL CEREMONY',       desc: 'Welcome address, introductions and Chief Guest session.',          time: '10:30 AM', featured: false },
@@ -22,7 +22,7 @@ const days = [
     ],
   },
   {
-    day: '26', month: 'SEP', weekday: 'SATURDAY',
+    day: '18', month: 'SEP', weekday: 'FRIDAY',
     events: [
       { icon: Users,   title: 'MENTOR CHECKPOINTS',    desc: 'Mentor reviews, product feedback and final preparation guidance.',  time: '08:00 AM', featured: false },
       { icon: Upload,  title: 'SUBMISSION DEADLINE',   desc: 'Final project submission — no late entries accepted.',              time: '11:00 AM', featured: false },

@@ -121,7 +121,7 @@
 /* Day group */
 .tl-day-group {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 220px 1fr;
   gap: 0;
   border-top: 1px solid #ede8f2;
 }
@@ -138,6 +138,7 @@
   top: 72px;
   align-self: start;
   background: #faf8fd;
+  z-index: 10;
 }
 .tl-day-num {
   font: 700 52px / 1 'Space Grotesk', sans-serif;
