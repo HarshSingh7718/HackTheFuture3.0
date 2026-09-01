@@ -11,10 +11,12 @@
 
 /* ── Breadcrumb ── */
 .tl-breadcrumb {
+  padding-top:110px;
+  padding-bottom: 20px;
+  padding-left:10px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px clamp(24px, 8vw, 130px);
   font: 700 9.5px 'DM Mono', monospace;
   letter-spacing: 1.4px;
   text-transform: uppercase;
@@ -346,7 +348,7 @@
   .tl-hero { padding: 28px 16px 0; gap: 16px; }
   .tl-hero h1 { font-size: clamp(28px, 9vw, 44px); letter-spacing: -2px; }
   .tl-hero-mascot { height: 200px; }
-  .tl-breadcrumb { padding: 10px 16px; }
+  .tl-breadcrumb { padding: 85px 10px 15px;  }
   .tl-event { grid-template-columns: 20px 1fr auto; gap: 8px; padding: 14px 16px; }
   .tl-event-time { display: none; }
   .tl-event-title { font-size: 13px; }

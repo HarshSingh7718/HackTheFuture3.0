@@ -1,0 +1,856 @@
+/* ═══════════════════════════════════════════════════════════════
+   HACK THE FUTURE 3.0 — MISSION JOURNEY MAP
+   Cinematic scroll-driven camera across an abstract innovation map.
+   Palette: deep violet-black identity · per-phase accent via --phase
+   Type: Space Grotesk (display) · DM Mono (data) · Manrope (body)
+   ═══════════════════════════════════════════════════════════════ */
+
+.jm-section {
+  --phase: #8b5cf6;
+  --phase-glow: 139, 92, 246;
+  --bg0: #070310;
+  --bg1: #0c0718;
+  --edge: rgba(139, 92, 246, 0.14);
+  --hair: rgba(255, 255, 255, 0.06);
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #140a2b 0%, var(--bg1) 42%, var(--bg0) 100%);
+  color: #ece9f5;
+  overflow: clip;
+}
+
+.jm-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--hair) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(110% 80% at 50% 30%, #000 20%, transparent 78%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Intro (scrolls away — not pinned) ─────────────────────────── */
+.jm-intro {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(72px, 10vw, 140px) clamp(24px, 8vw, 130px) clamp(30px, 4vw, 54px);
+  text-align: center;
+}
+.jm-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c8bff0;
+  padding: 7px 15px;
+  border: 1px solid var(--edge);
+  border-radius: 100px;
+  background: rgba(139, 92, 246, 0.06);
+}
+.jm-eyebrow i {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #8b5cf6;
+  box-shadow: 0 0 12px 2px rgba(139, 92, 246, 0.9);
+  animation: jm-pulse 2.2s ease-in-out infinite;
+}
+.jm-eyebrow em { color: #8579a6; font-style: normal; }
+
+.jm-title {
+  font: 800 clamp(32px, 4.5vw, 58px)/1.05 'Space Grotesk', sans-serif;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 20px 0 0;
+  text-transform: uppercase;
+}
+.jm-title span {
+  background: linear-gradient(135deg, rgb(192, 132, 252) 0%, rgb(168, 85, 247) 50%, rgb(56, 189, 248) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.jm-intro .hp-jn-flow-ribbon {
+  margin-top: 30px;
+}
+.jm-lead {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(15px, 1.6vw, 19px);
+  color: #a49ec2;
+  margin: 18px auto 0;
+  max-width: 40ch;
+}
+.jm-coords {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  margin-top: 26px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #6f6690;
+}
+.jm-coords span { position: relative; padding-left: 15px; }
+.jm-coords span::before {
+  content: '';
+  position: absolute; left: 0; top: 50%;
+  width: 6px; height: 6px; margin-top: -3px;
+  border: 1px solid #4b3f6b; transform: rotate(45deg);
+}
+.jm-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 34px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: #8a7fb0;
+}
+.jm-cue b { color: var(--phase, #a78bfa); animation: jm-bob 1.7s ease-in-out infinite; }
+
+@keyframes jm-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes jm-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+/* ── Cinematic stage (pinned viewport) ─────────────────────────── */
+.jm-stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  cursor: default;
+  background: radial-gradient(90% 70% at 50% 40%, rgba(139, 92, 246, 0.05), transparent 70%);
+}
+.jm-stars {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 220%; height: 220%;
+  margin: -110% 0 0 -110%;
+  will-change: transform;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 18%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1.2px 1.2px at 78% 32%, rgba(167,139,250,0.7), transparent),
+    radial-gradient(1px 1px at 45% 72%, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.6px 1.6px at 88% 82%, rgba(34,211,238,0.55), transparent),
+    radial-gradient(1px 1px at 28% 88%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.3px 1.3px at 62% 12%, rgba(217,70,239,0.55), transparent);
+  background-size: 340px 340px, 420px 420px, 300px 300px, 500px 500px, 260px 260px, 380px 380px;
+  opacity: 0.9;
+}
+
+.jm-world {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1300px;
+  height: 1560px;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.jm-grid {
+  position: absolute; inset: -200px;
+  background-image:
+    linear-gradient(rgba(139,92,246,0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.09) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(60% 46% at 50% 50%, #000 42%, transparent 88%);
+}
+.jm-contours {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 18% 13%, transparent 58px, rgba(139,92,246,0.10) 59px, transparent 61px),
+    radial-gradient(circle at 18% 13%, transparent 96px, rgba(139,92,246,0.07) 97px, transparent 99px),
+    radial-gradient(circle at 78% 87%, transparent 70px, rgba(217,70,239,0.10) 71px, transparent 73px),
+    radial-gradient(circle at 78% 87%, transparent 120px, rgba(217,70,239,0.06) 121px, transparent 123px);
+  pointer-events: none;
+}
+/* ── Route (SVG) ───────────────────────────────────────────────── */
+.jm-routes {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1200px; height: 1640px;
+  overflow: visible;
+  pointer-events: none;
+}
+.jm-seg-base {
+  fill: none;
+  stroke: rgba(139, 92, 246, 0.16);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 2 14;
+}
+.jm-seg {
+  fill: none;
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  will-change: stroke-dashoffset;
+}
+
+/* ── Ambient per-phase environments ────────────────────────────── */
+.jm-amb {
+  position: absolute;
+  width: 340px; height: 340px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 1;
+}
+.jm-amb i { position: absolute; display: block; }
+
+/* radar — Discovery */
+.jm-amb--radar .jm-rr {
+  left: 50%; top: 50%;
+  border: 1px solid rgba(var(--g), 0.34);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.jm-amb--radar .r1 { width: 120px; height: 120px; }
+.jm-amb--radar .r2 { width: 210px; height: 210px; opacity: 0.6; }
+.jm-amb--radar .r3 { width: 300px; height: 300px; opacity: 0.4; }
+.jm-amb--radar .jm-radar-sweep {
+  left: 50%; top: 50%;
+  width: 300px; height: 300px;
+  margin: -150px 0 0 -150px;
+  transform-origin: 50% 50%;
+  background: conic-gradient(from 0deg, rgba(var(--g), 0.30), transparent 60deg);
+  border-radius: 50%;
+  animation: jm-sweep 4.4s linear infinite;
+}
+.jm-amb--radar .jm-cross {
+  left: 50%; top: 50%;
+  width: 260px; height: 260px;
+  transform: translate(-50%, -50%);
+  background:
+    linear-gradient(rgba(var(--g), 0.2) 1px, transparent 1px) center / 100% 50%,
+    linear-gradient(90deg, rgba(var(--g), 0.2) 1px, transparent 1px) center / 50% 100%;
+  background-repeat: no-repeat;
+}
+@keyframes jm-sweep { to { transform: rotate(360deg); } }
+
+/* blueprint — Architecture */
+.jm-amb--blueprint .jm-bp-grid {
+  left: 50%; top: 50%;
+  width: 250px; height: 190px;
+  transform: translate(-50%, -50%);
+  background-image:
+    linear-gradient(rgba(var(--g), 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--g), 0.22) 1px, transparent 1px);
+  background-size: 34px 34px;
+  border: 1px solid rgba(var(--g), 0.3);
+}
+.jm-amb--blueprint .jm-bp-node {
+  width: 10px; height: 10px; margin: -5px;
+  border: 1.5px solid rgba(var(--g), 0.85);
+  background: rgba(var(--g), 0.2);
+  transform: rotate(45deg);
+}
+.jm-amb--blueprint .n1 { left: 34%; top: 38%; }
+.jm-amb--blueprint .n2 { left: 62%; top: 46%; }
+.jm-amb--blueprint .n3 { left: 48%; top: 64%; }
+.jm-amb--blueprint .jm-bp-link {
+  left: 34%; top: 38%; width: 150px; height: 90px;
+  border-top: 1px dashed rgba(var(--g), 0.4);
+  border-right: 1px dashed rgba(var(--g), 0.4);
+}
+/* sprint — energetic code streams */
+.jm-amb--sprint {
+  width: 300px; height: 260px;
+}
+.jm-amb--sprint .jm-code {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, rgba(var(--g), 0.75), transparent);
+  animation: jm-stream 1.5s linear infinite;
+}
+.jm-amb--sprint .c1 { left: 18%; top: 30%; width: 140px; animation-delay: 0s; }
+.jm-amb--sprint .c2 { left: 34%; top: 42%; width: 96px; animation-delay: 0.25s; }
+.jm-amb--sprint .c3 { left: 22%; top: 54%; width: 168px; animation-delay: 0.5s; }
+.jm-amb--sprint .c4 { left: 40%; top: 66%; width: 110px; animation-delay: 0.15s; }
+.jm-amb--sprint .c5 { left: 26%; top: 78%; width: 132px; animation-delay: 0.4s; }
+.jm-amb--sprint .jm-spark {
+  left: 50%; top: 50%; width: 200px; height: 200px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(var(--g), 0.16), transparent 68%);
+}
+@keyframes jm-stream {
+  0% { opacity: 0; transform: translateX(-10px); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(14px); }
+}
+
+/* validate — signal / waveform */
+.jm-amb--validate { width: 300px; height: 260px; }
+.jm-amb--validate .jm-sig {
+  bottom: 34%;
+  width: 12px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(rgba(var(--g), 0.85), rgba(var(--g), 0.25));
+  transform-origin: bottom;
+  animation: jm-eq 1.3s ease-in-out infinite;
+}
+.jm-amb--validate .s1 { left: 30%; height: 30px; animation-delay: 0s; }
+.jm-amb--validate .s2 { left: 37%; height: 56px; animation-delay: 0.15s; }
+.jm-amb--validate .s3 { left: 44%; height: 40px; animation-delay: 0.3s; }
+.jm-amb--validate .s4 { left: 51%; height: 72px; animation-delay: 0.1s; }
+.jm-amb--validate .s5 { left: 58%; height: 46px; animation-delay: 0.25s; }
+.jm-amb--validate .s6 { left: 65%; height: 62px; animation-delay: 0.05s; }
+.jm-amb--validate .s7 { left: 72%; height: 34px; animation-delay: 0.35s; }
+@keyframes jm-eq { 0%, 100% { transform: scaleY(0.6); } 50% { transform: scaleY(1.15); } }
+/* package — stacked layers */
+.jm-amb--package .jm-layer {
+  left: 50%; top: 50%;
+  width: 150px; height: 60px;
+  margin: -30px 0 0 -75px;
+  border: 1px solid rgba(var(--g), 0.4);
+  background: rgba(var(--g), 0.08);
+  transform: rotateX(58deg) rotateZ(45deg);
+}
+.jm-amb--package .y1 { margin-top: -6px; opacity: 0.5; }
+.jm-amb--package .y2 { margin-top: -30px; opacity: 0.75; }
+.jm-amb--package .y3 { margin-top: -54px; }
+
+/* finale — beacon rings */
+.jm-amb--finale { width: 420px; height: 420px; opacity: 0.7; }
+.jm-amb--finale .jm-beacon {
+  left: 50%; top: 50%;
+  border: 1.5px solid rgba(var(--g), 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: jm-beacon 3s ease-out infinite;
+}
+.jm-amb--finale .b1 { width: 140px; height: 140px; animation-delay: 0s; }
+.jm-amb--finale .b2 { width: 140px; height: 140px; animation-delay: 1s; }
+.jm-amb--finale .b3 { width: 140px; height: 140px; animation-delay: 2s; }
+.jm-amb--finale .jm-halo {
+  left: 50%; top: 50%; width: 320px; height: 320px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(var(--g), 0.18), transparent 66%);
+}
+@keyframes jm-beacon {
+  0% { width: 100px; height: 100px; opacity: 0.8; }
+  100% { width: 360px; height: 360px; opacity: 0; }
+}
+/* ── Checkpoint nodes (counter-scaled by JS) ───────────────────── */
+.jm-node {
+  position: absolute;
+  width: 0; height: 0;
+  z-index: 4;
+  will-change: transform;
+  transition: opacity 0.5s ease;
+}
+.jm-node.is-upcoming { opacity: 0.42; }
+.jm-node.is-active,
+.jm-node.is-completed { opacity: 1; }
+
+.jm-marker {
+  position: absolute;
+  left: 0; top: 0;
+  width: 58px; height: 58px;
+  margin: -29px 0 0 -29px;
+  display: grid;
+  place-items: center;
+}
+.jm-halo-ring {
+  position: absolute; inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--g), 0.55);
+  opacity: 0;
+}
+.jm-node.is-active .jm-halo-ring {
+  opacity: 1;
+  animation: jm-ring 1.9s ease-out infinite;
+}
+@keyframes jm-ring {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.jm-dot {
+  position: relative;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #d9d3ee;
+  border: 1.5px solid rgba(var(--g), 0.4);
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,0.14), transparent 60%),
+    #140e26;
+  transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+.jm-node.is-active .jm-dot {
+  color: #fff;
+  border-color: var(--phase, #a78bfa);
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,0.22), transparent 60%),
+    color-mix(in srgb, var(--c) 34%, #140e26);
+  box-shadow: 0 0 0 4px rgba(var(--g), 0.14), 0 0 26px 3px rgba(var(--g), 0.6);
+}
+.jm-node.is-completed .jm-dot {
+  color: #fff;
+  border-color: rgba(var(--g), 0.85);
+  background: color-mix(in srgb, var(--c) 22%, #120c22);
+  box-shadow: 0 0 14px 1px rgba(var(--g), 0.4);
+}
+.jm-mi, .jm-mc {
+  grid-area: 1 / 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.jm-mc { opacity: 0; transform: scale(0.4); color: #fff; }
+.jm-node.is-completed .jm-mi { opacity: 0; transform: scale(0.4); }
+.jm-node.is-completed .jm-mc { opacity: 1; transform: scale(1); }
+
+/* Labels */
+.jm-label {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  width: max-content;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.jm-node--right .jm-label { left: 42px; align-items: flex-start; text-align: left; }
+.jm-node--left .jm-label { right: 42px; align-items: flex-end; text-align: right; }
+.jm-code {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(var(--g), 0.95);
+}
+.jm-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  color: #f1eefb;
+  line-height: 1.05;
+}
+.jm-role {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  color: #9a92ba;
+}
+/* Active info panel */
+.jm-panel {
+  position: absolute;
+  top: 44px;
+  width: 288px;
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(var(--g), 0.28);
+  background: linear-gradient(180deg, rgba(22, 15, 40, 0.92), rgba(14, 9, 26, 0.92));
+  backdrop-filter: blur(7px);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  opacity: 0;
+  transform: translateY(8px) scale(0.97);
+  transform-origin: top center;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+}
+.jm-node--right .jm-panel { left: 42px; transform-origin: top left; }
+.jm-node--left .jm-panel { right: 42px; transform-origin: top right; }
+.jm-node.is-active .jm-panel { opacity: 1; transform: translateY(0) scale(1); }
+.jm-desc {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #c3bdd8;
+  margin: 0 0 10px;
+}
+.jm-out {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(var(--g), 0.2);
+  border: 1px solid rgba(var(--g), 0.45);
+}
+.jm-out svg { color: var(--phase); }
+/* ── Vignette ──────────────────────────────────────────────────── */
+.jm-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background:
+    radial-gradient(120% 80% at 50% 50%, transparent 52%, rgba(6, 3, 16, 0.55) 82%, rgba(6, 3, 16, 0.92) 100%);
+}
+
+/* ── HUD ───────────────────────────────────────────────────────── */
+.jm-hud {
+  position: absolute;
+  right: clamp(16px, 3vw, 40px);
+  bottom: clamp(18px, 4vh, 48px);
+  z-index: 6;
+  width: 210px;
+  padding: 15px 17px;
+  border-radius: 14px;
+  border: 1px solid rgba(var(--phase-glow), 0.28);
+  background: linear-gradient(180deg, rgba(18, 12, 34, 0.82), rgba(10, 6, 22, 0.82));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px -22px rgba(0, 0, 0, 0.85);
+  transition: border-color 0.5s ease;
+}
+.jm-hud-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #9088ad;
+}
+.jm-hud-live {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--phase, #a78bfa);
+  box-shadow: 0 0 10px 2px rgba(var(--phase-glow), 0.9);
+  animation: jm-pulse 1.8s ease-in-out infinite;
+}
+.jm-hud-count {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  color: #fff;
+  margin: 6px 0 10px;
+  font-variant-numeric: tabular-nums;
+}
+.jm-hud-bars {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 13px;
+}
+.jm-hud-bars b {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+.jm-hud-bars b.on {
+  background: var(--c, #a78bfa);
+  box-shadow: 0 0 8px 0 rgba(var(--g), 0.7);
+}
+.jm-hud-cur {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #7f77a0;
+}
+.jm-hud-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  color: var(--phase, #c8bff0);
+  margin-top: 2px;
+  min-height: 20px;
+  transition: color 0.5s ease;
+}
+
+/* ── Completion badge ──────────────────────────────────────────── */
+.jm-complete {
+  position: absolute;
+  left: 50%; top: 50%;
+  z-index: 7;
+  transform: translate(-50%, -50%) scale(0.92);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.jm-stage.is-complete .jm-complete { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.jm-complete-mark {
+  display: grid;
+  place-items: center;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  color: #fff;
+  background: color-mix(in srgb, #d946ef 30%, #140e26);
+  border: 1.5px solid rgba(217, 70, 239, 0.8);
+  box-shadow: 0 0 0 6px rgba(217, 70, 239, 0.12), 0 0 34px 4px rgba(217, 70, 239, 0.6);
+}
+.jm-complete-k {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.34em;
+  color: #f0b6f9;
+}
+.jm-complete-v {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 3.4vw, 34px);
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+.jm-complete-v svg { color: #d946ef; }
+
+/* ── CTA Card (Are you ready to transform...) ─────────────────── */
+.jm-cta-card-wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  margin: 40px auto 80px;
+  padding: 0 clamp(20px, 5vw, 80px);
+  width: 100%;
+}
+
+.jm-cta-card {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(24, 15, 46, 0.8) 0%, rgba(13, 8, 28, 0.92) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 54, 247, 0.28);
+  border-radius: 18px;
+  padding: 24px clamp(20px, 3vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba(139, 54, 247, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jm-cta-card:hover {
+  border-color: rgba(168, 85, 247, 0.55);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.55), 0 0 40px rgba(139, 54, 247, 0.2);
+}
+
+.jm-cta-l {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.jm-cta-ic {
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.jm-cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jm-cta-title {
+  font: 800 17px/1.3 'Space Grotesk', sans-serif;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.jm-cta-desc {
+  font: 400 13.5px/1.5 Manrope, sans-serif;
+  color: #a89cb8;
+  margin: 0;
+}
+
+.jm-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font: 800 12.5px 'Space Grotesk', sans-serif;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  padding: 14px 26px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #9333ea 50%, #a855f7 100%);
+  box-shadow: 0 0 25px rgba(139, 54, 247, 0.45), 0 4px 15px rgba(147, 51, 234, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.jm-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(139, 54, 247, 0.7), 0 6px 22px rgba(147, 51, 234, 0.5);
+  filter: brightness(1.08);
+}
+
+.jm-cta-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.jm-cta-btn:hover svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 860px) {
+  .jm-cta-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+    gap: 20px;
+  }
+
+  .jm-cta-l {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .jm-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ═══ FLAT / MOBILE / REDUCED-MOTION JOURNEY ═══════════════════════ */
+.jm-flat {
+  --pad-x: clamp(16px, 5vw, 36px);
+  --node-w: 42px;
+  --node-cx: calc(var(--pad-x) + (var(--node-w) / 2));
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 20px var(--pad-x) 30px;
+}
+.jm-flat-rail {
+  position: absolute;
+  left: var(--node-cx);
+  transform: translateX(-50%);
+  width: 2px;
+  background: rgba(139, 92, 246, 0.16);
+  border-radius: 2px;
+  z-index: 0;
+}
+.jm-flat-fill {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 0;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #a78bfa, #22d3ee 40%, #10b981 70%, #d946ef);
+  box-shadow: 0 0 12px 0 rgba(139, 92, 246, 0.6);
+  transition: height 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.jm-fcard {
+  position: relative;
+  padding: 0 0 clamp(22px, 4vw, 36px) calc(var(--node-w) + 16px);
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.jm-fcard.in { opacity: 1; transform: none; }
+.jm-fcard:last-of-type { padding-bottom: clamp(30px, 5vw, 48px); }
+
+.jm-fnode {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--node-w);
+  height: var(--node-w);
+  z-index: 1;
+}
+.jm-fdot {
+  display: grid;
+  place-items: center;
+  width: var(--node-w);
+  height: var(--node-w);
+  border-radius: 50%;
+  color: #fff;
+  border: 1.5px solid rgba(var(--g), 0.55);
+  background: color-mix(in srgb, var(--c) 26%, #130d24);
+  box-shadow: 0 0 0 4px rgba(6, 3, 16, 1), 0 0 18px 1px rgba(var(--g), 0.5);
+}
+.jm-fbody {
+  border: 1px solid rgba(var(--g), 0.22);
+  border-radius: 14px;
+  padding: 15px 17px;
+  background: linear-gradient(180deg, rgba(20, 13, 38, 0.7), rgba(12, 8, 24, 0.7));
+}
+.jm-fcard.is-finale .jm-fbody {
+  border-color: rgba(217, 70, 239, 0.4);
+  box-shadow: 0 0 30px -6px rgba(217, 70, 239, 0.4);
+}
+.jm-fhead { display: flex; align-items: baseline; gap: 10px; margin-bottom: 7px; }
+.jm-fcode { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: rgba(var(--g), 0.95); }
+.jm-fname { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: #857aa6; }
+.jm-ftitle { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(17px, 4.5vw, 21px); color: #f1eefb; margin: 0 0 7px; }
+.jm-fdesc { font-family: 'Manrope', sans-serif; font-size: 13.5px; line-height: 1.55; color: #b7b1cf; margin: 0 0 12px; }
+.jm-fout {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'DM Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; padding: 4px 11px; border-radius: 100px;
+  background: rgba(var(--g), 0.18); border: 1px solid rgba(var(--g), 0.42);
+}
+.jm-fout svg { color: var(--c); }
+.jm-flat-end {
+  position: relative;
+  margin-left: calc(var(--node-w) + 16px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: #f0b6f9;
+  padding: 10px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(217, 70, 239, 0.4);
+  background: rgba(217, 70, 239, 0.1);
+}
+.jm-flat-end svg { color: #d946ef; }
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .jm-title { font-size: clamp(34px, 11vw, 54px); }
+  .jm-hud { width: 180px; }
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .jm-eyebrow i, .jm-cue b, .jm-hud-live,
+  .jm-radar-sweep, .jm-amb--sprint .jm-code, .jm-amb--validate .jm-sig,
+  .jm-amb--finale .jm-beacon, .jm-node.is-active .jm-halo-ring {
+    animation: none !important;
+  }
+  .jm-fcard { opacity: 1; transform: none; transition: none; }
+  .jm-flat-fill { transition: none; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

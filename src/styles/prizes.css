@@ -56,10 +56,12 @@
 
 /* ── Breadcrumb ── */
 .pr-breadcrumb {
+  padding-top:110px;
+  padding-bottom: 20px;
+  padding-left:10px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 13px clamp(24px, 8vw, 130px);
   font: 700 9.5px 'DM Mono', monospace;
   letter-spacing: 1.4px;
   text-transform: uppercase;
@@ -586,7 +588,7 @@
   .pr-hero { padding: 28px 16px 0; gap: 16px; }
   .pr-hero h1 { font-size: clamp(28px, 9vw, 44px); letter-spacing: -2px; }
   .pr-hero-mascot { height: 220px; }
-  .pr-breadcrumb { padding: 10px 16px; }
+  .pr-breadcrumb { padding: 85px 10px 15px;  }
   .pr-pod-card { padding: 28px 20px; }
   .pr-pod-amount { font-size: clamp(36px, 10vw, 52px); }
   .pr-pool-banner { padding: 20px 16px; }

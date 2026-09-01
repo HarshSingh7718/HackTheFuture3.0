@@ -11,10 +11,12 @@
 
 /* ── Breadcrumb ── */
 .rl-breadcrumb {
+  padding-top:110px;
+  padding-bottom: 20px;
+  padding-left:10px;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px clamp(24px, 8vw, 130px);
   font: 700 9.5px 'DM Mono', monospace;
   letter-spacing: 1.4px;
   text-transform: uppercase;
@@ -424,7 +426,7 @@
   .rl-hero { padding: 28px 16px; gap: 16px; }
   .rl-hero h1 { font-size: clamp(28px, 9vw, 44px); letter-spacing: -2px; }
   .rl-hero-mascot { height: 180px; }
-  .rl-breadcrumb { padding: 10px 16px; }
+  .rl-breadcrumb { padding: 85px 10px 15px;  }
   .rl-body { padding: 20px 16px 48px; }
   .rl-warning { padding: 20px 16px; }
   .rl-tabs { padding: 0 16px; }
