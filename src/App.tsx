@@ -421,14 +421,16 @@ export default function App() {
             This edition's theme is <strong>"Project to Product"</strong> — challenging students to move beyond academic projects
             and build solutions with real product potential, entrepreneurship mindset and scalable impact.
           </p>
-          <p>PROBLEM → IDEA → PROJECT → PROTOTYPE → <span className="purple-text">PRODUCT → PITCH</span></p>
-          <a className="button button-outline about-know-more" href="/about">Know more about <strong>→</strong></a>
         </div>
         <img
           className="about-image-full"
           src={homeAboutImg}
           alt="Tulas University campus and students hacking at Hack The Future 3.0"
         />
+        <div className="about-bottom-row">
+          <a className="button button-outline about-know-more" href="/about">Know more about <strong>→</strong></a>
+          <p className="about-pipeline">PROBLEM → IDEA → PROJECT → PROTOTYPE → <span className="purple-text">PRODUCT → PITCH</span></p>
+        </div>
       </section>
 
       {/* ═══════════ COUNTDOWN BAND ═══════════ */}
@@ -606,12 +608,12 @@ export default function App() {
               {[0, 1].map((blockIdx) => (
                 <div key={blockIdx} className="hp-spon-marquee-content">
                   {[
-                    { name: 'Lorem Ipsum', icon: Globe },
-                    { name: 'Dolor Sit', icon: Zap },
-                    { name: 'Amet Consectetur', icon: Rocket },
-                    { name: 'Adipiscing Elit', icon: Landmark },
-                    { name: 'Sed Do', icon: Shield },
-                    { name: 'Eiusmod', icon: Sparkles },
+                    { name: ' Revel Soon', icon: Globe },
+                    { name: 'Revel Soon', icon: Zap },
+                    { name: 'Revel Soon', icon: Rocket },
+                    { name: 'Revel Soon', icon: Landmark },
+                    { name: 'Revel Soon', icon: Shield },
+                    { name: 'Revel Soon', icon: Sparkles },
                   ].map(({ name, icon: Icon }, i) => (
                     <div key={i} className="hp-spon-marquee-logo">
                       <Icon size={32} />
@@ -773,7 +775,7 @@ export default function App() {
               <span className="hp-pfc-l-dot" />
               ROUND 1 SUBMISSION IS 100% FREE
             </span>
-            <span className="hp-pfc-l-meta">DEADLINE: 13 SEPT 2026 · 11:59 PM IST</span>
+            <span className="hp-pfc-l-meta">DEADLINE: 18 SEPT 2026 · 11:59 PM IST</span>
           </div>
 
           <div className="hp-pfc-l-body">
