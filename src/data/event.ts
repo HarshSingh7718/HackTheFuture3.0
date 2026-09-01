@@ -9,7 +9,7 @@ export const event = {
   cashPrize: '₹1,65,000',
   incubationSupport: '₹1,20,000 (Top 3 teams, additional)',
   organizer: 'Tulas ACM Student Chapter',
-  teamSize: '3–5 Members',
+  teamSize: '2–5 Members',
   round1Fee: 'Free',
   finalRoundFee: '₹500 per participant',
   registrationUrl: 'https://unstop.com', // Replace with official Unstop / registration URL

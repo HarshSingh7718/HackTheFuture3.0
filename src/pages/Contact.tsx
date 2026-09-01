@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { Home, Mail, Phone, MapPin, Send, Camera, MessageSquare } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 import mascot from '../../Mascots Variations/Contact Us.png'
 
 const contactInfo = [
@@ -13,6 +14,7 @@ const contactInfo = [
 
 const socials = [
   { icon: Camera,   label: 'Instagram', handle: '@tulashackathon-3.0', link: 'https://www.instagram.com/tulashackathon?igsi=MXQ2Y2Q5eXdwYmp6cw==' },
+  { icon: FaWhatsapp, label: 'WhatsApp', handle: 'Chat with us', link: 'https://chat.whatsapp.com/Ichzy6cHy6pIOCCqxa8E3f' },
 ]
 
 export function ContactPage() {

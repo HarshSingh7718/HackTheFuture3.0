@@ -27,8 +27,8 @@ const sections = [
     subtitle: 'Team size, composition and collaboration rules.',
     icon: Users,
     points: [
-      'Team size: 3–5 members per team.',
-      'Solo participation is not permitted — minimum 3 members required.',
+      'Team size: 2–5 members per team.',
+      'Solo participation is not permitted — minimum 2 members required.',
       'Cross-college teams are fully permitted and encouraged.',
       'Teams are encouraged to bring diverse skills: development, design, AI, product, business.',
       'Each team must designate one team leader for official communication.',

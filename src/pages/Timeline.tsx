@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer'
 import {
   UserPlus, Flag, Code2, Users, Coffee,
   Moon, Upload, Search, Trophy, Clock,
-  Home, ArrowUpRight,
+  Home, ArrowUpRight, CreditCard,
 } from 'lucide-react'
 import mascot from '../../Mascots Variations/Timeline.png'
 
@@ -13,24 +13,37 @@ const days = [
   {
     day: '01', month: 'SEP', weekday: 'TUESDAY',
     events: [
-      { icon: UserPlus, title: 'PARTICIPANT REGISTRATION', desc: 'Check-in, collect your kit and report to the venue.',              time: '08:00 AM', featured: false },
-      { icon: Flag,     title: 'INAUGURAL CEREMONY',       desc: 'Welcome address, introductions and Chief Guest session.',          time: '10:30 AM', featured: false },
-      { icon: Code2,    title: 'HACKATHON BEGINS',         desc: 'The clock starts — choose your track, ideate and build.', time: '11:00 AM', featured: true  },
-      { icon: Users,    title: 'MENTORING SESSIONS',       desc: 'Expert mentors and product validation sessions throughout the day.',time: '02:00 PM', featured: false },
-      { icon: Coffee,   title: 'SNACKS & NETWORKING',      desc: 'Recharge, connect and collaborate with fellow builders.',          time: '07:30 PM', featured: false },
-      { icon: Moon,     title: 'NIGHT HACKING',            desc: 'Development phase continues. The best ideas come at night.',       time: '09:00 PM', featured: false },
+      { icon: UserPlus, title: 'PARTICIPANT REGISTRATION', desc: 'Register on Unstop and secure your spot in the challenge.', time: '10:00 AM', featured: false },
+      { icon: Search, title: 'SCREENING', desc: 'Showcase your skills, ideas and problem-solving potential.', time: '11:00 AM', featured: false },
     ],
   },
   {
     day: '18', month: 'SEP', weekday: 'FRIDAY',
     events: [
-      { icon: Users,   title: 'MENTOR CHECKPOINTS',    desc: 'Mentor reviews, product feedback and final preparation guidance.',  time: '08:00 AM', featured: false },
-      { icon: Upload,  title: 'SUBMISSION DEADLINE',   desc: 'Final project submission — no late entries accepted.',              time: '11:00 AM', featured: false },
-      { icon: Search,  title: 'JURY EVALUATION',       desc: 'Projects evaluated by our expert panel from IITs, NITs and industry.',time: '12:00 PM', featured: false },
-      { icon: Trophy,  title: 'FINAL PRESENTATIONS',   desc: 'Teams present before the jury — pitch your product and its impact.', time: '02:00 PM', featured: false },
-      { icon: Trophy,  title: 'RESULTS & AWARDS',      desc: 'Winners announced, prizes distributed and closing ceremony.',        time: '04:00 PM', featured: true  },
+      { icon: Users, title: 'SHORTLISTING', desc: 'Top teams advance based on innovation, feasibility and impact.', time: '05:00 PM', featured: true },
     ],
   },
+  {
+    day: '21', month: 'SEP', weekday: 'MONDAY',
+    events: [
+      { icon: CreditCard, title: 'PARTICIPANT PAYMENT', desc: 'Complete the fee payment to confirm your spot for the offline hackathon.', time: '10:00 AM', featured: false },
+    ],
+  },
+  {
+    day: '25', month: 'SEP', weekday: 'FRIDAY',
+    events: [
+      { icon: Code2, title: 'HACKATHON BEGINS', desc: 'Offline hackathon begins at Tulas University.', time: '09:00 AM', featured: true },
+    ],
+  },
+  {
+    day: '26', month: 'SEP', weekday: 'SATURDAY',
+    events: [
+      { icon: Upload, title: 'FINAL SUBMISSION', desc: 'Submit your project, demo and solution before the deadline.', time: '11:00 AM', featured: false },
+      { icon: Search, title: 'JURY EVALUATION', desc: 'Experts evaluate your innovation, execution and real-world impact.', time: '12:00 PM', featured: false },
+      { icon: Users, title: 'FINAL PRESENTATIONS', desc: 'Pitch your solution, showcase your impact and impress the jury.', time: '02:00 PM', featured: false },
+      { icon: Trophy, title: 'RESULTS & AWARDS', desc: 'Winners are revealed, achievements celebrated and innovation rewarded.', time: '04:00 PM', featured: true },
+    ],
+  }
 ]
 
 export function TimelinePage() {

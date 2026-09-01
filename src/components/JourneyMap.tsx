@@ -159,26 +159,7 @@ export function JourneyMap() {
 
       {mode === 'cinematic' ? <CinematicStage /> : <FlatJourney />}
 
-      <div className="jm-cta-card-wrap">
-        <div className="jm-cta-card">
-          <div className="jm-cta-l">
-            <Rocket size={26} className="jm-cta-ic" />
-            <div className="jm-cta-text">
-              <h3 className="jm-cta-title">Are you ready to take your team through the full hackathon journey?</h3>
-              <p className="jm-cta-desc">Round 1 submission is 100% free. Register and submit your PPT before 13 September 2026.</p>
-            </div>
-          </div>
-          <a
-            href={event.registrationUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="jm-cta-btn"
-          >
-            <span>SUBMIT YOUR PPT NOW</span>
-            <ArrowRight size={16} />
-          </a>
-        </div>
-      </div>
+
     </section>
   )
 }
@@ -213,9 +194,7 @@ function CinematicStage() {
   const stageRef = useRef<HTMLDivElement>(null)
   const worldRef = useRef<HTMLDivElement>(null)
   const starsRef = useRef<HTMLDivElement>(null)
-  const countRef = useRef<HTMLSpanElement>(null)
-  const nameRef = useRef<HTMLSpanElement>(null)
-  const barsRef = useRef<HTMLDivElement>(null)
+
 
   // Keep GSAP/ScrollTrigger frame-synced with Lenis smooth scroll
   useLenis(() => ScrollTrigger.update())
@@ -224,7 +203,7 @@ function CinematicStage() {
     const stage = stageRef.current!, world = worldRef.current!, stars = starsRef.current!
     const nodes = gsap.utils.toArray<HTMLElement>('.jm-node', stage)
     const segs = gsap.utils.toArray<SVGPathElement>('.jm-seg', stage)
-    const bars = barsRef.current ? (Array.from(barsRef.current.children) as HTMLElement[]) : []
+
 
     const segLen = segs.map((s) => {
       const L = s.getTotalLength()
@@ -281,10 +260,7 @@ function CinematicStage() {
           nodes[k].classList.toggle('is-active', !done && k === idx)
           nodes[k].classList.toggle('is-upcoming', !done && k > idx)
         }
-        const reached = Math.min(idx + 1, 6)
-        if (countRef.current) countRef.current.textContent = `${String(reached).padStart(2, '0')} / 06`
-        if (nameRef.current) nameRef.current.textContent = done ? 'COMPLETE' : PHASES[idx].name
-        for (let k = 0; k < bars.length; k++) bars[k].classList.toggle('on', k < reached)
+
         stage.style.setProperty('--phase', done ? '#d946ef' : PHASES[idx].color)
         stage.style.setProperty('--phase-glow', done ? '217,70,239' : PHASES[idx].glow)
         last = key
@@ -366,15 +342,7 @@ function CinematicStage() {
       </div>
       <div className="jm-vignette" aria-hidden="true" />
 
-      <div className="jm-hud" aria-hidden="true">
-        <div className="jm-hud-head"><i className="jm-hud-live" />JOURNEY PROGRESS</div>
-        <div className="jm-hud-count"><span ref={countRef}>01 / 06</span></div>
-        <div className="jm-hud-bars" ref={barsRef}>
-          {PHASES.map((ph) => <b key={`bar-${ph.code}`} style={vars(ph.color, ph.glow)} />)}
-        </div>
-        <div className="jm-hud-cur">CURRENT PHASE</div>
-        <div className="jm-hud-name"><span ref={nameRef}>REGISTRATION</span></div>
-      </div>
+
     </div>
   )
 }

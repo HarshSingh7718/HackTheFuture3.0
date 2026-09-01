@@ -1,6 +1,5 @@
 import { Header } from './components/Header'
 import { JourneyMap } from './components/JourneyMap'
-import { TiltCard } from './components/ui/tilt-card'
 import { event } from './data/event'
 import mascot from '../Website Mascot.png'
 import homeAboutImg from '../HomeAbout section.png'
@@ -16,7 +15,7 @@ import { useLenis } from '@studio-freight/react-lenis'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 import {
-  CalendarDays, Code2, MapPin, Trophy, Users,
+  CalendarDays, Code2, MapPin, Trophy, Users, User,
   Brain, Shield, Lightbulb, Cpu, Globe,
   GraduationCap, Gift, Heart, ArrowUpRight,
   Zap, Landmark, Sparkles, Compass, Rocket,
@@ -109,56 +108,7 @@ const trackData = [
 ]
 
 
-const whyJoin = [
-  {
-    n: '01',
-    t: 'NATIONAL ARENA',
-    d: 'Compete directly with 500+ top engineering minds and design thinkers from 100+ premier institutions across India.',
-    badge: '100+ COLLEGES',
-    icon: Trophy,
-    highlight: '₹5L+ Ecosystem Value'
-  },
-  {
-    n: '02',
-    t: '₹1,65,000+ CASH POOL',
-    d: 'Direct, transparent cash rewards for the top 5 winning teams alongside specialized category awards and goodies.',
-    badge: 'DIRECT REWARDS',
-    icon: Zap,
-    highlight: '₹65K Champion Prize'
-  },
-  {
-    n: '03',
-    t: '₹1,20,000 INCUBATION',
-    d: 'Top 3 winners gain fast-tracked incubation support to transform their hackathon MVP into an incorporated enterprise.',
-    badge: 'FOUNDER LAUNCHPAD',
-    icon: Rocket,
-    highlight: 'Top 3 Teams Funded'
-  },
-  {
-    n: '04',
-    t: '1-ON-1 FOUNDER ADVISORY',
-    d: 'Direct round-the-clock mentorship from IIT/NIT researchers, enterprise leaders, and seasoned startup founders.',
-    badge: 'ELITE MENTORS',
-    icon: Users,
-    highlight: 'Round-the-Clock Mentors'
-  },
-  {
-    n: '05',
-    t: 'PROJECT TO PRODUCT MVP',
-    d: 'Graduate beyond throwaway code. Walk away with a deployable, verified full-stack product for your career portfolio.',
-    badge: 'CAREER ACCELERATION',
-    icon: Target,
-    highlight: 'Production-Grade Build'
-  },
-  {
-    n: '06',
-    t: 'NETWORKING & ECOSYSTEM',
-    d: 'Connect with venture scouts, potential co-founders, recruiters, and passionate peers building the next decade of tech.',
-    badge: 'ANGEL & TECH NETWORK',
-    icon: Sparkles,
-    highlight: 'Venture & Peer Network'
-  },
-]
+
 
 const prizes = [
   { rank: '01', title: 'WINNER', amount: '₹65,000', color: '#FFD700' },
@@ -222,7 +172,7 @@ function CountdownBand() {
 /* Every element the reveal system may hide — used as a safety net: if GSAP
    setup throws, we force all of these back to fully visible so the page can
    never render blank sections. */
-const HOME_REVEAL_SELECTORS = '.stats article, .about > div > *, .about-image-full, .hp-cd-box, .hp-pz-left > *, .hp-pz-mascot, .hp-pz-chip, .hp-pz-chip-sep, .hp-tr-header > *, .hp-tr-stacked-card, .hp-tr-cta-bar, .hp-js-block-header, .hp-judges-soon, .hp-spon-intro > *, .hp-spon-stat, .hp-cg-header > *, .hp-cg-photo-card, .hp-cg-details-col > *, .hp-wn-header > *, .hp-why-elite-card, .hp-pfc-l-topbar, .hp-pfc-l-left > *, .hp-pfc-l-mascot-wrap, .hp-pfc-l-pill-item, .hp-pfc-l-bb-item, .hp-ft-grid > *'
+const HOME_REVEAL_SELECTORS = '.stats article, .about > div > *, .about-image-full, .hp-cd-box, .hp-pz-left > *, .hp-pz-mascot, .hp-pz-chip, .hp-pz-chip-sep, .hp-tr-header > *, .hp-tr-stacked-card, .hp-tr-cta-bar, .hp-js-block-header, .hp-judges-soon, .hp-spon-intro > *, .hp-spon-stat, .hp-cg-header > *, .hp-cg-photo-card, .hp-cg-details-col > *, .hp-pfc-l-topbar, .hp-pfc-l-left > *, .hp-pfc-l-mascot-wrap, .hp-pfc-l-pill-item, .hp-pfc-l-bb-item, .hp-ft-grid > *'
 
 export default function App() {
   const container = useRef<HTMLElement>(null)
@@ -239,8 +189,8 @@ export default function App() {
         .from('.hero-tagline-row', { y: 20, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.6')
         .from('.event-meta span', { y: 20, opacity: 0, stagger: 0.2, duration: 0.8, ease: 'power3.out' }, '-=0.6')
         .from('.actions .button', { y: 20, opacity: 0, stagger: 0.2, duration: 0.8, ease: 'power3.out' }, '-=0.6')
-        .from('.hero-mascot-image', { x: 50, opacity: 0, duration: 1, ease: 'power3.out' }, '-=1.2')
-        .from('.status', { scale: 0.8, opacity: 0, duration: 0.8, ease: 'back.out(1.7)' }, '-=1')
+        .from('.hero-mascot-image', { x: 50, opacity: 0, duration: 1, ease: 'power3.out' }, 0.2)
+        .from('.status', { scale: 0.8, opacity: 0, duration: 0.8, ease: 'back.out(1.7)' }, 0.6)
 
       // ── Reveal helpers (fromTo + once = never stuck invisible; clearProps
       //    restores CSS hover transforms so nothing sticks under inline styles) ──
@@ -316,9 +266,6 @@ export default function App() {
       stagger('.hp-cg-header', ':scope > *', { start: 'top 84%' })
       reveal('.hp-cg-photo-card', { opacityOnly: true, start: 'top 82%' })
       stagger('.hp-cg-details-col', ':scope > *', { start: 'top 82%', stag: 0.1 })
-      // Why participate (TiltCards → fade only)
-      stagger('.hp-wn-header', ':scope > *', { start: 'top 84%' })
-      stagger('.hp-why-cards-matrix', '.hp-why-elite-card', { opacityOnly: true, start: 'top 85%', stag: 0.08 })
       // Launchpad CTA
       reveal('.hp-pfc-l-topbar', { y: 24, start: 'top 88%' })
       stagger('.hp-pfc-l-left', ':scope > *', { start: 'top 84%' })
@@ -331,7 +278,6 @@ export default function App() {
       // ── Ambient parallax (decorative layers only, never content) ──
       parallax('.hp-cg-ambient-1', 22)
       parallax('.hp-cg-ambient-2', -22)
-      parallax('.hp-wn-glow', 18)
       parallax('.hp-pfc-l-stars', 14)
 
       // Recompute trigger positions once fonts/images/layout settle.
@@ -428,6 +374,9 @@ export default function App() {
         />
         <div className="about-bottom-row">
           <a className="button button-outline about-know-more" href="/about">Know more about <strong>→</strong></a>
+          <p className="about-pipeline">
+            PROBLEM → IDEA → PROJECT → PROTOTYPE → <span className="purple-text">PRODUCT → PITCH</span>
+          </p>
         </div>
       </section>
 
@@ -648,76 +597,74 @@ export default function App() {
         </div>
 
         <div className="hp-cg-grid">
-          {[
-            { id: 1, name: 'Abhinav Ahluwalia', title: 'Founder & CEO, Kiwi Kisan Window', img: "/chief-guest.png" },
-            { id: 2, name: 'Revealing Soon', title: 'Revealing Soon', img: "" },
-            { id: 3, name: 'Revealing Soon', title: 'Revealing Soon', img: "" },
-            { id: 4, name: 'Revealing Soon', title: 'Revealing Soon', img: "" }
-          ].map((speaker) => (
-            <a href="#speakers" key={speaker.id} className="hp-cg-speaker-card">
-              {speaker.img ? (
-                <img src={speaker.img} alt={speaker.name} className="hp-cg-sc-img" />
-              ) : (
-                <div className="hp-cg-sc-placeholder">
-                  <div className="hp-cg-sc-rs-circle">
-                    <span className="hp-cg-sc-rs-text">RS</span>
-                  </div>
-                </div>
-              )}
-              <div className="hp-cg-sc-overlay" />
-              <div className="hp-cg-sc-content">
-                <h4>{speaker.name}</h4>
-                <p>{speaker.title}</p>
-                <span className="hp-cg-sc-details">Details <ArrowUpRight size={14} /></span>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* ═══════════ NEXT-GEN WHY PARTICIPATE ═══════════ */}
-      <section className="section hp-why-next">
-        <div className="hp-wn-glow" aria-hidden="true" />
-        <div className="hp-wn-header">
-          <div className="hp-wn-pill">
-            <Award size={14} className="hp-wn-pill-icon" />
-            <span>07 / VALUE PROPOSITION</span>
+          <div className="hp-cg-details-side hp-cg-details-col">
+            <h3 className="hp-cg-ds-heading">
+              BUILDING A BRIDGE<br />BETWEEN FARMERS AND CONSUMERS
+            </h3>
+            <div className="hp-cg-ds-desc">
+              <p className="hp-cg-ds-strong">
+                ABHINAV AHLUWALIA IS THE FOUNDER AND CEO OF KIWI KISAN WINDOW, A DEHRADUN-BASED VENTURE FOUNDED IN 2017 WITH HIS WIFE AND CO-FOUNDER, NUPUR AGARWAAL.
+              </p>
+              <p className="hp-cg-ds-sub">
+                TOGETHER, THEY BUILT KIWI WITH A VISION TO BRING AUTHENTIC REGIONAL PRODUCTS TO CONSUMERS WHILE CREATING STRONGER MARKET OPPORTUNITIES FOR FARMERS AND RURAL COMMUNITIES.
+              </p>
+            </div>
           </div>
-          <h2 className="hp-wn-heading">
-            EVERY REASON <span>TO BUILD HERE.</span>
-          </h2>
-          <p className="hp-wn-sub">
-            Engineered for high-ambition developers, designers, and aspiring founders seeking meaningful national recognition.
-          </p>
-        </div>
-
-        <div className="hp-why-cards-matrix">
-          {whyJoin.map(({ n, t, d, badge, icon: I, highlight }) => (
-            <TiltCard
-              key={t}
-              className="hp-why-elite-card"
-              tiltLimit={14}
-              scale={1.03}
-              perspective={1000}
-              effect="evade"
-            >
-              <div className="hp-wec-top">
-                <div className="hp-wec-icon-badge">
-                  <I size={22} />
-                </div>
-                <span className="hp-wec-num">{n}</span>
-              </div>
-              <span className="hp-wec-badge">{badge}</span>
-              <h3 className="hp-wec-title">{t}</h3>
-              <p className="hp-wec-desc">{d}</p>
-              <div className="hp-wec-highlight">
-                <Sparkles size={13} />
-                <span>{highlight}</span>
-              </div>
-            </TiltCard>
-          ))}
+          <a href="#speakers" className="hp-cg-speaker-card hp-cg-photo-card">
+            <img src="/chief-guest.png" alt="Abhinav Ahluwalia" className="hp-cg-sc-img" />
+            <div className="hp-cg-sc-overlay" />
+            <div className="hp-cg-sc-content">
+              <h4>Abhinav Ahluwalia</h4>
+              <p>Founder & CEO, Kiwi Kisan Window</p>
+              <span className="hp-cg-sc-details">Details <ArrowUpRight size={14} /></span>
+            </div>
+          </a>
         </div>
       </section>
+      {/* ═══════════ NEW WHY PARTICIPATE ═══════════ */}
+      <section className="hp-why-participate-white">
+        <div className="hp-wp-container">
+          <span className="hp-wp-pill">06 / WHY PARTICIPATE?</span>
+
+          <div className="hp-wp-content">
+            <div className="hp-wp-features">
+              <div className="hp-wp-feature">
+                <div className="hp-wp-icon-wrapper"><Award className="hp-wp-icon" /></div>
+                <div className="hp-wp-text">
+                  <h3>LEARN & GROW</h3>
+                  <p>Work, learn and grow with like-minded innovators.</p>
+                </div>
+              </div>
+              <div className="hp-wp-feature">
+                <div className="hp-wp-icon-wrapper"><User className="hp-wp-icon" /></div>
+                <div className="hp-wp-text">
+                  <h3>MENTOR CONNECT</h3>
+                  <p>Get guidance from industry experts and mentors.</p>
+                </div>
+              </div>
+              <div className="hp-wp-feature">
+                <div className="hp-wp-icon-wrapper"><Gift className="hp-wp-icon" /></div>
+                <div className="hp-wp-text">
+                  <h3>AMAZING SWAG</h3>
+                  <p>Exciting goodies and certificates for all participants.</p>
+                </div>
+              </div>
+              <div className="hp-wp-feature">
+                <div className="hp-wp-icon-wrapper"><Users className="hp-wp-icon" /></div>
+                <div className="hp-wp-text">
+                  <h3>BUILD YOUR NETWORK</h3>
+                  <p>Connect with top talent, creatives and tech enthusiasts.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="hp-wp-mascot-wrapper">
+              <img src={emojiMascot} alt="Mascot" className="hp-wp-mascot" />
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* ═══════════ NEXT-GEN PRE-FOOTER LAUNCHPAD CTA ═══════════ */}
       <section className="hp-pfc-launchpad" id="register">
@@ -802,7 +749,7 @@ export default function App() {
             <div className="hp-pfc-l-bb-item">
               <Users size={22} className="hp-pfc-l-bb-icon" />
               <div className="hp-pfc-l-bb-content">
-                <strong>3–5 Members per Team</strong>
+                <strong>2–5 Members per Team</strong>
                 <span>Collaborate. Build. Win.</span>
               </div>
             </div>
