@@ -79,9 +79,24 @@
     padding: 8px 16px 0;
   }
 
-  /* SPONSORS — four 1fr tracks floored at 411px inside a 347px box. */
+  /* SPONSORS — four 1fr tracks shrunk to fit mobile screens. */
   #top .hp-spon-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #top .hp-spon-stat {
+    padding: 16px 2px;
+    gap: 4px;
+  }
+  #top .hp-spon-stat-num,
+  #top .hp-spon-stat-num span,
+  #top .hp-spon-stat b,
+  #top .hp-spon-stat b span {
+    font-size: clamp(18px, 4.5vw, 24px) !important;
+  }
+  #top .hp-spon-stat-label,
+  #top .hp-spon-stat > span {
+    font-size: 8px !important;
+    letter-spacing: 0 !important;
   }
 }
 

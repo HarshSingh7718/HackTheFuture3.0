@@ -1,4 +1,4 @@
-import { Heart, ArrowUpRight } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { event } from '../data/event'
 import navLogo from '../../NavBar Logo.webp'
 
@@ -38,14 +38,6 @@ export function Footer() {
           <a href="/contact">Contact</a>
         </div>
 
-        <div className="hp-ft-news">
-          <h4>Stay Updated</h4>
-          <p>Subscribe to get the latest updates and announcements.</p>
-          <form className="hp-ft-form" onSubmit={e => e.preventDefault()}>
-            <input type="email" placeholder="Enter your email" />
-            <button type="submit" aria-label="Subscribe"><ArrowUpRight size={18} /></button>
-          </form>
-        </div>
       </div>
 
       <div className="hp-ft-bottom">

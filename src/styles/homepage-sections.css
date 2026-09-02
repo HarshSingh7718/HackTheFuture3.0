@@ -958,8 +958,10 @@
   font: 700 10px 'DM Mono', monospace;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #fff;
+  background: var(--purple);
   border: 1.5px solid var(--purple);
+  box-shadow: 0 4px 18px rgba(139, 54, 247, 0.35);
 
   padding: 10px 18px;
   margin: 0;
@@ -967,54 +969,11 @@
   font-size: 10px !important;
   line-height: 1.7;
   white-space: nowrap;
-  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-pipeline::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(120deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.35) 50%,
-      transparent 100%);
-  transition: none;
-}
-
-.about-pipeline:hover::after {
-  animation: pipeline-shine 0.6s ease forwards;
-}
-
-@keyframes pipeline-shine {
-  from {
-    left: -100%;
-  }
-
-  to {
-    left: 150%;
-  }
-}
-
-.about-pipeline:hover {
-  background: var(--purple);
-  color: #fff;
-  box-shadow: 0 4px 18px rgba(139, 54, 247, 0.35);
 }
 
 .about-pipeline .purple-text {
-  color: var(--purple);
-  font-weight: 800;
-  transition: color 0.25s ease;
-}
-
-.about-pipeline:hover .purple-text {
   color: #fff;
+  font-weight: 800;
 }
 
 /* About CTA button — visible on white paper background + hover effect */
@@ -3352,8 +3311,8 @@
 
 .hp-ft-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-  gap: 38px;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
   padding: 0 clamp(24px, 8vw, 130px) 42px;
 }
 
@@ -3375,7 +3334,7 @@
   line-height: 1.75;
   color: #9e96b8;
   margin: 0 0 22px;
-  max-width: 260px;
+  max-width: 340px;
 }
 
 .hp-ft-social {
@@ -3439,51 +3398,6 @@
   padding-left: 4px;
 }
 
-.hp-ft-news>p {
-  font-size: 12px;
-  color: #9e96a8;
-  line-height: 1.7;
-  margin: 0 0 18px;
-}
-
-.hp-ft-form {
-  display: flex;
-}
-
-.hp-ft-form input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(139, 54, 247, 0.2);
-  border-right: 0;
-  padding: 12px 14px;
-  font: 13px Manrope, sans-serif;
-  color: #fff;
-  outline: none;
-}
-
-.hp-ft-form input::placeholder {
-  color: #6b6585;
-}
-
-.hp-ft-form input:focus {
-  border-color: var(--purple);
-}
-
-.hp-ft-form button {
-  background: var(--purple);
-  border: 1px solid var(--purple);
-  color: #fff;
-  padding: 12px 17px;
-  cursor: pointer;
-  transition: background .2s;
-  display: grid;
-  place-items: center;
-}
-
-.hp-ft-form button:hover {
-  background: #6d28d9;
-}
-
 .hp-ft-bottom {
   border-top: 1px solid rgba(139, 54, 247, 0.15);
   padding: 20px clamp(24px, 8vw, 130px);
@@ -3538,7 +3452,7 @@
   }
 
   .hp-ft-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
 
@@ -4203,8 +4117,7 @@
     gap: 32px 20px !important;
   }
 
-  .hp-ft-brand,
-  .hp-ft-news {
+  .hp-ft-brand {
     grid-column: 1 / -1 !important;
   }
 

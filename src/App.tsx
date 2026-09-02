@@ -649,7 +649,7 @@ export default function App() {
               <span className="hp-pfc-l-dot" />
               ROUND 1 SUBMISSION IS 100% FREE
             </span>
-            <span className="hp-pfc-l-meta">DEADLINE: 18 SEPT 2026 · 11:59 PM IST</span>
+            <span className="hp-pfc-l-meta">DEADLINE: 17 SEPT 2026 · 11:59 PM IST</span>
           </div>
 
           <div className="hp-pfc-l-body">
@@ -778,14 +778,6 @@ export default function App() {
             <a href="/rules">Rules &amp; Guidelines</a>
             <a href="/faq">FAQ</a>
             <a href="/contact">Contact</a>
-          </div>
-          <div className="hp-ft-news">
-            <h4>Stay Updated</h4>
-            <p>Subscribe to get the latest updates and announcements.</p>
-            <form className="hp-ft-form" onSubmit={e => e.preventDefault()}>
-              <input type="email" placeholder="Enter your email" />
-              <button type="submit" aria-label="Subscribe"><ArrowUpRight size={18} /></button>
-            </form>
           </div>
         </div>
         <div className="hp-ft-bottom">
