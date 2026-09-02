@@ -23,7 +23,7 @@ type Phase = {
 }
 
 const WORLD_W = 1300
-const WORLD_H = 1560
+const WORLD_H = 1700
 
 /* Pull-back fits the *content* bounding box (nodes + labels), not the whole
    world — so the overview fills the viewport height (RESULT at the bottom,
@@ -31,13 +31,14 @@ const WORLD_H = 1560
 const CONTENT_MIN_X = 150
 const CONTENT_MAX_X = 1120
 const CONTENT_MIN_Y = 150
-const CONTENT_MAX_Y = 1420
+const CONTENT_MAX_Y = 1560
 const CONTENT_W = CONTENT_MAX_X - CONTENT_MIN_X
 const CONTENT_H = CONTENT_MAX_Y - CONTENT_MIN_Y
 const FIT_CX = (CONTENT_MIN_X + CONTENT_MAX_X) / 2
 const FIT_CY = (CONTENT_MIN_Y + CONTENT_MAX_Y) / 2
-const PULLBACK_FILL = 0.94   // fraction of the constraining viewport axis to use
-const PULLBACK_NODE = 0.78   // label/marker screen-scale at full pull-back (keeps text legible)
+const PULLBACK_FILL = 0.72   // fraction of the constraining viewport axis to use
+const PULLBACK_NODE = 0.92   // label/marker screen-scale at full pull-back (keeps text legible)
+const MIN_FIT_SCALE = 0.55   // never zoom out below this scale
 
 const PHASES: Phase[] = [
   {
@@ -215,7 +216,7 @@ function CinematicStage() {
     let vw = 0, vh = 0, fit = 1
     const measure = () => {
       vw = stage.clientWidth; vh = stage.clientHeight
-      fit = Math.min(vw / CONTENT_W, vh / CONTENT_H) * PULLBACK_FILL
+      fit = Math.max(Math.min(vw / CONTENT_W, vh / CONTENT_H) * PULLBACK_FILL, MIN_FIT_SCALE)
     }
     measure()
 

@@ -5,7 +5,7 @@ import {
   UserCheck, Users, Upload, Trophy, Shield,
   CheckCircle2, ChevronDown, ArrowUpRight, Info, Home,
 } from 'lucide-react'
-import mascot from '../../Mascots Variations/Rules.png'
+import mascot from '../../Mascots Variations/Rules.webp'
 
 /* ── Rules data ── */
 const sections = [

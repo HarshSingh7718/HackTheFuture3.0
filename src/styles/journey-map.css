@@ -14,10 +14,11 @@
   --hair: rgba(255, 255, 255, 0.06);
   position: relative;
   isolation: isolate;
-  background:
-    radial-gradient(120% 80% at 50% -10%, #140a2b 0%, var(--bg1) 42%, var(--bg0) 100%);
+  background: linear-gradient(180deg, #1a0533 0%, #2d0a5e 30%, #3d1278 55%, #2d0a5e 80%, #1a0533 100%);
   color: #ece9f5;
-  overflow: clip;
+  overflow-x: clip;
+  overflow-y: visible;
+  z-index: 10;
 }
 
 .jm-section::before {
@@ -524,12 +525,7 @@
 .jm-out svg { color: var(--phase); }
 /* ── Vignette ──────────────────────────────────────────────────── */
 .jm-vignette {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-  background:
-    radial-gradient(120% 80% at 50% 50%, transparent 52%, rgba(6, 3, 16, 0.55) 82%, rgba(6, 3, 16, 0.92) 100%);
+  display: none;
 }
 
 /* ── HUD ───────────────────────────────────────────────────────── */

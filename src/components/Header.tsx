@@ -1,6 +1,6 @@
 import { event } from '../data/event'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import logo from '../../NavBar Logo.png'
+import logo from '../../NavBar Logo.webp'
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 

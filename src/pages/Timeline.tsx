@@ -6,7 +6,7 @@ import {
   Moon, Upload, Search, Trophy, Clock,
   Home, ArrowUpRight, CreditCard,
 } from 'lucide-react'
-import mascot from '../../Mascots Variations/Timeline.png'
+import mascot from '../../Mascots Variations/Timeline.webp'
 
 /* ── Schedule data ── */
 const days = [
@@ -84,7 +84,7 @@ export function TimelinePage() {
           <svg className="tl-hero-path" viewBox="0 0 300 120" fill="none" aria-hidden="true">
             <path d="M10 60 Q80 10 150 60 Q220 110 290 60" stroke="var(--purple)" strokeWidth="1.5"
               strokeDasharray="6 4" opacity="0.3" />
-            <circle cx="10"  cy="60" r="4" fill="var(--purple)" opacity="0.4" />
+            <circle cx="10" cy="60" r="4" fill="var(--purple)" opacity="0.4" />
             <circle cx="150" cy="60" r="4" fill="var(--purple)" opacity="0.4" />
             <circle cx="290" cy="60" r="4" fill="var(--purple)" opacity="0.4" />
           </svg>

@@ -3,17 +3,17 @@ import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { Home, Mail, Phone, MapPin, Send, Camera, MessageSquare } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
-import mascot from '../../Mascots Variations/Contact Us.png'
+import mascot from '../../Mascots Variations/Contact Us.webp'
 
 const contactInfo = [
-  { icon: Mail,     label: 'EMAIL US',        value: 'Hackathon@tulas.edu.in', link: 'mailto:Hackathon@tulas.edu.in' },
-  { icon: Phone,    label: 'CALL US',          value: '+91 7983536078',          link: 'tel:+917983536078' },
-  { icon: MapPin,   label: 'LOCATION',         value: 'Tulas University, Dehradun, Uttarakhand', link: 'https://maps.google.com/?q=Tulas+University+Dehradun' },
-  
+  { icon: Mail, label: 'EMAIL US', value: 'Hackathon@tulas.edu.in', link: 'mailto:Hackathon@tulas.edu.in' },
+  { icon: Phone, label: 'CALL US', value: '+91 7983536078', link: 'tel:+917983536078' },
+  { icon: MapPin, label: 'LOCATION', value: 'Tulas University, Dehradun, Uttarakhand', link: 'https://maps.google.com/?q=Tulas+University+Dehradun' },
+
 ]
 
 const socials = [
-  { icon: Camera,   label: 'Instagram', handle: '@tulashackathon-3.0', link: 'https://www.instagram.com/tulashackathon?igsi=MXQ2Y2Q5eXdwYmp6cw==' },
+  { icon: Camera, label: 'Instagram', handle: '@tulashackathon-3.0', link: 'https://www.instagram.com/tulashackathon?igsi=MXQ2Y2Q5eXdwYmp6cw==' },
   { icon: FaWhatsapp, label: 'WhatsApp', handle: 'Chat with us', link: 'https://chat.whatsapp.com/Ichzy6cHy6pIOCCqxa8E3f' },
 ]
 
@@ -26,7 +26,22 @@ export function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    const targetEmail = 'hackthefuture@tulas.edu.in'
+    const mailSubject = encodeURIComponent(`[HTF 3.0] ${form.subject} - ${form.name}`)
+    const mailBody = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`)
+
+    // Check if the user is on a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+
+    if (isMobile) {
+      window.location.href = `mailto:${targetEmail}?subject=${mailSubject}&body=${mailBody}`
+    } else {
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${targetEmail}&su=${mailSubject}&body=${mailBody}`, '_blank')
+    }
+
     setSent(true)
+    setForm({ name: '', email: '', subject: 'General Inquiry', message: '' })
   }
 
   return (

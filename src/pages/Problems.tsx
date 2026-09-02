@@ -6,7 +6,7 @@ import {
   Brain, Code2, Shield, Cpu, Zap, Lightbulb, Heart, Leaf,
   Globe, ArrowRight, Home, ChevronDown,
 } from 'lucide-react'
-import mascot from '../../Mascots Variations/Problem.png'
+import mascot from '../../Mascots Variations/Problem.webp'
 
 /* ── problem data ── */
 const problems = [

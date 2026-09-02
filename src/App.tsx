@@ -1,12 +1,12 @@
 import { Header } from './components/Header'
 import { JourneyMap } from './components/JourneyMap'
 import { event } from './data/event'
-import mascot from '../Website Mascot.png'
-import homeAboutImg from '../HomeAbout section.png'
-import navLogo from '../NavBar Logo.png'
-import prizesMascot from '../Mascots Variations/Prize2 (3).png'
-import trackMascot from '../Mascots Variations/trackhomepage.png'
-import emojiMascot from '../Mascots Variations/Emoji.png'
+import mascot from '../Website Mascot.webp'
+import homeAboutImg from '../HomeAbout section.webp'
+import navLogo from '../NavBar Logo.webp'
+import prizesMascot from '../Mascots Variations/Prize2 (3).webp'
+import trackMascot from '../Mascots Variations/trackhomepage.webp'
+import emojiMascot from '../Mascots Variations/Emoji.webp'
 import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -610,8 +610,8 @@ export default function App() {
               </p>
             </div>
           </div>
-          <a href="#speakers" className="hp-cg-speaker-card hp-cg-photo-card">
-            <img src="/chief-guest.png" alt="Abhinav Ahluwalia" className="hp-cg-sc-img" />
+          <a href="https://www.linkedin.com/in/abhinav-ahluwalia-153874142/" target="_blank" rel="noopener noreferrer" className="hp-cg-speaker-card hp-cg-photo-card">
+            <img src="/chief-guest.webp" alt="Abhinav Ahluwalia" className="hp-cg-sc-img" />
             <div className="hp-cg-sc-overlay" />
             <div className="hp-cg-sc-content">
               <h4>Abhinav Ahluwalia</h4>
@@ -619,49 +619,6 @@ export default function App() {
               <span className="hp-cg-sc-details">Details <ArrowUpRight size={14} /></span>
             </div>
           </a>
-        </div>
-      </section>
-      {/* ═══════════ NEW WHY PARTICIPATE ═══════════ */}
-      <section className="hp-why-participate-white">
-        <div className="hp-wp-container">
-          <span className="hp-wp-pill">06 / WHY PARTICIPATE?</span>
-
-          <div className="hp-wp-content">
-            <div className="hp-wp-features">
-              <div className="hp-wp-feature">
-                <div className="hp-wp-icon-wrapper"><Award className="hp-wp-icon" /></div>
-                <div className="hp-wp-text">
-                  <h3>LEARN & GROW</h3>
-                  <p>Work, learn and grow with like-minded innovators.</p>
-                </div>
-              </div>
-              <div className="hp-wp-feature">
-                <div className="hp-wp-icon-wrapper"><User className="hp-wp-icon" /></div>
-                <div className="hp-wp-text">
-                  <h3>MENTOR CONNECT</h3>
-                  <p>Get guidance from industry experts and mentors.</p>
-                </div>
-              </div>
-              <div className="hp-wp-feature">
-                <div className="hp-wp-icon-wrapper"><Gift className="hp-wp-icon" /></div>
-                <div className="hp-wp-text">
-                  <h3>AMAZING SWAG</h3>
-                  <p>Exciting goodies and certificates for all participants.</p>
-                </div>
-              </div>
-              <div className="hp-wp-feature">
-                <div className="hp-wp-icon-wrapper"><Users className="hp-wp-icon" /></div>
-                <div className="hp-wp-text">
-                  <h3>BUILD YOUR NETWORK</h3>
-                  <p>Connect with top talent, creatives and tech enthusiasts.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="hp-wp-mascot-wrapper">
-              <img src={emojiMascot} alt="Mascot" className="hp-wp-mascot" />
-            </div>
-          </div>
         </div>
       </section>
 

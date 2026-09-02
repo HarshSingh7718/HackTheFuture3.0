@@ -5,28 +5,28 @@ import {
   Lightbulb, Code2, Target, Rocket, Heart,
   Users, Trophy, Clock, Star,
 } from 'lucide-react'
-import mascotAbout from '../../Mascots Variations/About.png'
+import mascotAbout from '../../Mascots Variations/About.webp'
 
 /* ── data ── */
 const features = [
-  { icon: Clock,   title: '30 HOURS NON-STOP',    desc: 'Think. Code. Collaborate. Build without limits.' },
-  { icon: Users,   title: '5 SPECIALIZED TRACKS',  desc: 'AI/ML, Cybersecurity, Robotics, Social Impact and Open Innovation.' },
-  { icon: Trophy,  title: 'REAL-WORLD IMPACT',     desc: 'Build solutions that create meaningful change and product potential.' },
-  { icon: Star,    title: 'LEARN. GROW. NETWORK.', desc: 'Mentorship from IITs, NIT, industry leaders and startup founders.' },
+  { icon: Clock, title: '30 HOURS NON-STOP', desc: 'Think. Code. Collaborate. Build without limits.' },
+  { icon: Users, title: '5 SPECIALIZED TRACKS', desc: 'AI/ML, Cybersecurity, Robotics, Social Impact and Open Innovation.' },
+  { icon: Trophy, title: 'REAL-WORLD IMPACT', desc: 'Build solutions that create meaningful change and product potential.' },
+  { icon: Star, title: 'LEARN. GROW. NETWORK.', desc: 'Mentorship from IITs, NIT, industry leaders and startup founders.' },
 ]
 
 const values = [
-  { icon: Lightbulb, title: 'INNOVATION',    desc: 'We encourage bold ideas and original thinking.' },
-  { icon: Code2,     title: 'COLLABORATION', desc: 'Great things are built when we build together.' },
-  { icon: Target,    title: 'IMPACT',        desc: 'We build with purpose to solve real-world problems.' },
-  { icon: Rocket,    title: 'GROWTH',        desc: 'Every challenge is a chance to level up your skills.' },
-  { icon: Heart,     title: 'COMMUNITY',     desc: 'A supportive community that inspires and uplifts.' },
+  { icon: Lightbulb, title: 'INNOVATION', desc: 'We encourage bold ideas and original thinking.' },
+  { icon: Code2, title: 'COLLABORATION', desc: 'Great things are built when we build together.' },
+  { icon: Target, title: 'IMPACT', desc: 'We build with purpose to solve real-world problems.' },
+  { icon: Rocket, title: 'GROWTH', desc: 'Every challenge is a chance to level up your skills.' },
+  { icon: Heart, title: 'COMMUNITY', desc: 'A supportive community that inspires and uplifts.' },
 ]
 
 const glance = [
-  { icon: Clock,  value: '30',   label: 'HOURS' },
-  { icon: Code2,  value: '5',    label: 'TRACKS' },
-  { icon: Users,  value: '500+', label: 'PARTICIPANTS' },
+  { icon: Clock, value: '30', label: 'HOURS' },
+  { icon: Code2, value: '5', label: 'TRACKS' },
+  { icon: Users, value: '500+', label: 'PARTICIPANTS' },
   { icon: Trophy, value: '₹5L+', label: 'PRIZE POOL' },
 ]
 

@@ -2335,7 +2335,7 @@
 ══════════════════════════════════════════════ */
 .hp-cg-next {
   position: relative;
-  background: linear-gradient(135deg, #1a0533 0%, #2d0a5e 30%, #3d1278 55%, #2d0a5e 80%, #1a0533 100%);
+  background: linear-gradient(180deg, #1a0533 0%, #2d0a5e 30%, #3d1278 55%, #2d0a5e 80%, #1a0533 100%);
   color: white;
   overflow: hidden;
   border-bottom: 1px solid rgba(139, 54, 247, 0.18);
@@ -3706,21 +3706,13 @@
 ══════════════════════════════════════════════ */
 .hp-pfc-launchpad {
   position: relative;
-  padding: 60px clamp(16px, 5vw, 80px) 70px;
-  background: #080512;
+  background: #ffffff;
   overflow: hidden;
+  color: #0d061c;
 }
 
 .hp-pfc-l-glow-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  height: 450px;
-  background: radial-gradient(ellipse, rgba(139, 54, 247, 0.28) 0%, rgba(56, 189, 248, 0.08) 50%, transparent 70%);
-  filter: blur(90px);
-  pointer-events: none;
+  display: none;
 }
 
 .hp-pfc-l-container {
@@ -3728,6 +3720,8 @@
   z-index: 1;
   padding: clamp(32px, 5vw, 56px);
   overflow: hidden;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .hp-pfc-l-topbar {
@@ -3736,7 +3730,7 @@
   justify-content: space-between;
   padding-bottom: 24px;
   margin-bottom: 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
   gap: 14px;
 }
@@ -3763,7 +3757,7 @@
 .hp-pfc-l-meta {
   font: 700 11px 'DM Mono', monospace;
   letter-spacing: 1.5px;
-  color: #c4b5fd;
+  color: #6d28d9;
 }
 
 .hp-pfc-l-body {
@@ -3789,7 +3783,7 @@
 .hp-pfc-l-heading {
   font: 800 clamp(28px, 3.8vw, 48px)/1.08 'Space Grotesk', sans-serif;
   letter-spacing: -2px;
-  color: #ffffff;
+  color: #0d061c;
   margin: 0;
 }
 
@@ -3799,7 +3793,7 @@
 
 .hp-pfc-l-sub {
   font: 400 14.5px/1.6 Manrope;
-  color: #b5a9c9;
+  color: #4b4560;
   margin: 0 0 10px;
 }
 
@@ -3834,20 +3828,20 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: transparent;
+  border: 2px solid #7c3aed;
+  color: #7c3aed;
   font: 700 12px 'Space Grotesk', sans-serif;
   letter-spacing: 1px;
   padding: 16px 24px;
   border-radius: 12px;
   text-transform: uppercase;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .hp-pfc-l-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(124, 58, 237, 0.08);
+  border-color: #6d28d9;
 }
 
 .hp-pfc-l-mascot-wrap {
@@ -3886,40 +3880,39 @@
   align-items: center;
   gap: 16px;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f5f0ff;
+  border: 2px solid #7c3aed;
   border-radius: 12px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.2s, border-color 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .hp-pfc-l-pill-item:hover {
   transform: translateX(4px);
-  border-color: rgba(139, 54, 247, 0.4);
+  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.18);
 }
 
 .hp-pfc-l-picon {
-  color: #a855f7;
+  color: #7c3aed;
   flex-shrink: 0;
 }
 
 .hp-pfc-l-pill-item strong {
   display: block;
   font: 700 13px 'Space Grotesk', sans-serif;
-  color: #ffffff;
+  color: #1a0533;
   letter-spacing: 0.3px;
 }
 
 .hp-pfc-l-pill-item span {
   font: 400 11.5px Manrope;
-  color: #9d94ac;
+  color: #5b4d7a;
 }
 
 /* Bottom Features Bar Card */
 .hp-pfc-l-bottom-bar {
   margin-top: 36px;
-  background: rgba(18, 10, 36, 0.7);
-  border: 1px solid rgba(139, 54, 247, 0.25);
+  background: #ffffff;
+  border: 1px solid rgba(139, 54, 247, 0.4);
   border-radius: 16px;
   padding: 18px 24px;
   display: grid;
@@ -3935,7 +3928,7 @@
   align-items: center;
   gap: 14px;
   padding: 4px 12px;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .hp-pfc-l-bb-item:last-child {
@@ -3955,13 +3948,13 @@
 
 .hp-pfc-l-bb-content strong {
   font: 700 13px 'Space Grotesk', sans-serif;
-  color: #ffffff;
+  color: #1a0533;
   letter-spacing: 0.2px;
 }
 
 .hp-pfc-l-bb-content span {
   font: 400 11.5px Manrope, sans-serif;
-  color: #948ba5;
+  color: #5b5368;
 }
 
 /* ═══════════════════════════════════════════════
@@ -4176,126 +4169,3 @@
   }
 }
 
-/* ══════════════════════════════════════════════
-   WHY PARTICIPATE (WHITE SECTION)
-══════════════════════════════════════════════ */
-.hp-why-participate-white {
-  background-color: #fdfdfd;
-  color: #0d061c;
-  padding: 60px 0;
-  position: relative;
-  overflow: hidden;
-  margin: -60px 0 0 0;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-}
-
-.hp-wp-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  flex-direction: column;
-}
-
-.hp-wp-pill {
-  font: 700 13px 'Space Grotesk', sans-serif;
-  color: #6d28d9;
-  letter-spacing: 1px;
-  margin-bottom: 40px;
-  display: inline-block;
-  font-weight: 800;
-}
-
-.hp-wp-content {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.hp-wp-features {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  flex: 1;
-  padding-right: 20px;
-  align-items: start;
-}
-
-.hp-wp-feature {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.hp-wp-icon-wrapper {
-  background-color: #f3e8ff;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: #6d28d9;
-}
-
-.hp-wp-icon {
-  width: 24px;
-  height: 24px;
-}
-
-.hp-wp-text h3 {
-  font: 800 15px 'Space Grotesk', sans-serif;
-  color: #000;
-  margin: 0 0 8px;
-  text-transform: uppercase;
-}
-
-.hp-wp-text p {
-  font: 500 13px/1.6 'Manrope', sans-serif;
-  color: #555;
-  margin: 0;
-}
-
-.hp-wp-mascot-wrapper {
-  width: 260px;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  position: relative;
-  margin-top: -120px;
-  margin-bottom: -60px;
-}
-
-.hp-wp-mascot {
-  width: 100%;
-  height: auto;
-  transform: translateY(20px);
-}
-
-@media (max-width: 1024px) {
-  .hp-wp-features {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hp-wp-content {
-    flex-direction: column;
-  }
-
-  .hp-wp-features {
-    grid-template-columns: 1fr;
-    padding-right: 0;
-  }
-
-  .hp-wp-mascot-wrapper {
-    margin-top: 20px;
-    margin-bottom: -40px;
-    align-self: center;
-  }
-}

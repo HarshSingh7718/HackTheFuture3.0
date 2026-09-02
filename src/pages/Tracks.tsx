@@ -5,7 +5,7 @@ import {
   Brain, Shield, Cpu, Lightbulb, Heart,
   ArrowRight, Home, Flag,
 } from 'lucide-react'
-import mascot from '../../Mascots Variations/Tracks.png'
+import mascot from '../../Mascots Variations/Tracks.webp'
 
 /* ── Track data ── */
 const tracks = [

@@ -1,8 +1,8 @@
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { Trophy, Gift, Star, Rocket, Users, Home, Award } from 'lucide-react'
-import mascot from '../../Mascots Variations/Prize.png'
-import mascot2 from '../../Mascots Variations/Prize2 (1).png'
+import mascot from '../../Mascots Variations/Prize.webp'
+import mascot2 from '../../Mascots Variations/Prize2 (1).webp'
 
 /* ── Rank cards ── */
 const podium = [
@@ -35,10 +35,10 @@ const consolation = [
 ]
 
 const perks = [
-  { icon: Gift,   title: 'MORE THAN MONEY',      desc: 'Winner teams get incubation support, mentorship and exposure to IIT, NIT and industry leaders.' },
-  { icon: Star,   title: 'SPECIAL RECOGNITION',  desc: 'Exciting goodie bags, certificates, sponsor rewards and special partner awards.' },
-  { icon: Rocket, title: 'INCUBATION SUPPORT',   desc: 'Top 3 teams get ₹1,20,000 in incubation support — ON TOP of cash prizes — to build their product into a real startup.' },
-  { icon: Users,  title: 'EVERY PARTICIPANT',     desc: 'Every participant receives a participation certificate and amazing swag.' },
+  { icon: Gift, title: 'MORE THAN MONEY', desc: 'Winner teams get incubation support, mentorship and exposure to IIT, NIT and industry leaders.' },
+  { icon: Star, title: 'SPECIAL RECOGNITION', desc: 'Exciting goodie bags, certificates, sponsor rewards and special partner awards.' },
+  { icon: Rocket, title: 'INCUBATION SUPPORT', desc: 'Top 3 teams get ₹1,20,000 in incubation support — ON TOP of cash prizes — to build their product into a real startup.' },
+  { icon: Users, title: 'EVERY PARTICIPANT', desc: 'Every participant receives a participation certificate and amazing swag.' },
 ]
 
 export function PrizesPage() {
@@ -94,7 +94,7 @@ export function PrizesPage() {
         <div className="pr-prize2-banner">
           <img src={mascot2} alt="HTF prize board" className="pr-prize2-img" />
         </div>
-         <div className="pr-podium">
+        <div className="pr-podium">
           {podium.map(({ num, label, amount, sub, color, glow, grad, topGrad, featured, colorClass }) => (
             <div
               key={num}
