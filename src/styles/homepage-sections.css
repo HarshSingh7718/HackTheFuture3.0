@@ -1084,6 +1084,8 @@
   padding: clamp(40px, 5vw, 72px) clamp(24px, 4vw, 56px);
   position: relative;
   z-index: 1;
+  /* Isolate this column from counter reflow so the mascot image stays stable */
+  contain: layout;
 }
 
 .hp-pz-pool-label {
@@ -1099,6 +1101,10 @@
   letter-spacing: -5px;
   margin: 14px 0 0;
   line-height: 0.9;
+  /* Pre-reserve the full width of the final value so counting animation
+     never causes a layout reflow that shifts the mascot image column. */
+  min-width: max-content;
+  width: max-content;
   /* animated purple gradient sweep */
   background: linear-gradient(90deg, #4c1d95, #7c3aed, #a78bfa, #e9d5ff, #a78bfa, #7c3aed, #4c1d95);
   background-size: 300% auto;
@@ -1106,6 +1112,8 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: pzPoolGrad 5s linear infinite;
+  /* Promote to own compositor layer — gradient animation won't trigger layout */
+  will-change: background-position;
 }
 
 @keyframes pzPoolGrad {
@@ -1118,10 +1126,15 @@
   }
 }
 
-.hp-pz-pool-num span {
+/* Only the trailing "+" is meant to be a small suffix. Scoping to the last
+   child keeps <AnimatedCounter>'s own <span> at full size — an unscoped
+   `span` selector shrank the whole figure to 0.55em. `opacity` is omitted
+   deliberately: any value below 1 creates a stacking context, which
+   isolates the glyphs from the parent's background-clip:text gradient and
+   paints them with -webkit-text-fill-color: transparent, i.e. invisible. */
+.hp-pz-pool-num > span:last-child {
   font-size: 0.55em;
   letter-spacing: -2px;
-  opacity: 0.65;
 }
 
 .hp-pz-tagline {
@@ -1166,16 +1179,24 @@
   position: relative;
   z-index: 2;
   padding: 20px 0;
+  /* Stabilise the mascot column — counter reflow on the left must not
+     bleed into this column and shrink the image on desktop. */
+  contain: layout;
+  align-self: center;
 }
 
 .hp-pz-mascot {
   width: 100%;
   max-width: 440px;
+  /* Fix intrinsic height so browser never collapses it while counting */
+  min-height: 300px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 20px 50px rgba(124, 58, 237, 0.18));
   display: block;
   animation: pzMascotFloat 6s ease-in-out infinite;
+  /* Own compositor layer — float animation isolated from layout reflows */
+  will-change: transform;
 }
 
 @keyframes pzMascotFloat {
@@ -1426,6 +1447,34 @@
 }
 
 /* Responsive */
+
+/* Desktop only — the 3-column layout starts at 961px, so nothing here reaches
+   the stacked tablet/phone layouts.
+
+   At 88px the figure measured 424px, and 424 + 112px of column padding floored
+   the left grid track at 536px — far past its 1fr share — leaving the mascot
+   column only 251px of the 440px it wants. Worse, <AnimatedCounter> rewrites
+   the text from "₹0" to "₹5,00,000" as it counts, so that overshoot grew
+   frame by frame and the robot visibly shrank while the number ran.
+
+   58px brings the figure to ~282px, and the min-width floor reserves the
+   finished width from the very first frame, so the track is the same size at
+   "₹0" as at "₹5,00,000" and the mascot never moves. */
+@media (min-width: 961px) {
+  .hp-pz-pool-num {
+    /* 58px from ~1430px up, which is the size the reference screenshot shows;
+       below that it tapers with the viewport instead of overshooting the column
+       again on a 1000–1200px desktop. */
+    font-size: clamp(40px, 4.05vw, 58px);
+    /* em, not px: the tracking has to stay proportional across that taper,
+       otherwise the figure reads as cramped at the small end. ≈-3px at 58px. */
+    letter-spacing: -0.052em;
+    /* The finished value measures ≈4.86em; 4.9em keeps the reservation above it
+       on every frame, including the last. */
+    min-width: 4.9em;
+  }
+}
+
 @media (max-width: 960px) {
   .hp-pz {
     grid-template-columns: 1fr 1fr;
@@ -1553,7 +1602,18 @@
 .hp-tr-right {
   display: flex;
   flex-direction: column;
-  padding-bottom: 15vh;
+  padding-bottom: 0;
+}
+
+/* Scroll tail for the sticky deck (see App.tsx). It has to live *inside*
+   .hp-tr-right's content box, because that box — not the padding box — is the
+   rectangle that decides when a sticky card unsticks. The old 15vh
+   padding-bottom sat outside it, so the finished stack was released on the same
+   pixel the last card finished pinning. Moving that 15vh in here leaves the
+   section exactly as tall as before and gives the deck a real hold. */
+.hp-tr-stack-tail {
+  flex: none;
+  height: 15vh;
 }
 
 /* ── Track card ── */
@@ -1578,7 +1638,9 @@
   transform-origin: top center;
 }
 
-.hp-tr-stacked-card:last-child {
+/* :last-of-type, not :last-child — .hp-tr-stack-tail is now the container's last
+   child, and a margin on the final card would only shorten its own hold. */
+.hp-tr-stacked-card:last-of-type {
   margin-bottom: 0;
 }
 
@@ -1767,7 +1829,14 @@
 
   .hp-tr-right {
     width: 100%;
-    padding-bottom: 5vh;
+    padding-bottom: 0;
+  }
+
+  /* A touch longer than desktop's 15vh: the phone stagger is 14px rather than
+     25px, so the deck assembles over a shorter scroll and needs a beat more to
+     be read before it releases. */
+  .hp-tr-stack-tail {
+    height: 20vh;
   }
 
   .hp-tr-card {
@@ -2415,7 +2484,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 340px;
-  gap: 60px;
+  gap: 180px;
   padding: 0 16px;
   position: relative;
   z-index: 2;
@@ -2517,6 +2586,20 @@
   user-select: none;
 }
 
+.hp-cg-img-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03) 25%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 75%);
+  background-size: 200% 100%;
+  animation: cgShimmer 1.5s infinite linear;
+  z-index: 1;
+}
+
+@keyframes cgShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 .hp-cg-sc-img {
   position: absolute;
   inset: 0;
@@ -2524,8 +2607,13 @@
   height: 100%;
   object-fit: cover;
   object-position: top;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.3s;
+  z-index: 2;
+}
+
+.hp-cg-sc-img.loaded {
   opacity: 1;
-  transition: opacity 0.3s, transform 0.3s;
 }
 
 .hp-cg-speaker-card:hover .hp-cg-sc-img {

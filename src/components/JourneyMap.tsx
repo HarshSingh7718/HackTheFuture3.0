@@ -348,76 +348,144 @@ function CinematicStage() {
   )
 }
 
+/* ─────────────────────────────────────────────────────────
+   FLAT JOURNEY (mobile / reduced motion)
+   The rail is a scroll-driven progress track, not a six-step
+   snap: its fill height follows the scroll position directly,
+   and it is measured from the first phase dot down to a
+   *terminal* trophy node below phase 06 — so 100% coincides
+   with the end of "Results & Recognition", never short of it.
+   ───────────────────────────────────────────────────────── */
 function FlatJourney() {
   const rootRef = useRef<HTMLDivElement>(null)
   const railRef = useRef<HTMLDivElement>(null)
   const fillRef = useRef<HTMLDivElement>(null)
+  const tailRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const root = rootRef.current
-    if (!root) return
-    const cards = Array.from(root.querySelectorAll<HTMLElement>('.jm-fcard'))
     const rail = railRef.current
     const fill = fillRef.current
+    const tail = tailRef.current
+    if (!root || !rail || !fill || !tail) return
 
-    const updateRail = () => {
-      if (!rail || cards.length < 2) return
-      const firstDot = cards[0].querySelector<HTMLElement>('.jm-fdot')
-      const lastDot = cards[cards.length - 1].querySelector<HTMLElement>('.jm-fdot')
-      if (!firstDot || !lastDot) return
+    const cards = Array.from(root.querySelectorAll<HTMLElement>('.jm-fcard'))
+    if (!cards.length) return
+    const dotOf = (el: HTMLElement) => el.querySelector<HTMLElement>('.jm-fdot')
 
-      const rootRect = root.getBoundingClientRect()
-      const firstRect = firstDot.getBoundingClientRect()
-      const lastRect = lastDot.getBoundingClientRect()
+    /* Normalised position of every phase dot along the rail (0 = first dot,
+       1 = terminal node). Recomputed whenever the layout can have moved. */
+    let stops: number[] = []
 
-      const top = (firstRect.top + firstRect.height / 2) - rootRect.top
-      const bottom = (lastRect.top + lastRect.height / 2) - rootRect.top
-      const height = Math.max(0, bottom - top)
-
+    const measure = () => {
+      const firstDot = dotOf(cards[0])
+      const endDot = dotOf(tail)
+      if (!firstDot || !endDot) return
+      const rootTop = root.getBoundingClientRect().top
+      const centre = (el: HTMLElement) => {
+        const r = el.getBoundingClientRect()
+        return r.top + r.height / 2 - rootTop
+      }
+      const top = centre(firstDot)
+      const height = Math.max(1, centre(endDot) - top)
       rail.style.top = `${top}px`
       rail.style.height = `${height}px`
+      stops = cards.map((c) => {
+        const d = dotOf(c)
+        return d ? clamp01((centre(d) - top) / height) : 0
+      })
     }
 
-    updateRail()
-    window.addEventListener('resize', updateRail)
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateRail) : null
-    if (ro) ro.observe(root)
+    /* Progress = how far the rail has travelled past a reading line sitting a
+       little below the middle of the viewport. Phase 01 therefore already shows
+       a live line instead of a dead 0%, and the fill lands on the trophy exactly
+       when the terminal node reaches that line. */
+    const progress = () => {
+      const r = rail.getBoundingClientRect()
+      if (!r.height) return 0
+      const marker = window.innerHeight * 0.62
+      return clamp01((marker - r.top) / r.height)
+    }
 
-    const setFill = (n: number) => {
-      if (fill) {
-        const frac = n <= 1 ? 0 : Math.min(1, (n - 1) / (cards.length - 1))
-        fill.style.height = `${frac * 100}%`
-      }
+    const paint = (p: number) => {
+      fill.style.height = `${p * 100}%`
+      let frontier = -1
+      cards.forEach((c, i) => {
+        const done = p >= (stops[i] ?? 0) - 0.004
+        c.classList.toggle('is-done', done)
+        if (done) frontier = i
+      })
+      cards.forEach((c, i) => c.classList.toggle('is-current', i === frontier && p < 0.999))
+      tail.classList.toggle('is-done', p >= 0.999)
     }
 
     if (prefersReduced()) {
       cards.forEach((c) => c.classList.add('in'))
-      setFill(cards.length)
-      return () => {
-        window.removeEventListener('resize', updateRail)
-        if (ro) ro.disconnect()
-      }
+      measure()
+      paint(1)
+      const onResizeStatic = () => { measure(); paint(1) }
+      window.addEventListener('resize', onResizeStatic)
+      return () => window.removeEventListener('resize', onResizeStatic)
     }
 
-    let seen = 0
+    let frame = 0
+    const tick = () => {
+      frame = 0
+      paint(progress())
+    }
+    /* Cancel-and-reschedule rather than "skip if one is pending": rAF is
+       suspended while the tab is hidden, and a pending-flag guard would then
+       swallow every later scroll and leave the rail frozen at whatever height it
+       had when the tab went away. This way the newest position is always the one
+       queued, and it paints the moment frames resume. */
+    const onScroll = () => {
+      if (frame) cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(tick)
+    }
+    const onResize = () => {
+      measure()
+      onScroll()
+    }
+
+    measure()
+    paint(progress())
+
+    /* Card reveals stay observer-driven, and any card the reader jumped past is
+       backfilled so a mid-section entry never leaves earlier cards invisible. */
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (!e.isIntersecting) continue
-        const el = e.target as HTMLElement
-        el.classList.add('in')
-        io.unobserve(el)
-        seen = Math.max(seen, Number(el.dataset.i) + 1)
-        setFill(seen)
+        const i = Number((e.target as HTMLElement).dataset.i)
+        for (let k = 0; k <= i; k++) {
+          if (!cards[k].classList.contains('in')) {
+            cards[k].classList.add('in')
+            io.unobserve(cards[k])
+          }
+        }
+        io.unobserve(e.target)
       }
-    }, { threshold: 0.35, rootMargin: '0px 0px -12% 0px' })
+      measure()
+      onScroll()
+    }, { threshold: 0.28, rootMargin: '0px 0px -10% 0px' })
     cards.forEach((c) => io.observe(c))
 
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onResize)
+    document.addEventListener('visibilitychange', onResize)
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(onResize) : null
+    if (ro) ro.observe(root)
+
     return () => {
-      window.removeEventListener('resize', updateRail)
+      if (frame) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+      document.removeEventListener('visibilitychange', onResize)
       if (ro) ro.disconnect()
       io.disconnect()
     }
   }, [])
+
+  const finale = PHASES[PHASES.length - 1]
 
   return (
     <div className="jm-flat" ref={rootRef}>
@@ -442,8 +510,15 @@ function FlatJourney() {
           </article>
         )
       })}
-      <div className="jm-flat-end" aria-hidden="true">
-        <Trophy size={15} /> JOURNEY COMPLETE — WINNERS ANNOUNCED
+      <div className="jm-flat-tail" ref={tailRef} style={vars(finale.color, finale.glow)}>
+        <div className="jm-fnode">
+          <span className="jm-fdot jm-fdot--end"><Trophy size={17} aria-hidden="true" /></span>
+        </div>
+        <div className="jm-flat-end">
+          <b>JOURNEY COMPLETE</b>
+          <i aria-hidden="true" />
+          <span>WINNERS ANNOUNCED</span>
+        </div>
       </div>
     </div>
   )

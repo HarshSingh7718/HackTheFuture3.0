@@ -175,6 +175,7 @@ function CountdownBand() {
 const HOME_REVEAL_SELECTORS = '.stats article, .about > div > *, .about-image-full, .hp-cd-box, .hp-pz-left > *, .hp-pz-mascot, .hp-pz-chip, .hp-pz-chip-sep, .hp-tr-header > *, .hp-tr-stacked-card, .hp-tr-cta-bar, .hp-js-block-header, .hp-judges-soon, .hp-spon-intro > *, .hp-spon-stat, .hp-cg-header > *, .hp-cg-photo-card, .hp-cg-details-col > *, .hp-pfc-l-topbar, .hp-pfc-l-left > *, .hp-pfc-l-mascot-wrap, .hp-pfc-l-pill-item, .hp-pfc-l-bb-item, .hp-ft-grid > *'
 
 export default function App() {
+  const [cgImageLoaded, setCgImageLoaded] = useState(false)
   const container = useRef<HTMLElement>(null)
 
   // Keep ScrollTrigger synced with Lenis smooth scroll so triggers never misfire.
@@ -476,6 +477,13 @@ export default function App() {
                 </div>
               </a>
             ))}
+            {/* Scroll tail for the sticky deck. A sticky box unsticks when the
+                *content* box of its container reaches it, so the container's
+                own padding-bottom buys no hold time, and a margin on the last
+                card only self-constrains it. This spacer is the one thing that
+                keeps the finished stack pinned for a beat. Height per
+                breakpoint in homepage-sections.css. */}
+            <div className="hp-tr-stack-tail" aria-hidden="true" />
           </div>
         </div>
 
@@ -611,7 +619,13 @@ export default function App() {
             </div>
           </div>
           <a href="https://www.linkedin.com/in/abhinav-ahluwalia-153874142/" target="_blank" rel="noopener noreferrer" className="hp-cg-speaker-card hp-cg-photo-card">
-            <img src="/chief-guest.webp" alt="Abhinav Ahluwalia" className="hp-cg-sc-img" />
+            {!cgImageLoaded && <div className="hp-cg-img-skeleton" />}
+            <img 
+              src="/chief-guest.webp" 
+              alt="Abhinav Ahluwalia" 
+              className={`hp-cg-sc-img ${cgImageLoaded ? 'loaded' : ''}`} 
+              onLoad={() => setCgImageLoaded(true)}
+            />
             <div className="hp-cg-sc-overlay" />
             <div className="hp-cg-sc-content">
               <h4>Abhinav Ahluwalia</h4>

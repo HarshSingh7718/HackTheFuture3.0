@@ -23,6 +23,7 @@ import './styles/prizes.css'
 import './styles/timeline.css'
 import './styles/faq.css'
 import './styles/contact.css'
+import './styles/home-mobile.css'
 
 import { ScrollToTop } from './components/ScrollToTop'
 

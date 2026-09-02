@@ -1,0 +1,221 @@
+/* ─────────────────────────────────────────────────────────────
+   HOME PAGE — MOBILE LAYER
+   Loaded last (see main.tsx) and scoped to #top, the home page's
+   <main>, so the inner routes keep their own responsive rules.
+   Fixes three classes of problem the desktop sheets leave behind
+   at phone widths: grid tracks whose min-content exceeds the
+   viewport, desktop-only scroll effects, and type set for 1440px.
+   ───────────────────────────────────────────────────────────── */
+
+/* ══ STRUCTURE — collapse to a single column (≤900px) ══════════ */
+@media (max-width: 900px) {
+  /* minmax(0,1fr) rather than 1fr: a plain 1fr track still floors at
+     min-content, which is what pushed .about 38px past the viewport. */
+  #top .about,
+  #top .hp-pz,
+  #top .hp-cg-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #top .about > *,
+  #top .hp-pz > *,
+  #top .hp-tr-content > *,
+  #top .hp-cg-grid > * {
+    min-width: 0;
+  }
+
+  /* ABOUT — the CTA and the pipeline chip shared one flex row whose
+     combined min-content was 413px. Stack them, let the chip wrap. */
+  #top .about-bottom-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  #top .about-know {
+    width: 100%;
+    justify-content: center;
+  }
+  #top .about-pipeline {
+    display: block;
+    white-space: normal;
+    text-align: center;
+    max-width: none;
+  }
+  #top .about p,
+  #top .about .eyebrow {
+    max-width: none;
+  }
+  #top .about-image-full {
+    width: 100%;
+  }
+
+  /* TRACKS — the sticky "deck" stack is deliberately kept on mobile so the
+     scroll behaviour matches desktop. homepage-sections.css already tunes it
+     for phones (top: 85px + index*14px, vs 140px + index*25px on desktop), so
+     nothing here may override `position`. The only addition is a firmer upward
+     shadow: at a 14px stagger the sliver of each covered card is thin, and the
+     desktop shadow (0 -4px 24px / 0.1) is too faint to separate them.
+     Card padding, icon size and type are likewise already tuned for ≤900/≤480
+     in homepage-sections.css and intentionally untouched here. */
+  #top .hp-tr-stacked-card {
+    box-shadow: 0 -6px 20px rgba(24, 8, 56, 0.16);
+  }
+
+  /* PRIZES — the pool figure paints its gradient through background-clip,
+     so widening the box to the full measure gives the sweep somewhere to
+     travel. (What actually made the number invisible was an opacity on its
+     inner spans creating a stacking context — fixed in homepage-sections.css.) */
+  #top .hp-pz-left {
+    align-items: stretch;
+  }
+  #top .hp-pz-pool-num {
+    width: 100%;
+    letter-spacing: -2px;
+  }
+  #top .hp-pz-left,
+  #top .hp-pz-chips {
+    padding: 32px 16px;
+  }
+  #top .hp-pz-center {
+    padding: 8px 16px 0;
+  }
+
+  /* SPONSORS — four 1fr tracks floored at 411px inside a 347px box. */
+  #top .hp-spon-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ══ PHONE — type scale and spacing (≤600px) ═══════════════════ */
+@media (max-width: 600px) {
+  /* Section headings are set for a 1440px measure; at 375px a 36–41px
+     display face runs into the gutter. Bring them onto a phone scale. */
+  #top .about h2,
+  #top .hp-tr-heading,
+  #top .hp-js-block-header h2,
+  #top .hp-spon-intro h2 {
+    font-size: clamp(26px, 8.4vw, 33px);
+    letter-spacing: -1px;
+    line-height: 1.06;
+  }
+  #top .jm-title {
+    font-size: clamp(25px, 8vw, 32px);
+    letter-spacing: -0.5px;
+  }
+  #top .hp-cg-heading {
+    font-size: clamp(25px, 8vw, 32px);
+    letter-spacing: -0.8px;
+    line-height: 1.08;
+  }
+  #top .hp-pz-pool-num {
+    font-size: clamp(36px, 11vw, 50px);
+  }
+
+  /* Body copy: 15px minimum so it stays comfortable, tighter leading. */
+  #top .about p,
+  #top .hp-tr-sub,
+  #top .hp-tr-card-body p,
+  #top .hp-cg-ds-desc,
+  #top .jm-fdesc {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* Micro-labels were down to 7px — unreadable on a phone screen. */
+  #top .hp-cd-label {
+    font-size: 9px;
+    letter-spacing: 1.4px;
+  }
+  #top .hp-cd-eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.8px;
+  }
+  #top .stats strong {
+    font-size: 10px;
+  }
+  /* …and the same floor for the remaining 8/8.5px labels. `.stats small` is
+     declared five times across global.css; the #top prefix outranks all of
+     them without needing !important. */
+  #top .stats small {
+    font-size: 10px;
+    letter-spacing: 0.6px;
+  }
+  #top .status-live-row small,
+  #top .hp-pz-chip-sep span {
+    font-size: 9.5px;
+    letter-spacing: 1.5px;
+  }
+
+  /* Reclaim horizontal room. Note .section itself is already forced to
+     56px/20px (≤768) and 44px/14px (≤480) with !important in
+     homepage-sections.css, so it is deliberately absent here — these are
+     the containers that sheet does not cover. */
+  #top .hp-pz-left,
+  #top .hp-pz-chips,
+  #top .hp-js-block,
+  #top .hp-cg-header,
+  #top .hp-pfc-l-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Tap targets: 44px minimum on every primary action. */
+  #top .button,
+  #top .hp-pz-btn,
+  #top .hp-tr-cta-btn,
+  #top .hp-spon-cta,
+  #top .hp-pfc-l-btn-primary,
+  #top .hp-pfc-l-btn-secondary {
+    min-height: 44px;
+  }
+
+  /* Prize chips: keep the amount and the incubation pill off the edge. */
+  #top .hp-pz-chip {
+    padding: 12px 12px 12px 14px;
+    gap: 10px;
+  }
+  #top .hp-pz-chip-prize {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  /* Journey (flat): only the body copy is bumped to the 15px readability
+     floor. The rail, dots, terminal node and end cap are laid out entirely in
+     journey-map.css — a `text-align` or `gap` from here would fight it. */
+}
+
+/* ══ SMALL PHONE (≤360px) ══════════════════════════════════════
+   375px is the single most common phone width, so it deliberately stays
+   on the ≤600px scale above (≈31px headings). This tier is for the
+   genuinely narrow 320–360px devices only. */
+@media (max-width: 360px) {
+  #top .about h2,
+  #top .hp-tr-heading,
+  #top .hp-js-block-header h2,
+  #top .hp-spon-intro h2,
+  #top .jm-title {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  /* .hp-cg-heading is omitted: homepage-sections.css already pins it with
+     !important at ≤480px (clamp(26px,8vw,36px) → 26px here). */
+  #top .hp-pz-pool-num {
+    font-size: 34px;
+    letter-spacing: -1.5px;
+  }
+  /* Two cells per row at this width; the labels are the tight part. */
+  #top .hp-spon-stat-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  #top .hp-tr-card {
+    padding: 20px 16px;
+    gap: 12px;
+  }
+  /* 9px is the readability floor used throughout this sheet; the pill wraps
+     to two lines at 320px rather than shrinking below it. */
+  #top .hp-pz-chip-inc {
+    font-size: 9px;
+    letter-spacing: 0.2px;
+    white-space: normal;
+  }
+}
