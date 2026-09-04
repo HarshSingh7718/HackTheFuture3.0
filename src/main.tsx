@@ -26,17 +26,31 @@ import './styles/contact.css'
 import './styles/home-mobile.css'
 
 import { ScrollToTop } from './components/ScrollToTop'
+import { Preloader } from './components/Preloader'
 
-createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><ScrollToTop /><ReactLenis root options={{ lerp: 0.09, duration: 1.25, smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.6, syncTouch: true }}><Routes>
-  <Route path="/" element={<App />} />
-  <Route path="/about" element={<AboutPage />} />
-  <Route path="/rules" element={<RulesPage />} />
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <Preloader />
+    <BrowserRouter>
+      <ScrollToTop />
+      <ReactLenis root options={{ lerp: 0.09, duration: 1.25, smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.6, syncTouch: true }}>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/rules" element={<RulesPage />} />
 
-  <Route path="/tracks" element={<TracksPage />} />
-  <Route path="/prizes" element={<PrizesPage />} />
-  <Route path="/timeline" element={<TimelinePage />} />
-  <Route path="/faq" element={<FaqPage />} />
-  <Route path="/contact" element={<ContactPage />} />
+          <Route path="/tracks" element={<TracksPage />} />
+          <Route path="/prizes" element={<PrizesPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/faq" element={<FaqPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
-  {['judges', 'mentors', 'sponsors'].map(page => <Route key={page} path={`/${page}`} element={<EventPage page={page} />} />)}
-</Routes></ReactLenis></BrowserRouter></StrictMode>)
+          {['judges', 'mentors', 'sponsors'].map(page => (
+            <Route key={page} path={`/${page}`} element={<EventPage page={page} />} />
+          ))}
+        </Routes>
+      </ReactLenis>
+    </BrowserRouter>
+  </StrictMode>
+)
+
