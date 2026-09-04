@@ -72,20 +72,69 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
-  max-width: 480px;
-  width: 90%;
+  padding: 16px 20px;
+  max-width: 520px;
+  width: 92%;
+}
+
+/* ── Tula's University Badge ── */
+.htf-preloader-univ-badge {
+  background: rgba(255, 255, 255, 0.96);
+  padding: 8px 22px;
+  border-radius: 12px;
+  box-shadow: 
+    0 0 25px rgba(0, 240, 255, 0.3),
+    0 0 45px rgba(139, 54, 247, 0.25),
+    0 6px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: htfUnivFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  backdrop-filter: blur(8px);
+}
+
+.htf-preloader-univ-logo {
+  height: 44px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.htf-preloader-presenter {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #00f0ff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  animation: htfUnivFade 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes htfUnivFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* ── Logo & Hologram Ring Unit ── */
 .htf-preloader-logo-wrap {
   position: relative;
-  width: 170px;
-  height: 170px;
+  width: 140px;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 /* Outer Orbiting Cyber Ring */
@@ -103,7 +152,7 @@
 /* Middle Inverted Accent Ring */
 .htf-preloader-ring-2 {
   position: absolute;
-  inset: 12px;
+  inset: 10px;
   border-radius: 50%;
   border: 2px solid transparent;
   border-bottom-color: #00f0ff;
@@ -114,7 +163,7 @@
 /* Inner Pulsing Glass Core */
 .htf-preloader-core {
   position: absolute;
-  inset: 24px;
+  inset: 20px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(139, 54, 247, 0.25) 0%, rgba(8, 8, 11, 0.85) 80%);
   border: 1px solid rgba(139, 54, 247, 0.5);
@@ -128,7 +177,7 @@
 }
 
 .htf-preloader-logo-img {
-  width: 80px;
+  width: 68px;
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 12px rgba(139, 54, 247, 0.8));
@@ -246,11 +295,37 @@
 }
 
 @media (max-width: 600px) {
+  .htf-preloader-univ-badge {
+    padding: 6px 16px;
+    margin-bottom: 8px;
+  }
+  .htf-preloader-univ-logo {
+    height: 36px;
+    max-width: 180px;
+  }
+  .htf-preloader-presenter {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    margin-bottom: 14px;
+  }
   .htf-preloader-logo-wrap {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 16px;
+  }
+  .htf-preloader-logo-img {
+    width: 56px;
+  }
+  .htf-preloader-title {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
   }
   .htf-preloader-percent {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+  .htf-preloader-bar-wrap {
+    max-width: 240px;
+    margin-bottom: 12px;
   }
 }

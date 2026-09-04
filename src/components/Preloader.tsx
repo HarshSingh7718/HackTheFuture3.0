@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import logo from '../../NavBar Logo.webp'
+import tulasLogo from '../assets/tulas-logo.png'
+import htfLogo from '../../NavBar Logo.webp'
 import '../styles/preloader.css'
 
 export const Preloader: React.FC = () => {
@@ -13,7 +14,7 @@ export const Preloader: React.FC = () => {
     document.body.style.overflow = 'hidden'
 
     const startTime = Date.now()
-    const duration = 1800 // Total load duration in ms
+    const duration = 2000 // Total load duration in ms
 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime
@@ -31,7 +32,7 @@ export const Preloader: React.FC = () => {
           setTimeout(() => {
             setIsMounted(false)
           }, 650)
-        }, 300)
+        }, 350)
       }
     }, 20)
 
@@ -44,11 +45,11 @@ export const Preloader: React.FC = () => {
   if (!isMounted) return null
 
   // Determine active status message based on progress
-  let statusText = 'INITIALIZING QUANTUM CORE...'
+  let statusText = "INITIALIZING TULA'S UNIVERSITY PORTAL..."
   if (progress > 30 && progress <= 65) {
-    statusText = 'LOADING HACKATHON PROTOCOLS...'
+    statusText = 'LOADING HACK THE FUTURE 3.0 PROTOCOLS...'
   } else if (progress > 65 && progress <= 95) {
-    statusText = "SYNCHRONIZING TULAS ACM NETWORK..."
+    statusText = 'SYNCHRONIZING TULAS ACM NETWORK...'
   } else if (progress > 95) {
     statusText = 'SYSTEM READY // WELCOME TO HTF 3.0'
   }
@@ -71,13 +72,27 @@ export const Preloader: React.FC = () => {
 
       {/* Center Content */}
       <div className="htf-preloader-content">
-        {/* Hologram Rings & Logo */}
+        {/* Tula's University Official Badge */}
+        <div className="htf-preloader-univ-badge">
+          <img
+            src={tulasLogo}
+            alt="Tula's University"
+            className="htf-preloader-univ-logo"
+          />
+        </div>
+
+        {/* Presenter Subtitle */}
+        <div className="htf-preloader-presenter">
+          <span>TULAS ACM STUDENT CHAPTER PRESENTS</span>
+        </div>
+
+        {/* Hologram Rings & HTF Logo */}
         <div className="htf-preloader-logo-wrap">
           <div className="htf-preloader-ring-1" />
           <div className="htf-preloader-ring-2" />
           <div className="htf-preloader-core">
             <img
-              src={logo}
+              src={htfLogo}
               alt="Hack The Future 3.0"
               className="htf-preloader-logo-img"
             />
