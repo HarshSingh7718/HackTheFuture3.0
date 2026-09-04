@@ -2,8 +2,8 @@ HACK THE FUTURE 3.0
 National-Level Hackathon
 PROJECT TO PRODUCT
  25–26 September 2026
- Tula's University, Dehradun, Uttarakhand
-Organized by the Tula's ACM Student Chapter
+ Tulas University, Dehradun, Uttarakhand
+Organized by the Tulas ACM Student Chapter
 
 1. EVENT OVERVIEW
 Hack The Future 3.0
@@ -30,7 +30,7 @@ Project to Product
 Dates
 25–26 September 2026
 Venue
-Tula's University, Dehradun, Uttarakhand
+Tulas University, Dehradun, Uttarakhand
 Format
 Online Shortlisting + Offline Grand Finale
 Final Round
@@ -42,7 +42,7 @@ Free
 Final Round Fee
 ₹500 per participant
 Organizer
-Tula's ACM Student Chapter
+Tulas ACM Student Chapter
 Focus
 Technology, Innovation, Product Development and Entrepreneurship
 
@@ -167,7 +167,7 @@ Only teams that complete the required confirmation and payment process before th
 10. GRAND FINALE
 25–26 September 2026
 The shortlisted teams will participate in the final offline round at:
-Tula's University, Dehradun, Uttarakhand
+Tulas University, Dehradun, Uttarakhand
 During the final round, participants will:
 Work on their solutions
 Build and improve prototypes
@@ -403,7 +403,7 @@ Participant kits
 Sponsor branding setup
 Phase 8: Hack The Future 3.0
 25–26 September 2026
-Final offline hackathon at Tula's University.
+Final offline hackathon at Tulas University.
 
 24. DETAILED EVENT FLOW
 The following is a recommended high-level structure.
