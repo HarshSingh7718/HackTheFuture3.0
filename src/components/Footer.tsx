@@ -32,7 +32,7 @@ export function Footer() {
 
         <div className="hp-ft-col">
           <h4>Participate</h4>
-          <a href="/rules">Code of Conduct</a>
+          <a href="/rules?tab=conduct">Code of Conduct</a>
           <a href="/rules">Rules &amp; Guidelines</a>
           <a href="/faq">FAQ</a>
           <a href="/contact">Contact</a>

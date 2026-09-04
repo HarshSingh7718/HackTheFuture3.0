@@ -68,24 +68,27 @@ const sections = [
     subtitle: 'Fair play, respect and expected behaviour.',
     icon: Shield,
     points: [
-      'Respect all participants, mentors, organizers, judges, volunteers and venue staff.',
-      'Carry your valid college ID card and official participant badge at all times.',
-      'Zero tolerance for plagiarism — all work must be original, built during the hackathon.',
-      'Do not use unfair means (pre-built code without disclosure, copying) during the hackathon.',
-      'Harassment, discrimination or inappropriate behaviour of any kind will not be tolerated.',
-      'Non-vegetarian food and alcohol are strictly NOT allowed inside the venue.',
-      'Do not consume alcohol, drugs, cigarettes or any prohibited substances at or near the venue.',
-      'Do not leave the campus or venue without prior permission from organizers.',
-      'Maintain cleanliness and professional discipline at the venue at all times.',
-      'Do not sleep in restricted areas (labs, corridors) — use designated rest areas only.',
-      'Do not miss submission timelines; late entries will not be entertained.',
-      'Any violation of this code may result in immediate disqualification without prior notice.',
-    ],
+    'Respect all participants, mentors, organizers, judges, volunteers and campus staff.',
+    'Carry your valid college ID card and official participant badge at all times.',
+    'Zero tolerance for plagiarism — all work must be original, built during the hackathon.',
+    'Do not use unfair means (pre-built code without disclosure, copying) during the hackathon.',
+    'Harassment, discrimination or inappropriate behaviour of any kind will not be tolerated.',
+    'Non-vegetarian food and alcohol are strictly NOT allowed inside the campus.',
+    'Smoking, tobacco, cigarettes and vaping are strictly NOT allowed inside the campus.',
+    'Do not consume alcohol, drugs, cigarettes, tobacco or any prohibited substances inside the campus.',
+    'Do not leave the campus without prior permission from organizers.',
+    'Maintain cleanliness and professional discipline inside the campus at all times.',
+    'Do not sleep in restricted areas (labs, corridors) — use designated rest areas only.',
+    'Do not miss submission timelines; late entries will not be entertained.',
+    'Any violation of this code may result in immediate disqualification without prior notice.',
+],
   },
 ]
 
 export function RulesPage() {
-  const [active, setActive] = useState('eligibility')
+  const [active, setActive] = useState(
+  new URLSearchParams(window.location.search).get('tab') || 'eligibility'
+)
 
   const activeSection = sections.find(s => s.id === active)!
 

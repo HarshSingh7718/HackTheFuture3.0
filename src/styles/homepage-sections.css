@@ -2409,13 +2409,13 @@
   border: 1px solid rgba(245, 158, 11, 0.3);
   font: 700 11px 'DM Mono', monospace;
   letter-spacing: 2px;
-  color: #fcd34d;
+  color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
 .hp-cg-pill-icon {
-  color: #f59e0b;
+  display:none;
 }
 
 .hp-cg-heading {
@@ -3028,6 +3028,18 @@
   flex-shrink: 0;
   transition: background .2s, transform .2s;
   white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .hp-spon-cta {
+    padding: 8px 16px;
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .hp-spon-cta svg {
+    width: 5px;
+    height: 5px;
+  }
 }
 
 .hp-spon-cta:hover {
@@ -3681,28 +3693,54 @@
   .hp-cd {
     margin-top: -56px;
     margin-bottom: -56px;
+    padding: 6px 12px;
   }
 
   .hp-cd-box {
     flex-direction: column;
-    gap: 20px;
-    padding: 24px 24px;
-    max-width: 340px;
+    gap: 2px;
+    padding: 4px 24px;
+    max-width: 360px;
   }
 
   .hp-cd-meta {
     border-right: none;
     border-bottom: 1px solid #ede8f2;
     padding-right: 0;
-    padding-bottom: 16px;
+    padding-bottom: 5px;
     width: 100%;
   }
 
+  .hp-cd-eyebrow {
+    font-size: 7px;
+  }
+
+  .hp-cd-date {
+    font-size: 10px;
+  }
+
+  .hp-cd-units {
+    gap: 1px;
+  }
+
   .hp-cd-unit {
-    min-width: 52px;
+    min-width: 45px;
+    gap: 1px;
+  }
+
+  .hp-cd-num {
+    font-size: 24px;
+  }
+
+  .hp-cd-label {
+    font-size: 6px;
+  }
+
+  .hp-cd-colon {
+    font-size: 17px;
+    padding-bottom: 7px;
   }
 }
-
 /* ══════════════════════════════════════════════
    NEXT-GEN PRE-FOOTER LAUNCHPAD CTA
 ══════════════════════════════════════════════ */
@@ -4016,7 +4054,7 @@
 /* ── Mobile & Mid Tablet: 768px ── */
 @media (max-width: 768px) {
   .section {
-    padding: 56px 20px !important;
+    padding: 25px 20px !important;
   }
 
   /* Journey section */
@@ -4169,4 +4207,3 @@
     grid-template-columns: 1fr !important;
   }
 }
-
